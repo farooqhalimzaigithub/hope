@@ -118,7 +118,7 @@ class StudentController extends Controller
         'remark'                =>$request->remark,
         'school_id'             =>$request->school_id
        ]);
- return redirect()->route('students.create')->with('success','Data Added Successfully');
+ return redirect()->route('students.index')->with('success','Data Added Successfully');
 
     }
 
@@ -139,9 +139,20 @@ class StudentController extends Controller
      * @param  \App\Models\Student  $student
      * @return \Illuminate\Http\Response
      */
-    public function edit(Student $student)
+    public function edit($id)
     {
-        //
+           $data['sections']=Section::all();
+           $data['levels']=Level::all();
+           $data['schools']=School::all();
+           $data['countries']=Country::all();
+           $data['provinces']=Province::all();
+           $data['cities']=City::all();
+           $data['religions']=Religion::all();
+           $data['casts']=Cast::all();
+           $data['bloods']=BloodGroup::all();
+           $data['student']=Student::with('studentDetail')->find($id);
+           // $data['students'] = Student::with('studentDetail')->get();
+       return view('student-managment.edit',$data);
     }
 
     /**
@@ -151,9 +162,67 @@ class StudentController extends Controller
      * @param  \App\Models\Student  $student
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Student $student)
+    public function update(Request $request,$id)
     {
-        //
+
+      if($request->hasFile('image')){
+                    $file = $request->file('image');
+                    // $fileName = $file->getClientOriginalName() ;
+                    $extension = $file->getClientOriginalExtension(); 
+                    // $destinationPath = 'images/' ; // for online link will be
+                    $destinationPath = 'public/images/' ; //for local link will be 
+                    $datetime = date('mdYhisa', time());
+                    $complete_name=$destinationPath.$datetime.'.'.$extension;
+                    $file_name=$datetime.'.'.$extension;
+                    $file->move($destinationPath,$file_name);
+            }else{
+                $file_name=null;
+            }
+       $student=Student::find($id);
+       $student->first_name=$request->first_name;
+       $student->last_name=$request->last_name;
+       $student->sur_name=$request->surname;
+       $student->dob=$request->dob;
+       $student->cnic_no=$request->student_cnic;
+       $student->father_name=$request->father_name;
+       $student->father_cnic_no=$request->father_cnic_no;
+       $student->father_occupation=$request->father_occupation;
+       $student->registration_no=$request->registration_no;
+       $student->admission_no=$request->admission_no;
+       $student->enrollment_registration=$request->enrollment_registration;
+       $student->religion_id=$request->religion_id;//i.e islaam
+       $student->cast_id=$request->cast_id;//i.e nation
+       $student->school_id=$request->campus_id;
+       $student->province_id=$request->province_id;
+       $student->country_id=$request->country_id;
+       $student->image=$file_name;
+       $student->save();
+       StudentDetail::where('student_id',$id)->first()
+         ->update([
+        'student_id'            =>$id,
+        'postal_address'        =>$request->postal_address,
+        'permanent_address'     =>$request->permanent_address,
+        'contact_no'            =>$request->contact_no,
+        'cellular_no'           =>$request->cellular_no,
+        'guardian_cnic'         =>$request->guardian_cnic,
+        'gender'                =>$request->gender,
+        'blood_id'              =>$request->blood_id,
+        'health_name'           =>$request->health_name,
+        'waight'                =>$request->waight,
+        'height'                =>$request->height,
+        'house_name'            =>$request->house_name,
+        'current_class_id'      =>$request->current_class_id,
+        'admission_class_id'    =>$request->admission_class_id,
+        'section_id'            =>$request->section_id,
+        'city_id'               =>$request->city_id,
+        'guardian_mobile_number'=>$request->guardian_mobile_number,
+        'guardian_name'         =>$request->guardian_name,
+        'clc_no'                =>$request->clc_no,
+        'remark'                =>$request->remark,
+        'school_id'             =>$request->school_id
+       ]);
+         return redirect()->route('students.index')->with('success','Data Updated Successfully');
+
     }
 
     /**
@@ -162,8 +231,9 @@ class StudentController extends Controller
      * @param  \App\Models\Student  $student
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Student $student)
+    public function destroy($id)
     {
-        //
+        Student::find($id)->delete();
+           return redirect()->route('students.index')->with('error','Data Delete Successfully');
     }
 }

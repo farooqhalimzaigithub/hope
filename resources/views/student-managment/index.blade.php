@@ -156,7 +156,7 @@
 									<!--end::Svg Icon-->
 								</span>
 							</a>
-							<a href="{{url('students-delete',$student->id)}}" class="btn btn-icon btn-light btn-hover-danger btn-sm">
+							<a href="{{url('student-delete',$student->id)}}" class="btn btn-icon btn-light btn-hover-danger btn-sm">
 								<i class="fa fa-trash text-success"></i>
 							</a>
 

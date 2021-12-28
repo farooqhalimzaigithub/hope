@@ -28,6 +28,8 @@ class CreateStudentDetailsTable extends Migration
                $table->string('waight')->nullable();
                $table->string('height')->nullable();
                $table->string('house_name')->nullable();
+                 $table->string('withdrawl_no')->nullable();
+                 $table->dateTime('date_of_admission')->nullable();
                $table->integer('current_class_id')->unsigned()->nullable();
              // $table->foreign('current_class_id')->references('id')->on('levels')->onDelete('cascade')->onUpdate('cascade');
                $table->integer('admission_class_id')->unsigned()->nullable();
@@ -37,7 +39,7 @@ class CreateStudentDetailsTable extends Migration
                $table->integer('city_id')->unsigned()->nullable();
              // $table->foreign('city_id')->references('id')->on('cities')->onDelete('cascade')->onUpdate('cascade');
                 $table->integer('student_id')->unsigned()->nullable();
-             // $table->foreign('student_id')->references('id')->on('students')->onDelete('cascade')->onUpdate('cascade');
+             $table->foreign('student_id')->references('id')->on('students')->onDelete('cascade')->onUpdate('cascade');
                
                $table->string('guardian_mobile_number')->nullable();
                $table->string('clc_no')->nullable();
