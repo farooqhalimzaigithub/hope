@@ -66,9 +66,25 @@ Route::resource('countries','App\Http\Controllers\CountryController');
 Route::resource('levels','App\Http\Controllers\LevelController');
 Route::resource('sections','App\Http\Controllers\SectionController');
 Route::resource('schools','App\Http\Controllers\SchoolController');
+Route::resource('campuses','App\Http\Controllers\CampusController');
+Route::resource('branches','App\Http\Controllers\BranchController');
+Route::resource('banks','App\Http\Controllers\BankController');
+Route::resource('departments','App\Http\Controllers\DepartmentController');
+Route::resource('designations','App\Http\Controllers\DesignationController');
+Route::resource('enrollments','App\Http\Controllers\EnrollmentRegisterController');
+Route::resource('exam-types','App\Http\Controllers\ExamTypeController');
+Route::resource('exams','App\Http\Controllers\ExaminationController');
+Route::resource('expenses','App\Http\Controllers\ExpenseController');
+Route::resource('expense-categories','App\Http\Controllers\ExpenseCategoryController');
+Route::resource('fees','App\Http\Controllers\FeeCategoryController');
+Route::resource('fee-categories','App\Http\Controllers\FeeCategoryCategoryController');
+Route::resource('grades','App\Http\Controllers\GradeCategoryController');
+Route::resource('healths','App\Http\Controllers\HealthController');
+Route::resource('occupations','App\Http\Controllers\OccupationController');
 
 //@@@@@@@@@@@@@@@@@@@@@@@$End of resource routes $@@@@@@@@@@@@@@@@@@@@@@@@@
 // ================For every model Delete======================
+Route::get('campus-delete/{id}', [App\Http\Controllers\CampusController::class, 'destroy'])->name('campus-delete.destroy');
 Route::get('student-delete/{id}', [App\Http\Controllers\StudentController::class, 'destroy'])->name('student-delete.destroy');
 Route::get('section-delete/{id}', [App\Http\Controllers\SectionController::class, 'destroy'])->name('section-delete.destroy');
 Route::get('school-delete/{id}', [App\Http\Controllers\SchoolController::class, 'destroy'])->name('school-delete.destroy');

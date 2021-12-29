@@ -2,20 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Cast;
+use App\Models\Campus;
 use Illuminate\Http\Request;
 
-class CastController extends Controller
+class CampusController extends Controller
 {
-    /** 
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-       $data['casts']=Cast::all();
-        return view('pre_configuration.cast-manage.index',$data);
+        $data['campuses']=Campus::all();
+        return view('pre_configuration.campus-manage.index',$data);
     }
 
     /**
@@ -25,8 +25,7 @@ class CastController extends Controller
      */
     public function create()
     {
-       
-        return view('pre_configuration.cast-manage.create');
+        return view('pre_configuration.campus-manage.create');
     }
 
     /**
@@ -37,57 +36,58 @@ class CastController extends Controller
      */
     public function store(Request $request)
     {
-         Cast::create($request->all());
-        return redirect()->route('casts.index')->with('success','Data Added Successfully');
+       Campus::create($request->all());
+        return redirect()->route('campuses.index')->with('success','Data Added Successfully');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Cast  $cast
+     * @param  \App\Models\Campus  $campus
      * @return \Illuminate\Http\Response
      */
-    public function show(Cast $cast)
+    public function show(Campus $campus)
     {
-        
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Cast  $cast
+     * @param  \App\Models\Campus  $campus
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-       $data['cast']=Cast::find($id);
-        return view('pre_configuration.cast-manage.edit',$data);
+        $data['campus'] =Campus::find($id);
+         return view('pre_configuration.campus-manage.edit',$data);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Cast  $cast
+     * @param  \App\Models\Campus  $campus
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request,$id)
     {
-        $cast =Cast::find($id);
-      $cast->title=$request->title;
-      $cast->save();
-       return redirect()->route('casts.index')->with('info','Data Update successfully!');
+        $campus =Campus::find($id);
+      $campus->name=$request->name;
+      $campus->location=$request->location;
+      $campus->save();
+       return redirect()->route('campuses.index')->with('info','Data Update successfully!');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Cast  $cast
+     * @param  \App\Models\Campus  $campus
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-       Cast::find($id)->delete();
-           return redirect()->route('casts.index')->with('error','Data Delete Successfully');
+        Campus::find($id)->delete();
+           return redirect()->route('campuses.index')->with('error','Data Delete Successfully');
     }
 }

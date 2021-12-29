@@ -2,20 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Cast;
+use App\Models\Designation;
 use Illuminate\Http\Request;
 
-class CastController extends Controller
+class DesignationController extends Controller
 {
-    /** 
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-       $data['casts']=Cast::all();
-        return view('pre_configuration.cast-manage.index',$data);
+        //
     }
 
     /**
@@ -25,8 +24,7 @@ class CastController extends Controller
      */
     public function create()
     {
-       
-        return view('pre_configuration.cast-manage.create');
+        //
     }
 
     /**
@@ -37,57 +35,51 @@ class CastController extends Controller
      */
     public function store(Request $request)
     {
-         Cast::create($request->all());
-        return redirect()->route('casts.index')->with('success','Data Added Successfully');
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Cast  $cast
+     * @param  \App\Models\Designation  $designation
      * @return \Illuminate\Http\Response
      */
-    public function show(Cast $cast)
+    public function show(Designation $designation)
     {
-        
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Cast  $cast
+     * @param  \App\Models\Designation  $designation
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Designation $designation)
     {
-       $data['cast']=Cast::find($id);
-        return view('pre_configuration.cast-manage.edit',$data);
+        //
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Cast  $cast
+     * @param  \App\Models\Designation  $designation
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Designation $designation)
     {
-        $cast =Cast::find($id);
-      $cast->title=$request->title;
-      $cast->save();
-       return redirect()->route('casts.index')->with('info','Data Update successfully!');
+        //
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Cast  $cast
+     * @param  \App\Models\Designation  $designation
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Designation $designation)
     {
-       Cast::find($id)->delete();
-           return redirect()->route('casts.index')->with('error','Data Delete Successfully');
+        //
     }
 }
