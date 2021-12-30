@@ -14,7 +14,8 @@ class DesignationController extends Controller
      */
     public function index()
     {
-        //
+        $data['designations']=Designation::all();
+        return view('pre_configuration.designation.index',$data);
     }
 
     /**
@@ -24,7 +25,7 @@ class DesignationController extends Controller
      */
     public function create()
     {
-        //
+          return view('pre_configuration.designation.create');
     }
 
     /**
@@ -35,7 +36,8 @@ class DesignationController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Designation::create($request->all());
+        return redirect()->route('designations.index')->with('success','Data Added Successfully');
     }
 
     /**
@@ -55,9 +57,10 @@ class DesignationController extends Controller
      * @param  \App\Models\Designation  $designation
      * @return \Illuminate\Http\Response
      */
-    public function edit(Designation $designation)
+    public function edit($id)
     {
-        //
+        $data['designation']=Designation::find($id);
+        return view('pre_configuration.designation.edit',$data);
     }
 
     /**
@@ -67,9 +70,12 @@ class DesignationController extends Controller
      * @param  \App\Models\Designation  $designation
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Designation $designation)
+    public function update(Request $request,$id)
     {
-        //
+        $designation =Designation::find($id);
+      $designation->name=$request->name;
+      $designation->save();
+       return redirect()->route('designations.index')->with('info','Data Update successfully!');
     }
 
     /**
@@ -78,8 +84,9 @@ class DesignationController extends Controller
      * @param  \App\Models\Designation  $designation
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Designation $designation)
+    public function destroy($id)
     {
-        //
+        Designation::find($id)->delete();
+           return redirect()->route('designations.index')->with('error','Data Delete Successfully');
     }
 }

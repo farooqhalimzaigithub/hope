@@ -14,7 +14,8 @@ class FeeCategoryController extends Controller
      */
     public function index()
     {
-        //
+        $data['fee_categories']=FeeCategory::all();
+         return view('pre_configuration.fee-category-manage.index',$data);
     }
 
     /**
@@ -24,7 +25,7 @@ class FeeCategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('pre_configuration.fee-category-manage.create');
     }
 
     /**
@@ -35,7 +36,8 @@ class FeeCategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        FeeCategory::create($request->all());
+        return redirect()->route('fee_categories.index')->with('success','Data Added Successfully');
     }
 
     /**
@@ -55,9 +57,10 @@ class FeeCategoryController extends Controller
      * @param  \App\Models\FeeCategory  $feeCategory
      * @return \Illuminate\Http\Response
      */
-    public function edit(FeeCategory $feeCategory)
+    public function edit($id)
     {
-        //
+        $data['fee_category']=FeeCategory::find($id);
+        return view('pre_configuration.fee-category-manage.edit',$data);
     }
 
     /**
@@ -67,9 +70,12 @@ class FeeCategoryController extends Controller
      * @param  \App\Models\FeeCategory  $feeCategory
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, FeeCategory $feeCategory)
+    public function update(Request $request,$id)
     {
-        //
+        $fee_category =FeeCategory::find($id);
+      $fee_category->name=$request->name;
+      $fee_category->save();
+       return redirect()->route('fee_categories.index')->with('info','Data Update successfully!');
     }
 
     /**
@@ -78,8 +84,9 @@ class FeeCategoryController extends Controller
      * @param  \App\Models\FeeCategory  $feeCategory
      * @return \Illuminate\Http\Response
      */
-    public function destroy(FeeCategory $feeCategory)
+    public function destroy($id)
     {
-        //
+        FeeCategory::find($id)->delete();
+           return redirect()->route('fee_categories.index')->with('error','Data Delete Successfully');
     }
 }

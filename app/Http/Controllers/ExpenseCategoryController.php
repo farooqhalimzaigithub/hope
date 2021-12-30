@@ -14,7 +14,8 @@ class ExpenseCategoryController extends Controller
      */
     public function index()
     {
-        //
+        $data['expense_categories']=ExpenseCategory::all();
+         return view('pre_configuration.expense-category-manage.index',$data);
     }
 
     /**
@@ -24,7 +25,7 @@ class ExpenseCategoryController extends Controller
      */
     public function create()
     {
-        //
+         return view('pre_configuration.expense-category-manage.create');
     }
 
     /**
@@ -35,7 +36,8 @@ class ExpenseCategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+       ExpenseCategory::create($request->all());
+        return redirect()->route('expense_categories.index')->with('success','Data Added Successfully');
     }
 
     /**
@@ -55,9 +57,10 @@ class ExpenseCategoryController extends Controller
      * @param  \App\Models\ExpenseCategory  $expenseCategory
      * @return \Illuminate\Http\Response
      */
-    public function edit(ExpenseCategory $expenseCategory)
+    public function edit($id)
     {
-        //
+       $data['expense_category']=ExpenseCategory::find($id);
+        return view('pre_configuration.expense-category-manage.edit',$data);
     }
 
     /**
@@ -67,9 +70,12 @@ class ExpenseCategoryController extends Controller
      * @param  \App\Models\ExpenseCategory  $expenseCategory
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, ExpenseCategory $expenseCategory)
+    public function update(Request $request,$id)
     {
-        //
+        $expense_category =ExpenseCategory::find($id);
+      $expense_category->name=$request->name;
+      $expense_category->save();
+       return redirect()->route('expense_categories.index')->with('info','Data Update successfully!');
     }
 
     /**

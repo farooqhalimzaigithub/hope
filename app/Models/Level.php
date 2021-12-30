@@ -9,4 +9,5 @@ class Level extends Model
 {
     use HasFactory;
      protected $guarded=[];
+     
 }

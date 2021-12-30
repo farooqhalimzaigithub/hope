@@ -14,7 +14,8 @@ class BankController extends Controller
      */
     public function index()
     {
-        //
+    $data['banks']=Bank::all();
+         return view('pre_configuration.bank-manage.index',$data);
     }
 
     /**
@@ -24,7 +25,8 @@ class BankController extends Controller
      */
     public function create()
     {
-        //
+        return view('pre_configuration.bank-manage.create');
+    
     }
 
     /**
@@ -35,7 +37,8 @@ class BankController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Bank::create($request->all());
+        return redirect()->route('banks.index')->with('success','Data Added Successfully');
     }
 
     /**
@@ -55,9 +58,10 @@ class BankController extends Controller
      * @param  \App\Models\Bank  $bank
      * @return \Illuminate\Http\Response
      */
-    public function edit(Bank $bank)
+    public function edit($id)
     {
-        //
+      $data['bank']=Bank::find($id);
+        return view('pre_configuration.bank-manage.edit',$data);
     }
 
     /**
@@ -67,9 +71,12 @@ class BankController extends Controller
      * @param  \App\Models\Bank  $bank
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Bank $bank)
+    public function update(Request $request, $id)
     {
-        //
+        $bank =Bank::find($id);
+      $bank->bank_name=$request->bank_name;
+      $bank->save();
+       return redirect()->route('banks.index')->with('info','Data Update successfully!');
     }
 
     /**
@@ -78,8 +85,9 @@ class BankController extends Controller
      * @param  \App\Models\Bank  $bank
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Bank $bank)
+    public function destroy($id)
     {
-        //
+         Bank::find($id)->delete();
+           return redirect()->route('banks.index')->with('error','Data Delete Successfully');
     }
 }

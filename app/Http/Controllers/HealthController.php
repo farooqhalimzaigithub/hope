@@ -14,7 +14,8 @@ class HealthController extends Controller
      */
     public function index()
     {
-        //
+                $data['healths']=Health::all();
+         return view('pre_configuration.health-manage.index',$data);
     }
 
     /**
@@ -24,7 +25,7 @@ class HealthController extends Controller
      */
     public function create()
     {
-        //
+       return view('pre_configuration.health-manage.create');
     }
 
     /**
@@ -35,7 +36,8 @@ class HealthController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Health::create($request->all());
+        return redirect()->route('healths.index')->with('success','Data Added Successfully');
     }
 
     /**
@@ -55,9 +57,10 @@ class HealthController extends Controller
      * @param  \App\Models\Health  $health
      * @return \Illuminate\Http\Response
      */
-    public function edit(Health $health)
+    public function edit($id)
     {
-        //
+        $data['health']=Health::find($id);
+        return view('pre_configuration.health-manage.edit',$data);
     }
 
     /**
@@ -67,9 +70,12 @@ class HealthController extends Controller
      * @param  \App\Models\Health  $health
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Health $health)
+    public function update(Request $request,$id)
     {
-        //
+       $health =Health::find($id);
+      $health->name=$request->name;
+      $health->save();
+       return redirect()->route('healths.index')->with('info','Data Update successfully!');
     }
 
     /**
@@ -78,8 +84,9 @@ class HealthController extends Controller
      * @param  \App\Models\Health  $health
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Health $health)
+    public function destroy($id)
     {
-        //
+         Health::find($id)->delete();
+           return redirect()->route('healths.index')->with('error','Data Delete Successfully');
     }
 }

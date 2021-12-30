@@ -13,8 +13,9 @@ class EnrollmentRegisterController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        //
+    { 
+        $data['enrollments']=EnrollmentRegister::all();
+         return view('pre_configuration.enrollment-manage.index',$data);
     }
 
     /**
@@ -24,7 +25,7 @@ class EnrollmentRegisterController extends Controller
      */
     public function create()
     {
-        //
+        return view('pre_configuration.enrollment-manage.create');
     }
 
     /**
@@ -35,7 +36,8 @@ class EnrollmentRegisterController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        EnrollmentRegister::create($request->all());
+        return redirect()->route('enrollments.index')->with('success','Data Added Successfully');
     }
 
     /**
@@ -55,9 +57,10 @@ class EnrollmentRegisterController extends Controller
      * @param  \App\Models\EnrollmentRegister  $enrollmentRegister
      * @return \Illuminate\Http\Response
      */
-    public function edit(EnrollmentRegister $enrollmentRegister)
+    public function edit($id)
     {
-        //
+         $data['enrollment']=EnrollmentRegister::find($id);
+        return view('pre_configuration.enrollment-manage.edit',$data);
     }
 
     /**
@@ -67,9 +70,12 @@ class EnrollmentRegisterController extends Controller
      * @param  \App\Models\EnrollmentRegister  $enrollmentRegister
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, EnrollmentRegister $enrollmentRegister)
+    public function update(Request $request,$id)
     {
-        //
+       $enrollment =EnrollmentRegister::find($id);
+      $enrollment->name=$request->name;
+      $enrollment->save();
+       return redirect()->route('enrollments.index')->with('info','Data Update successfully!');
     }
 
     /**
@@ -78,8 +84,9 @@ class EnrollmentRegisterController extends Controller
      * @param  \App\Models\EnrollmentRegister  $enrollmentRegister
      * @return \Illuminate\Http\Response
      */
-    public function destroy(EnrollmentRegister $enrollmentRegister)
+    public function destroy($id)
     {
-        //
+        EnrollmentRegister::find($id)->delete();
+           return redirect()->route('enrollments.index')->with('error','Data Delete Successfully');
     }
 }

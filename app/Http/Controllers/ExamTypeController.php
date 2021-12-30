@@ -13,8 +13,9 @@ class ExamTypeController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        //
+    { 
+        $data['examtypes']=ExamType::all();
+         return view('pre_configuration.exam-type-manage.index',$data);
     }
 
     /**
@@ -24,9 +25,9 @@ class ExamTypeController extends Controller
      */
     public function create()
     {
-        //
+        return view('pre_configuration.exam-type-manage.create');
     }
-
+ 
     /**
      * Store a newly created resource in storage.
      *
@@ -35,7 +36,8 @@ class ExamTypeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+         ExamType::create($request->all());
+        return redirect()->route('examtypes.index')->with('success','Data Added Successfully');
     }
 
     /**
@@ -55,9 +57,10 @@ class ExamTypeController extends Controller
      * @param  \App\Models\ExamType  $examType
      * @return \Illuminate\Http\Response
      */
-    public function edit(ExamType $examType)
+    public function edit($id)
     {
-        //
+       $data['examtype']=ExamType::find($id);
+        return view('pre_configuration.exam-type-manage.edit',$data);
     }
 
     /**
@@ -67,9 +70,12 @@ class ExamTypeController extends Controller
      * @param  \App\Models\ExamType  $examType
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, ExamType $examType)
+    public function update(Request $request,$id)
     {
-        //
+        $examtype =ExamType::find($id);
+      $examtype->exam_type=$request->exam_type;
+      $examtype->save();
+       return redirect()->route('examtypes.index')->with('info','Data Update successfully!');
     }
 
     /**
@@ -78,8 +84,9 @@ class ExamTypeController extends Controller
      * @param  \App\Models\ExamType  $examType
      * @return \Illuminate\Http\Response
      */
-    public function destroy(ExamType $examType)
+    public function destroy($id)
     {
-        //
+         ExamType::find($id)->delete();
+           return redirect()->route('examtypes.index')->with('error','Data Delete Successfully');
     }
 }

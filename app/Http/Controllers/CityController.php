@@ -15,7 +15,7 @@ class CityController extends Controller
     public function index()
     {
         $data['cities']=City::all();
-        return view('pre_configuration.city-manage.index',$data);
+         return view('pre_configuration.city-manage.index',$data);
          
     }
 

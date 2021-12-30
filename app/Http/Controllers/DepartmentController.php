@@ -14,7 +14,8 @@ class DepartmentController extends Controller
      */
     public function index()
     {
-        //
+         $data['departments']=Department::all();
+         return view('pre_configuration.department-manage.index',$data);
     }
 
     /**
@@ -24,7 +25,7 @@ class DepartmentController extends Controller
      */
     public function create()
     {
-        //
+return view('pre_configuration.department-manage.create');
     }
 
     /**
@@ -35,7 +36,8 @@ class DepartmentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Department::create($request->all());
+        return redirect()->route('departments.index')->with('success','Data Added Successfully');
     }
 
     /**
@@ -55,9 +57,10 @@ class DepartmentController extends Controller
      * @param  \App\Models\Department  $department
      * @return \Illuminate\Http\Response
      */
-    public function edit(Department $department)
+    public function edit($id)
     {
-        //
+         $data['department']=Department::find($id);
+        return view('pre_configuration.department-manage.edit',$data);
     }
 
     /**
@@ -67,9 +70,12 @@ class DepartmentController extends Controller
      * @param  \App\Models\Department  $department
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Department $department)
+    public function update(Request $request, $id)
     {
-        //
+        $department =Department::find($id);
+      $department->name=$request->name;
+      $department->save();
+       return redirect()->route('departments.index')->with('info','Data Update successfully!');
     }
 
     /**
@@ -78,8 +84,9 @@ class DepartmentController extends Controller
      * @param  \App\Models\Department  $department
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Department $department)
+    public function destroy($id)
     {
-        //
+         Department::find($id)->delete();
+           return redirect()->route('departments.index')->with('error','Data Delete Successfully');
     }
 }

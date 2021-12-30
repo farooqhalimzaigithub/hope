@@ -14,7 +14,8 @@ class OccupationController extends Controller
      */
     public function index()
     {
-        //
+         $data['occupations']=Occupation::all();
+         return view('pre_configuration.occupation-manage.index',$data);
     }
 
     /**
@@ -24,7 +25,7 @@ class OccupationController extends Controller
      */
     public function create()
     {
-        //
+        return view('pre_configuration.occupation-manage.create');
     }
 
     /**
@@ -35,7 +36,8 @@ class OccupationController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Occupation::create($request->all());
+        return redirect()->route('occupations.index')->with('success','Data Added Successfully');
     }
 
     /**
@@ -55,9 +57,10 @@ class OccupationController extends Controller
      * @param  \App\Models\Occupation  $occupation
      * @return \Illuminate\Http\Response
      */
-    public function edit(Occupation $occupation)
+    public function edit($id)
     {
-        //
+         $data['occupation']=Occupation::find($id);
+        return view('pre_configuration.occupation-manage.edit',$data);
     }
 
     /**
@@ -67,9 +70,12 @@ class OccupationController extends Controller
      * @param  \App\Models\Occupation  $occupation
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Occupation $occupation)
+    public function update(Request $request, $id)
     {
-        //
+        $occupation =Occupation::find($id);
+      $occupation->name=$request->name;
+      $occupation->save();
+       return redirect()->route('occupations.index')->with('info','Data Update successfully!');
     }
 
     /**
@@ -78,8 +84,9 @@ class OccupationController extends Controller
      * @param  \App\Models\Occupation  $occupation
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Occupation $occupation)
+    public function destroy($id)
     {
-        //
+        Occupation::find($id)->delete();
+           return redirect()->route('occupations.index')->with('error','Data Delete Successfully');
     }
 }

@@ -14,7 +14,9 @@ class GradeController extends Controller
      */
     public function index()
     {
-        //
+
+         $data['grades']=Grade::all();
+         return view('pre_configuration.grade-manage.index',$data); 
     }
 
     /**
@@ -24,7 +26,7 @@ class GradeController extends Controller
      */
     public function create()
     {
-        //
+       return view('pre_configuration.grade-manage.create');
     }
 
     /**
@@ -35,7 +37,8 @@ class GradeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+         Grade::create($request->all());
+        return redirect()->route('grades.index')->with('success','Data Added Successfully');
     }
 
     /**
@@ -55,9 +58,10 @@ class GradeController extends Controller
      * @param  \App\Models\Grade  $grade
      * @return \Illuminate\Http\Response
      */
-    public function edit(Grade $grade)
+    public function edit($id)
     {
-        //
+        $data['grade']=Grade::find($id);
+        return view('pre_configuration.grade-manage.edit',$data);
     }
 
     /**
@@ -67,9 +71,12 @@ class GradeController extends Controller
      * @param  \App\Models\Grade  $grade
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Grade $grade)
+    public function update(Request $request, $id)
     {
-        //
+    $grade =Grade::find($id);
+      $grade->name=$request->name;
+      $grade->save();
+       return redirect()->route('grades.index')->with('info','Data Update successfully!');
     }
 
     /**
@@ -78,8 +85,9 @@ class GradeController extends Controller
      * @param  \App\Models\Grade  $grade
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Grade $grade)
+    public function destroy($id)
     {
-        //
+         Grade::find($id)->delete();
+           return redirect()->route('grades.index')->with('error','Data Delete Successfully');
     }
 }
