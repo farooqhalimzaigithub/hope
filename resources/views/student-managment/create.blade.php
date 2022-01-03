@@ -1,33 +1,37 @@
 @extends('layouts.main')
 @section('content')
-<div class="content d-flex flex-column flex-column-fluid" id="kt_content">
-	<!--begin::Entry-->
- <div class="d-flex flex-column-fluid">
-		<!--begin::Container-->
-  <div class="container">
-	<!--begin::Dashboard-->
-	<!--begin::Row-->
-    <div class="row mt-0 mt-lg-1" >
-	 <div class="col-xl-12">
-			<!--begin::Mixed Widget 17-->
-		<div class="card card-custom gutter-b card-stretch "  >
-			<h4 class="mb-8 mt-6 font-weight-bold text-dark">Student Registration</h4>
+<div class="d-flex flex-column-fluid">
+							<!--begin::Container-->
+							<div class="container">
+								<div class="row">
+									<div class="col-lg-12">
+										<!--begin::Card-->
+										<!-- <div class="card card-custom gutter-b example example-compact" style="border : 1px solid yellow;"> -->
+											<div class="card-header">
+												<h3 class="card-title">Student Form</h3>
+												<div class="card-toolbar">
+													<div class="example-tools justify-content-center">
+														<span class="example-toggle" data-toggle="tooltip" title="View code"></span>
+														<span class="example-copy" data-toggle="tooltip" title="Copy code"></span>
+													</div>
+												</div>
+											</div>
 			<form class="form  mt-12 "  method="post" action="{{route('students.store')}}"  enctype="multipart/form-data" >
 				@csrf
 					<h4 class="mb-8 font-weight-bold text-dark">Registration Info</h4>
 				<div class="row">
-			      <div class="col-xl-9" style="float: left; " >
+			      <div class="col-lg-9" style="float: left; " >
 
 				    <div class="form-row">
-					<div class="form-group col-md-4">
+					<div class="form-group col-lg-4">
 						<label for="inputCity">Registration No</label>
 						<input type="text" name="registration_no" class="form-control" id="inputCity">
 					</div>
-					<div class="form-group col-md-4">
+					<div class="form-group col-lg-4">
 						<label for="inputCity">Admission No</label>
 						<input type="text" name="admission_no" class="form-control" id="inputCity">
 					</div>
-					<div class="form-group col-md-4">
+					<div class="form-group col-lg-4">
 						<label for="enrollment_registration">Enrollment Registration</label>
 						<select id="enrollment_registration" name="enrollment_registration" class="form-control">
 							<option selected>Choose</option>
@@ -37,12 +41,12 @@
 						</select>
 					</div>
 </div>
-<div class="form-row">
-	<div class="form-group col-md-6">
+<div class="row">
+	<div class="form-group col-lg-6">
 		<label for="inputCity">Edit Registration No</label>
 		<input type="text" name="edit_registration_no" class="form-control" id="inputCity">
 	</div>
-	<div class="form-group col-md-6">
+	<div class="form-group col-lg-6">
 		<label for="inputState">School Name</label>
 		<select id="inputState" name="campus_id" class="form-control ">
 			<option selected>Choose School</option>
@@ -51,14 +55,14 @@
 			@endforeach
 		</select>
 	</div>
-    <!-- <div class="form-group col-md-2">
+    <!-- <div class="form-group col-lg-2">
       <label for="inputZip">Zip</label>
       <input type="text" class="form-control" id="inputZip">
   </div> -->
 </div>
 
 </div>
-<div class="col-xl-3" style="float: right; " >
+<div class="col-lg-3" style="float: right; " >
 	<div class="col-xl-3">
 		<!--begin::Input-->
 		<div class="form-group" style=" overflow-x: hidden;">
@@ -75,34 +79,34 @@
 <hr>
 <h4 class="mb-8 font-weight-bold text-dark">Personal Details</h4>
 <div class="row">
-	<div class="form-group col-md-3">
+	<div class="form-group col-lg-3">
 		<label for="inputCity">First Name</label>
 		<input type="text" name="first_name" class="form-control" id="inputCity">
 	</div>
-	<div class="form-group col-md-3">
+	<div class="form-group col-lg-3">
 		<label for="inputCity">Last Name</label>
 		<input type="text" name="last_name" class="form-control" id="inputCity">
 	</div>
-	<div class="form-group col-md-3">
+	<div class="form-group col-lg-3">
 		<label for="inputCity">Surname</label>
 		<input type="text" name="surname" class="form-control" id="inputCity">
 	</div>
-	<div class="form-group col-md-3">
+	<div class="form-group col-lg-3">
 		<label for="dob">Date Of Birth</label>
 		<input type="date" name="dob" class="form-control" id="dob">
 	</div>
 
 </div>
 <div class="row">
-	<div class="form-group col-md-3">
+	<div class="form-group col-lg-3">
 		<label for="inputCity">Father Name</label>
 		<input type="text" name="father_name" class="form-control" id="inputCity">
 	</div>
-	<div class="form-group col-md-3">
+	<div class="form-group col-lg-3">
 		<label for="father_cnic">Father CNIC</label>
 		<input type="text" name="father_cnic_no" class="form-control" id="father_cnic">
 	</div>
-	<div class="form-group col-md-3">
+	<div class="form-group col-lg-3">
 		<label for="inputState">Father Occupation</label>
 		<select id="inputState" name="father_occupation" class="form-control ">
 			<option selected>Choose</option>
@@ -111,13 +115,13 @@
 			<option value="Driver">Driver</option>
 		</select>
 	</div>
-	<div class="form-group col-md-3">
+	<div class="form-group col-lg-3">
 		<label for="student_cnic">Student Form-B</label>
 		<input type="text" name="student_cnic" class="form-control" id="student_cnic">
 	</div>
 </div>
 <div class="row">
-	<div class="form-group col-md-3">
+	<div class="form-group col-lg-3">
 		<label for="inputState">Religion</label>
 		<select id="inputState" name="religion_id" class="form-control ">
 			<option selected>Choose</option>
@@ -126,7 +130,7 @@
 			@endforeach
 		</select>
 	</div>
-	<div class="form-group col-md-3">
+	<div class="form-group col-lg-3">
 		<label for="inputState">Cast</label>
 		<select id="inputState" name="cast_id" class="form-control ">
 			<option selected>Choose</option>
@@ -135,7 +139,7 @@
 			@endforeach
 		</select>
 	</div>
-	<div class="form-group col-md-3">
+	<div class="form-group col-lg-3">
 		<label for="inputState">Nationality</label>
 		<select id="inputState" name="country_id" class="form-control ">
 			<option selected>Choose</option>
@@ -144,7 +148,7 @@
 			@endforeach
 		</select>
 	</div>
-	<div class="form-group col-md-3">
+	<div class="form-group col-lg-3">
 		<label for="inputState">Domicile</label>
 		<select id="inputState" name="province_id" class="form-control ">
 			<option selected>Choose</option>
@@ -157,7 +161,7 @@
 <hr>
 <h4 class="mb-8 font-weight-bold text-dark">Health Details</h4>
 <div class="row">
-	<div class="form-group col-md-3">
+	<div class="form-group col-lg-3">
 		<label for="inputState">Gender</label>
 		<select id="inputState" name="gender" class="form-control ">
 			<option selected>Choose</option>
@@ -165,7 +169,7 @@
 			<option value="female">Female</option>
 		</select>
 	</div>
-	<div class="form-group col-md-3">
+	<div class="form-group col-lg-3">
 		<label for="inputState">Blood Group</label>
 		<select id="inputState" name="blood_id" class="form-control ">
 			<option selected>Choose</option>
@@ -174,7 +178,7 @@
 			@endforeach
 		</select>
 	</div>
-	<div class="form-group col-md-3">
+	<div class="form-group col-lg-3">
 		<label for="inputState">Health</label>
 		<select id="inputState" name="health_name" class="form-control ">
 			<option selected>Choose</option>
@@ -183,15 +187,15 @@
 			
 		</select>
 	</div>
-	<div class="form-group col-md-3">
+	<div class="form-group col-lg-3">
 		<label for="father_cnic">Waight</label>
 		<input type="text" name="waight" class="form-control" id="father_cnic">
 	</div>
-	<div class="form-group col-md-3">
+	<div class="form-group col-lg-3">
 		<label for="father_cnic">Height</label>
 		<input type="text" name="height" class="form-control" id="father_cnic">
 	</div>
-	<div class="form-group col-md-3">
+	<div class="form-group col-lg-3">
 		<label for="inputState">House Name</label>
 		<select id="inputState" name="house_name" class="form-control ">
 			<option selected>Choose</option>
@@ -203,11 +207,11 @@
 </div>
 <h4 class="mb-8 font-weight-bold text-dark">Academic Details</h4>
 <div class="row">
-	<div class="form-group col-md-3">
+	<div class="form-group col-lg-3">
 		<label for="inputCity">Date Of Admission</label>
 		<input type="date" name="date_of_admission" class="form-control" id="inputCity">
 	</div>
-	<div class="form-group col-md-3">
+	<div class="form-group col-lg-3">
 		<label for="inputCity">Class Of Admission</label>
 		<select id="inputState" name="admission_class_id" class="form-control ">
 			<option selected>Choose</option>
@@ -217,7 +221,7 @@
 			
 		</select>
 	</div>
-	<div class="form-group col-md-3">
+	<div class="form-group col-lg-3">
 		<label for="inputCity">Current Class</label>
 		<select id="inputState" name="current_class_id" class="form-control ">
 			<option selected>Choose</option>
@@ -227,7 +231,7 @@
 			
 		</select>
 	</div>
-	<div class="form-group col-md-3">
+	<div class="form-group col-lg-3">
 		<label for="dob">Section</label>
 		<select id="inputState" name="section_id" class="form-control ">
 			<option selected>Choose</option>
@@ -241,7 +245,7 @@
 </div>
 <h4 class="mb-8 font-weight-bold text-dark">Contact Details</h4>
 <div class="row">
-	<div class="form-group col-md-3">
+	<div class="form-group col-lg-3">
 		<label for="inputCity">City/Village Name</label>
 		<select id="inputState" name="city_id" class="form-control ">
 			<option selected>Choose</option>
@@ -251,38 +255,38 @@
 			
 		</select>
 	</div>
-	<div class="form-group col-md-3">
+	<div class="form-group col-lg-3">
 		<label for="inputCity">Postal Addrss</label>
 		<input type="text" name="postal_address" class="form-control" id="inputCity">
 	</div>
-	<div class="form-group col-md-3">
+	<div class="form-group col-lg-3">
 		<label for="inputCity">Permanent Addrss</label>
 		<input type="text" name="permanent_address" class="form-control" id="inputCity">
 	</div>
-	<div class="form-group col-md-3">
+	<div class="form-group col-lg-3">
 		<label for="inputCity">Contact No</label>
 		<input type="text" name="contact_no" class="form-control" id="inputCity">
 		
 	</div>
-	<div class="form-group col-md-3">
+	<div class="form-group col-lg-3">
 		<label for="dob">Cellular No</label>
 		<input type="text" name="cellular_no" class="form-control" id="inputCity">
 
 
 	</div>
-	<div class="form-group col-md-3">
+	<div class="form-group col-lg-3">
 		<label for="dob">Guardian Name</label>
 		<input type="text" name="guardian_name" class="form-control" id="inputCity">
 
 
 	</div>
-	<div class="form-group col-md-3">
+	<div class="form-group col-lg-3">
 		<label for="dob">Guardian CNIC</label>
 		<input type="text" name="guardian_cnic" class="form-control" id="inputCity">
 
 
 	</div>
-	<div class="form-group col-md-3">
+	<div class="form-group col-lg-3">
 		<label for="dob">Guardian Mobile Number</label>
 		<input type="text" name="guardian_mobile_number" class="form-control" id="inputCity">
 
@@ -292,7 +296,7 @@
 </div>
 <h4 class="mb-8 font-weight-bold text-dark">Previous School Details</h4>
 <div class="row">
-	<div class="form-group col-md-3">
+	<div class="form-group col-lg-3">
 		<label for="inputCity">School Name</label>
 		<select id="inputState" name="school_id" class="form-control ">
 			<option selected disabled="">--School--</option>
@@ -302,15 +306,15 @@
 			
 		</select>
 	</div>
-	<div class="form-group col-md-3">
+	<div class="form-group col-lg-3">
 		<label for="inputCity">WithDrawl No</label>
 		<input type="text" name="withdrawl_no" class="form-control" id="inputCity">
 	</div>
-	<div class="form-group col-md-3">
+	<div class="form-group col-lg-3">
 		<label for="inputCity">CLC No</label>
 		<input type="text" name="clc_no" class="form-control" id="inputCity">
 	</div>
-	<div class="form-group col-md-3">
+	<div class="form-group col-lg-3">
 		<label for="inputCity">Remarks</label>
 		<input type="text" name="remark" class="form-control" id="inputCity">
 		
@@ -318,7 +322,7 @@
 	
 
 </div>
-<div class="d-flex justify-content-between border-top mt-5 pt-10">
+<div class="d-flex justify-content-between border-top mt-0 pt-10 pb-10">
 						<!-- <div class="mr-2">
 							<button type="button" class="btn btn-light-primary font-weight-bolder text-uppercase px-9 py-4" data-wizard-type="action-prev">Previous</button>
 						</div> -->
@@ -342,9 +346,7 @@
 	<!--end::Dashboard-->
 </div>
 <!--end::Container-->
-</div>
-<!--end::Entry-->
-</div>
+
 
 @endsection
 

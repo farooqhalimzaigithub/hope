@@ -1,35 +1,52 @@
 @extends('layouts.main')
 @section('content')
-                                  <form class="form-horizontal" role="form" method="post" action="{{route('users.update',$user->id)}}"> 
-                                  	 {{ csrf_field() }}
-		                             {{ method_field('PUT') }}
-									<div class="form-group">
+<div class="d-flex flex-column-fluid">
+							<!--begin::Container-->
+							<div class="container">
+								<div class="row">
+									<div class="col-lg-12">
+										<!--begin::Card-->
+										<!-- <div class="card card-custom gutter-b example example-compact" style="border : 1px solid yellow;"> -->
+											<div class="card-header">
+												<h3 class="card-title">User Form</h3>
+												<div class="card-toolbar">
+													<div class="example-tools justify-content-center">
+														<span class="example-toggle" data-toggle="tooltip" title="View code"></span>
+														<span class="example-copy" data-toggle="tooltip" title="Copy code"></span>
+													</div>
+												</div>
+											</div>
+											<form class="form  mt-12"  method="post" action="{{route('users.update',$user->id)}}" >
+			                               @csrf
+			                               @method('PUT')
+			                               <div class="row" > 
+									<div class="col-lg-6">
 										<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Name</label>
 
-										<div class="col-sm-9">
-											<input type="text" id="form-field-1" placeholder="Username" name="name" value="{{$user->name}}" class="col-xs-10 col-sm-5" />
-										</div>
+										
+											<input type="text" id="form-field-1" placeholder="Username" name="name" value="{{$user->name}}" class="form-control"/>
+										
 									</div>
-									<div class="form-group">
+									<div class="col-lg-6">
 										<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Email</label>
 
-										<div class="col-sm-9">
-											<input type="text" id="form-field-1" placeholder="Username"  value="{{$user->email}}" name="email" class="col-xs-10 col-sm-5" />
-										</div>
+										
+											<input type="text" id="form-field-1" placeholder="Username"  value="{{$user->email}}" name="email" class="form-control" />
+										
 									</div>
-									<div class="clearfix form-actions">
-										<div class="col-md-offset-3 col-md-9">
-											<button class="btn btn-info" type="submit">
-												<i class="ace-icon fa fa-check bigger-110"></i>
-												Update
-											</button>
-
-											&nbsp; &nbsp; &nbsp;
-											<a class="btn" type="reset" href="{{url('users')}}">
-												<i class="ace-icon fa fa-undo bigger-110"></i>
-												Back
-											</a>
-										</div>
 									</div>
+									<div class="d-flex justify-content-between border-top mt-0 pt-10 pb-10">
+						<!-- <div class="mr-2">
+							<button type="button" class="btn btn-light-primary font-weight-bolder text-uppercase px-9 py-4" data-wizard-type="action-prev">Back</button>
+						</div> -->
+						<div>
+							<button type="submit" class="btn btn-primary font-weight-bolder text-uppercase px-9 py-4">Update</button>
+							
+						</div>
+					</div>
 								</form>
-									@endsection
+								</div>
+								</div>
+								</div>
+								</div>
+									@stop

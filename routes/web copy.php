@@ -2,8 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Models\Module;
-// use Auth;
-// use DB;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -41,30 +40,21 @@ route::group(['middleware'=> ['auth', 'CheckUrlAccess']], function(){
 
        view()->composer('*',function($view){
            $modulesAll=Module::where('parent_id',0)->get();
+           // dd($modules);
             foreach ($modulesAll as $module) 
               {
              $module->children = Module::where('parent_id',$module->id)->where('visibility', '=', 1)->get();
               }
-       $view->with('modulesAll',$modulesAll);
-       
-        // $role_id = Auth::user()->role_id;
-        // $modulesAll = DB::table('modules')
-        // ->join('permissions', 'modules.id', '=', 'permissions.module_id')//perm instad of module_right
-        // ->where('parent_id',0)
-        // ->where('role_id', '=', $role_id)
-        // ->get();
-        // foreach ($modulesAll as $module) {
-        //     $module->children = Module::where('parent_id',$module->id)->where('visibility', '=', 1)->get();
-        // }
-        // echo "<pre />";
-        // print_r();
-        // $view->with('modulesAll',$modulesAll);
+          // dd($menues);
+            $view->with('modulesAll',$modulesAll);
+
+
 
         });
 //@@@@@@@@@@@@@@@@@@@@@@@$ for resource routes $@@@@@@@@@@@@@@@@@@@@@@@@@
 Route::resource('users','App\Http\Controllers\UserController');
 Route::resource('modules','App\Http\Controllers\ModuleController');
-// Route::resource('permissions','App\Http\Controllers\PermissionController');
+Route::resource('permissions','App\Http\Controllers\PermissionController');
 Route::resource('roles','App\Http\Controllers\RoleController');
 Route::resource('students','App\Http\Controllers\StudentController');
 Route::resource('bloods','App\Http\Controllers\BloodGroupController');
@@ -82,28 +72,18 @@ Route::resource('banks','App\Http\Controllers\BankController');
 Route::resource('departments','App\Http\Controllers\DepartmentController');
 Route::resource('designations','App\Http\Controllers\DesignationController');
 Route::resource('enrollments','App\Http\Controllers\EnrollmentRegisterController');
-Route::resource('examtypes','App\Http\Controllers\ExamTypeController');
+Route::resource('exam-types','App\Http\Controllers\ExamTypeController');
 Route::resource('exams','App\Http\Controllers\ExaminationController');
 Route::resource('expenses','App\Http\Controllers\ExpenseController');
-Route::resource('expense_categories','App\Http\Controllers\ExpenseCategoryController');
+Route::resource('expense-categories','App\Http\Controllers\ExpenseCategoryController');
 Route::resource('fees','App\Http\Controllers\FeeCategoryController');
-Route::resource('fee_categories','App\Http\Controllers\FeeCategoryController');
-Route::resource('grades','App\Http\Controllers\GradeController');
+Route::resource('fee-categories','App\Http\Controllers\FeeCategoryCategoryController');
+Route::resource('grades','App\Http\Controllers\GradeCategoryController');
 Route::resource('healths','App\Http\Controllers\HealthController');
 Route::resource('occupations','App\Http\Controllers\OccupationController');
 
 //@@@@@@@@@@@@@@@@@@@@@@@$End of resource routes $@@@@@@@@@@@@@@@@@@@@@@@@@
 // ================For every model Delete======================
-Route::get('bank-delete/{id}', [App\Http\Controllers\BankController::class, 'destroy'])->name('bank-delete.destroy');
-Route::get('expense_category-delete/{id}', [App\Http\Controllers\ExpenseCategoryController::class, 'destroy'])->name('expense_category-delete.destroy');
-Route::get('fee_category-delete/{id}', [App\Http\Controllers\FeeCategoryController::class, 'destroy'])->name('fee_category-delete.destroy');
-Route::get('grade-delete/{id}', [App\Http\Controllers\GradeController::class, 'destroy'])->name('grade-delete.destroy');
-Route::get('occupation-delete/{id}', [App\Http\Controllers\OccupationController::class, 'destroy'])->name('occupation-delete.destroy');
-Route::get('health-delete/{id}', [App\Http\Controllers\HealthController::class, 'destroy'])->name('health-delete.destroy');
-Route::get('examtype-delete/{id}', [App\Http\Controllers\ExamTypeController::class, 'destroy'])->name('examtype-delete.destroy');
-Route::get('enrollment-delete/{id}', [App\Http\Controllers\EnrollmentRegisterController::class, 'destroy'])->name('enrollment-delete.destroy');
-Route::get('department-delete/{id}', [App\Http\Controllers\DepartmentController::class, 'destroy'])->name('department-delete.destroy');
-Route::get('designation-delete/{id}', [App\Http\Controllers\DesignationController::class, 'destroy'])->name('designation-delete.destroy');
 Route::get('campus-delete/{id}', [App\Http\Controllers\CampusController::class, 'destroy'])->name('campus-delete.destroy');
 Route::get('student-delete/{id}', [App\Http\Controllers\StudentController::class, 'destroy'])->name('student-delete.destroy');
 Route::get('section-delete/{id}', [App\Http\Controllers\SectionController::class, 'destroy'])->name('section-delete.destroy');

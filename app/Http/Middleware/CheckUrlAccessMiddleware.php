@@ -18,31 +18,16 @@ class CheckUrlAccessMiddleware
     public function handle(Request $request, Closure $next)
     {
         $role_id = Auth::user()->role_id;
-        // dd($role_id);
-
         $permited_functions =
-            DB::table('modules')
-            ->join('permissions', 'modules.id', '=', 'permissions.module_id')//perm instad of module_right
-            ->where('role_id', '=', $role_id)
-            ->pluck('route_name')->toArray();
-        // converted from object to array for match...
- // dd($permited_functions);
-        $segment_arr =  request()->segments();//explode('/api/', url()->current());this is actualy url
+        DB::table('modules')
+        ->join('permissions', 'modules.id', '=', 'permissions.module_id')//perm instad of module_right
+        ->where('role_id', '=', $role_id)
+        ->pluck('route_name')->toArray();
 
-        if(in_array($segment_arr[1], $permited_functions)){
-             // dd('okk');
+        $current_route_name =  $request->route()->getName();
+        // if(in_array($current_route_name, $permited_functions)){
             return $next($request);
-        }else{
-            // dd($segment_arr);
-            // return $next($request);
-            $toReturn = [
-                'error' => true,
-                'message' => 'You are not allowed to access this method.',
-                "data" => '',
-                "directory_path" => '',
-            ];
-            // return response()->json($toReturn, 200);
-            return back();
-        }
+        // }
+        // return redirect()->back()->with('error','You are not allowed to access the funtion.');
     }
 }

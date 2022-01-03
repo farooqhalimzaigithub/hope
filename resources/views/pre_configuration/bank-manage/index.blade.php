@@ -18,10 +18,10 @@
 					<!--begin::Breadcrumb-->
 					<ul class="breadcrumb breadcrumb-transparent breadcrumb-dot font-weight-bold p-0 my-2 font-size-sm">
 						<li class="breadcrumb-item">
-							<a href="" class="text-muted">bank</a>
+							<a href="" class="text-muted">Bank</a>
 						</li>
 						<li class="breadcrumb-item">
-							<a href="" class="text-muted">Create</a>
+							<a href="" class="text-muted">List</a>
 						</li>
 											<!-- <li class="breadcrumb-item">
 												<a href="" class="text-muted">School</a>
@@ -61,7 +61,7 @@
 											<!--begin::Header-->
 											<div class="card-header flex-wrap border-0 pt-6 pb-0">
 												<h3 class="card-title align-items-start flex-column">
-													<span class="card-label font-weight-bolder text-dark">Details</span>
+													<span class="card-label font-weight-bolder text-dark">All Details</span>
 													<!-- <span class="text-muted mt-1 font-weight-bold font-size-sm">Manage over 1600 bank</span> -->
 												</h3>
 												<div class="card-toolbar">
@@ -86,7 +86,7 @@
 													<thead>
 														<tr>
 															<th>#</th>
-															<th>bank Title</th>
+															<th>Bank Title</th>
 															<!-- <th>Route Name</th>
 															<th>Url</th> -->
 															<th>Action</th>
