@@ -3,8 +3,8 @@
 
 	
 					<!-- for datatables -->
-					<link href="{{asset('assets/data-table-libs/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css" />
-					<link href="{{asset('assets/data-table-libs/css/jquery.dataTables.min.css')}}" rel="stylesheet" type="text/css" />
+					<!-- <link href="{{asset('assets/data-table-libs/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css" />
+					<link href="{{asset('assets/data-table-libs/css/jquery.dataTables.min.css')}}" rel="stylesheet" type="text/css" /> -->
 					<!--begin::Content-->
 					<div class="content d-flex flex-column flex-column-fluid" id="kt_content">
 										<!-- The Modal -->
@@ -35,31 +35,7 @@
 					<div class="subheader py-2 py-lg-6 subheader-transparent" id="kt_subheader">
 					<div class="container d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
 					<!--begin::Info-->
-					<div class="d-flex align-items-center flex-wrap mr-1">
-					<!--begin::Page Heading-->
-					<div class="d-flex align-items-baseline flex-wrap mr-5">
-					<!--begin::Page Title-->
-					<h5 class="text-dark font-weight-bold my-1 mr-5">Home</h5>
-					<!--end::Page Title-->
-					<!--begin::Breadcrumb-->
-					<ul class="breadcrumb breadcrumb-transparent breadcrumb-dot font-weight-bold p-0 my-2 font-size-sm">
-					<li class="breadcrumb-item">
-					<a href="" class="text-muted">student</a>
-					</li>
-					<li class="breadcrumb-item">
-					<a href="" class="text-muted">Create</a>
-					</li>
-					<!-- <li class="breadcrumb-item">
-					<a href="" class="text-muted">School</a>
-					</li>
-					<li class="breadcrumb-item">
-					<a href="" class="text-muted">Students</a>
-					</li> -->
-					</ul>
-					<!--end::Breadcrumb-->
-					</div>
-					<!--end::Page Heading-->
-					</div>
+					
 					<!--end::Info-->
 					<!--begin::Toolbar-->
 					<div class="d-flex align-items-center">
@@ -87,8 +63,8 @@
 					<!--begin::Header-->
 					<div class="card-header flex-wrap border-0 pt-6 pb-0">
 					<h3 class="card-title align-items-start flex-column">
-					<span class="card-label font-weight-bolder text-dark">Student</span>
-					<span class="text-muted mt-1 font-weight-bold font-size-sm">Manage over 1600 Student</span>
+					<span class="card-label font-weight-bolder text-dark">Students</span>
+					<!-- <span class="text-muted mt-1 font-weight-bold font-size-sm">Manage over 1600 Student</span> -->
 					</h3>
 					<div class="card-toolbar">
 					<div class="dropdown dropdown-inline" data-toggle="tooltip" title="" data-placement="left" data-original-title="Quick actions">
@@ -136,7 +112,7 @@
 								<!-- <a type="button" class="btn btn-icon btn-light btn-hover-primary btn-sm" data-toggle="modal" data-target="#myModal">
 													<i class="fa fa-eye text-success"></i></a> -->
 													<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
-  Open modal
+  View Detail
 </button>
 													<!-- <a href="{{route('students.create')}}" class="btn btn-icon btn-light btn-hover-primary btn-sm">
 								<i class="ki ki-plus text-success"></i>
@@ -193,10 +169,10 @@
 					@endsection
 
 					@push('script')
-					<script src="{{asset('assets/data-table-libs/js/bootstrap.min.js')}}"></script>
+					<!-- <script src="{{asset('assets/data-table-libs/js/bootstrap.min.js')}}"></script>
 					<script src="{{asset('assets/data-table-libs/js/jquery.min.js')}}"></script>
 					<script src="{{asset('assets/data-table-libs/js/jquery.dataTables.min.js')}}"></script>
-					<script src="{{asset('assets/data-table-libs/js/popper.min.js')}}"></script>
+					<script src="{{asset('assets/data-table-libs/js/popper.min.js')}}"></script> -->
 
 
 

@@ -26,6 +26,8 @@
 		<link rel="shortcut icon" href="{{asset('assets/media/logos/favicon.ico')}}" />
 
 		<link href="{{asset('assets/libs/select2/css/select2.min.css')}}" rel="stylesheet" type="text/css" />
+		                         <!-- for data tables -->
+		<link href="{{asset('assets/data-table-libs/css/jquery.dataTables.min.css')}}" rel="stylesheet" type="text/css" />
 	<style type="text/css">
 		/*this use for show user in navbar*/
 	/* .nav-link{
@@ -366,8 +368,13 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
     <!-- for select 2 -->
      <script src="{{asset('assets/libs/select2/js/select2.min.js')}}"></script>
+                         <!-- for data tables -->
+     <script src="{{asset('assets/data-table-libs/js/jquery.dataTables.min.js')}}"></script>
 
 					<script >
+						$(document).ready(function() {
+											$('#example').DataTable();
+										});
   @if(Session::has('error'))
   toastr.options =
   {
