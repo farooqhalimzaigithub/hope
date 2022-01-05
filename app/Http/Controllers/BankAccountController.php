@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\BankAccount;
+use App\Models\Bank;
+use App\Models\Branch;
 use Illuminate\Http\Request;
 
 class BankAccountController extends Controller
@@ -14,7 +16,9 @@ class BankAccountController extends Controller
      */
     public function index()
     {
-        //
+        $data['bank_accounts']=BankAccount::all();
+        // dd($data['bank_accounts']);
+      return view('pre_configuration.bank-account.index',$data);
     }
 
     /**
@@ -24,7 +28,9 @@ class BankAccountController extends Controller
      */
     public function create()
     {
-        //
+        $data['banks']=Bank::all();
+        $data['branches']=Branch::all();
+        return view('pre_configuration.bank-account.create',$data);
     }
 
     /**
@@ -35,7 +41,8 @@ class BankAccountController extends Controller
      */
     public function store(Request $request)
     {
-        //
+         BankAccount::create($request->all());
+        return redirect()->route('bank_accounts.index')->with('success','Data Added Successfully');
     }
 
     /**
@@ -55,9 +62,12 @@ class BankAccountController extends Controller
      * @param  \App\Models\BankAccount  $bankAccount
      * @return \Illuminate\Http\Response
      */
-    public function edit(BankAccount $bankAccount)
+    public function edit($id)
     {
-        //
+        $data['banks']=Bank::all();
+        $data['branches']=Branch::all();
+        $data['bank_account']=BankAccount::find($id);
+        return view('pre_configuration.bank-account.edit',$data);
     }
 
     /**
@@ -67,9 +77,17 @@ class BankAccountController extends Controller
      * @param  \App\Models\BankAccount  $bankAccount
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, BankAccount $bankAccount)
+    public function update(Request $request, $id)
     {
-        //
+        $bank_account =BankAccount::find($id);
+      $bank_account->account_name=$request->account_name;
+      $bank_account->account_no=$request->account_no;
+      $bank_account->branch_id=$request->branch_id;
+      $bank_account->branch_code=$request->branch_code;
+      $bank_account->bank_id=$request->bank_id;
+      $bank_account->opening_balance=$request->opening_balance;
+      $bank_account->save();
+       return redirect()->route('bank_accounts.index')->with('info','Data Update successfully!');
     }
 
     /**
@@ -78,8 +96,9 @@ class BankAccountController extends Controller
      * @param  \App\Models\BankAccount  $bankAccount
      * @return \Illuminate\Http\Response
      */
-    public function destroy(BankAccount $bankAccount)
+    public function destroy($id)
     {
-        //
+        BankAccount::find($id)->delete();
+           return redirect()->route('bank_accounts.index')->with('error','Data Delete Successfully');
     }
 }

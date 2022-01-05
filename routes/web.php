@@ -79,6 +79,7 @@ Route::resource('schools','App\Http\Controllers\SchoolController');
 Route::resource('campuses','App\Http\Controllers\CampusController');
 Route::resource('branches','App\Http\Controllers\BranchController');
 Route::resource('banks','App\Http\Controllers\BankController');
+Route::resource('bank_accounts','App\Http\Controllers\BankAccountController');
 Route::resource('departments','App\Http\Controllers\DepartmentController');
 Route::resource('designations','App\Http\Controllers\DesignationController');
 Route::resource('enrollments','App\Http\Controllers\EnrollmentRegisterController');
@@ -118,6 +119,9 @@ Route::get('blood-delete/{id}', [App\Http\Controllers\BloodGroupController::clas
 Route::get('modules-delete/{id}', [App\Http\Controllers\ModuleController::class, 'destroy'])->name('modules-delete.destroy');
 Route::get('roles-delete/{id}', [App\Http\Controllers\RoleController::class, 'destroy'])->name('roles-delete.destroy');
 Route::get('users-delete/{id}', [App\Http\Controllers\UserController::class, 'destroy'])->name('users-delete.destroy');
+Route::get('bank_accounts-delete/{id}', [App\Http\Controllers\BankAccountController::class, 'destroy'])->name('bank_accounts-delete.destroy');
+// get branch code through ajax
+Route::get('getBranch', [App\Http\Controllers\BranchController::class, 'getBranch'])->name('get.Branch');
 // ================For every model Delete======================
 
 });

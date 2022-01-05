@@ -13,10 +13,17 @@ class BranchController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        //
+    { 
+        $data['branches']=Branch::all();
+       return view('pre_configuration.branch-manage.index',$data);
     }
 
+ public function getBranch(Request $request)
+    {
+        $data=Branch::where('id',$request->branch_id)->first();
+        return response()->json($data);
+
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -24,7 +31,7 @@ class BranchController extends Controller
      */
     public function create()
     {
-        //
+         return view('pre_configuration.branch-manage.create');
     }
 
     /**
@@ -35,7 +42,8 @@ class BranchController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Branch::create($request->all());
+        return redirect()->route('branches.index')->with('success','Data Added Successfully');
     }
 
     /**
@@ -55,9 +63,10 @@ class BranchController extends Controller
      * @param  \App\Models\Branch  $branch
      * @return \Illuminate\Http\Response
      */
-    public function edit(Branch $branch)
+    public function edit($id)
     {
-        //
+      $data['branch']=Branch::find($id);
+        return view('pre_configuration.branch-manage.edit',$data);
     }
 
     /**
@@ -67,9 +76,13 @@ class BranchController extends Controller
      * @param  \App\Models\Branch  $branch
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Branch $branch)
+    public function update(Request $request, $id)
     {
-        //
+        $branch =Branch::find($id);
+      $branch->branch_name=$request->branch_name;
+      $branch->branch_code=$request->branch_code;
+      $branch->save();
+       return redirect()->route('branches.index')->with('info','Data Update successfully!');
     }
 
     /**
@@ -78,8 +91,9 @@ class BranchController extends Controller
      * @param  \App\Models\Branch  $branch
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Branch $branch)
+    public function destroy($id)
     {
-        //
+          Branch::find($id)->delete();
+           return redirect()->route('branches.index')->with('error','Data Delete Successfully');
     }
 }
