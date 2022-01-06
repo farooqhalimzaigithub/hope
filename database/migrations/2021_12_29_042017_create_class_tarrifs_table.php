@@ -15,10 +15,12 @@ class CreateClassTarrifsTable extends Migration
     {
         Schema::create('class_tarrifs', function (Blueprint $table) {
             $table->increments('id');
-               $table->string('fee_name');
+               // $table->string('fee_name');
               $table->decimal('amount', 10, 2);
             $table->integer('class_id')->unsigned()->nullable();
             $table->foreign('class_id')->references('id')->on('levels')->onDelete('cascade')->onUpdate('cascade');
+             $table->integer('fee_id')->unsigned()->nullable();
+            $table->foreign('fee_id')->references('id')->on('fees')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }

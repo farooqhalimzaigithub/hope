@@ -15,7 +15,7 @@
 			<!--begin::Toolbar-->
 			<div class="d-flex align-items-center">
 				<!--begin::Actions-->
-				
+
 				<!--end::Dropdown-->
 			</div>
 			<!--end::Toolbar-->
@@ -29,7 +29,7 @@
 			<!--begin::Teachers-->
 			<div class="d-flex flex-row">
 				<!--begin::Aside-->
-				
+
 				<!--end::Aside-->
 				<!--begin::Content-->
 				<div class="flex-row-fluid ml-lg-8">
@@ -38,17 +38,17 @@
 						<!--begin::Header-->
 						<div class="card-header flex-wrap border-0 pt-6 pb-0">
 							<h3 class="card-title align-items-start flex-column">
-								<span class="card-label font-weight-bolder text-dark">Module</span>
-								<span class="text-muted mt-1 font-weight-bold font-size-sm">Manage over 1600 Module</span>
+								<span class="card-label font-weight-bolder text-dark">Class Tarrif</span>
+								<span class="text-muted mt-1 font-weight-bold font-size-sm">Manage over 1600 Class Tarrif</span>
 							</h3>
 							<div class="card-toolbar">
 								<div class="dropdown dropdown-inline" data-toggle="tooltip" title="" data-placement="left" data-original-title="Quick actions">
 									<!--begin::Trigger Modal-->
-									<a class="nav-link py-2 px-4 btn btn-primary"  href="{{route('modules.create')}}"><i class="ki ki-plus text-light"></i>  Add New</a>
-									
+									<a class="nav-link py-2 px-4 btn btn-primary"  href="{{route('class_tarrifs.create')}}"><i class="ki ki-plus text-light"></i>  Add New</a>
+
 									<!--end::Trigger Modal-->
 									<!--begin::Modal Content-->
-									
+
 									<!--end::Modal Content-->
 								</div>
 							</div>
@@ -58,32 +58,32 @@
 						<div class="card-body">
 							<!--begin: Search Form-->
 							<!--begin::Search Form-->
-							
+
 							<table id="example" class="table table-striped table-bordered" style="width:100%">
 								<thead>
 									<tr>
 										<th>#</th>
-										<th>Menu Name</th>
-										<th>Route Name</th>
-										<th>Url</th>
+										<th>Class Name</th>
+										<th>Fee Name</th>
+										<th>Amount</th>
 										<th>Action</th>
-										
+
 									</tr>
 								</thead>
 								<tbody>
-									@foreach($modules as $module)
-									<tr data-id={{$module->id}}>
+									@foreach($class_tarrifs as $class_tarrif)
+									<tr data-id={{$class_tarrif->id}}>
 										<td>{{$loop->iteration}}</td>
-										<td>{{$module->name}}</td>
-										<td>{{$module->route_name}}</td>
-										<td>{{$module->route_url}}</td>
-										<td><a href="{{route('modules.create')}}" class="btn btn-icon btn-light btn-hover-primary btn-sm">
+										<td>{{$class_tarrif->class_id}}</td>
+										<td>{{$class_tarrif->fee_id}}</td>
+										<td>{{$class_tarrif->amount}}</td>
+										<td><a href="{{route('class_tarrifs.create')}}" class="btn btn-icon btn-light btn-hover-primary btn-sm">
 											<i class="ki ki-plus text-success"></i>
 										</a>
-										<a href="{{url('modules-delete',$module->id)}}" class="btn btn-icon btn-light btn-hover-danger btn-sm">
+										<a href="{{url('class_tarrifs-delete',$class_tarrif->id)}}" class="btn btn-icon btn-light btn-hover-danger btn-sm">
 											<i class="fa fa-trash text-success"></i>
 										</a>
-										<a href="{{route('modules.edit',$module->id)}}" class="btn btn-icon btn-light btn-hover-primary btn-sm mx-3">
+										<a href="{{route('class_tarrifs.edit',$class_tarrif->id)}}" class="btn btn-icon btn-light btn-hover-primary btn-sm mx-3">
 											<span class="svg-icon svg-icon-md svg-icon-primary">
 												<!--begin::Svg Icon | path:assets/media/svg/icons/Communication/Write.svg-->
 												<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="16px" height="16px" viewBox="0 0 24 24" version="1.1">
@@ -96,56 +96,48 @@
 												<!--end::Svg Icon-->
 											</span>
 										</a>
-										
-																		<!-- <form method="post" action='{{route("modules.destroy",$module->id) }}'>
-																			{{csrf_field()}}
-																			{{method_field('DELETE')}}
-																			<button type="submit" class=" btn-primary"><i class="fa fa-trash text-danger mr-5"></i></button>
-																		</form> --></td>
-																	</tr>
-																	@endforeach
-																</tbody>
-																<tfoot>
-																	<tr>
-																		<th>#</th>
-																		<th>Menu Name</th>
-																		<th>Route Name</th>
-																		<th>Url</th>
-																		<th>Action</th>
-																	</tr>
-																</tfoot>
-															</table>
-															<!--begin: Datatable-->
-															<div class="datatable datatable-bordered " id="">
-																
+
+																			<!-- <form method="post" action='{{route("class_tarrifs.destroy",$class_tarrif->id) }}'>
+																				{{csrf_field()}}
+																				{{method_field('DELETE')}}
+																				<button type="submit" class=" btn-primary"><i class="fa fa-trash text-danger mr-5"></i></button>
+																			</form> --></td>
+																		</tr>
+																		@endforeach
+																	</tbody>
+																	
+																</table>
+																<!--begin: Datatable-->
+																<div class="datatable datatable-bordered " id="">
+
+																</div>
+																<!--end: Datatable-->
 															</div>
-															<!--end: Datatable-->
+															<!--end::Body-->
 														</div>
-														<!--end::Body-->
+														<!--end::Card-->
 													</div>
-													<!--end::Card-->
+													<!--end::Content-->
 												</div>
-												<!--end::Content-->
+												<!--end::Teachers-->
 											</div>
-											<!--end::Teachers-->
+											<!--end::Container-->
 										</div>
-										<!--end::Container-->
+										<!--end::Entry-->
 									</div>
-									<!--end::Entry-->
-								</div>
-								<!--end::Content-->
-								@endsection
-								@push('script')
-								<!-- <script src="{{asset('assets/data-table-libs/js/bootstrap.min.js')}}"></script> -->
-								<!-- <script src="{{asset('assets/data-table-libs/js/jquery.min.js')}}"></script> -->
-								<!-- <script src="{{asset('assets/data-table-libs/js/jquery.dataTables.min.js')}}"></script> -->
-								<!-- <script src="{{asset('assets/data-table-libs/js/popper.min.js')}}"></script> -->
-								<!-- <script >
-									
-								</script> -->
+									<!--end::Content-->
+									@endsection
+									@push('script')
+									<!-- <script src="{{asset('assets/data-table-libs/js/bootstrap.min.js')}}"></script> -->
+									<!-- <script src="{{asset('assets/data-table-libs/js/jquery.min.js')}}"></script> -->
+									<!-- <script src="{{asset('assets/data-table-libs/js/jquery.dataTables.min.js')}}"></script> -->
+									<!-- <script src="{{asset('assets/data-table-libs/js/popper.min.js')}}"></script> -->
+									<!-- <script >
+										
+									</script> -->
 
 
-								@endpush
+									@endpush
 
 
 
