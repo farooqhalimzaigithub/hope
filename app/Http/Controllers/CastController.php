@@ -37,6 +37,10 @@ class CastController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request,['title' => 'required']);
+        if(Cast::where('title',$request->title)->exists())
+        return back()->withError('Record Already Exits');
+        else
          Cast::create($request->all());
         return redirect()->route('casts.index')->with('success','Data Added Successfully');
     }

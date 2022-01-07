@@ -83,7 +83,13 @@
 														<td>{{$bank_account->branch_code}}</td>
 														<td>{{$bank_account->bank_id}}</td>
 														<td>{{$bank_account->opening_balance}}</td>
-														<td>{{$bank_account->status}}</td>
+														<td>
+															 @if($bank_account->status==1)
+                                    <span class="badge bg-success font-size-12"> Active</span> 
+                                    @else
+                                    <span class="badge bg-danger font-size-12"> InActive</span>
+                                    @endif
+														</td>
 															<!-- <td>{{$bank_account->route_name}}</td>
 															<td>{{$bank_account->route_url}}</td> -->
 															<td><a href="{{route('bank_accounts.create')}}" class="btn btn-icon btn-light btn-hover-primary btn-sm">

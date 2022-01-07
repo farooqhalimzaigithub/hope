@@ -41,6 +41,10 @@ class BankAccountController extends Controller
      */
     public function store(Request $request)
     {
+         $this->validate($request,['account_no' => 'required','bank_id'=>'required']);
+        if(BankAccount::where('account_no',$request->account_no)->where('bank_id',$request->bank_id)->exists())
+        return back()->withError('Record Already Exits');
+
          BankAccount::create($request->all());
         return redirect()->route('bank_accounts.index')->with('success','Data Added Successfully');
     }

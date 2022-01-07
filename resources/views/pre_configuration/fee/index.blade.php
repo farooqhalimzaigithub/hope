@@ -61,9 +61,9 @@
 													<thead>
 														<tr>
 															<th>#</th>
+															<th>Fee Name</th>
 															<th>Fee Category</th>
-															<!-- <th>Route Name</th>
-															<th>Url</th> -->
+															<!-- <th>Url</th> -->
 															<th>Action</th>
 															
 														</tr>
@@ -73,7 +73,7 @@
 														<tr data-id={{$fee->id}}>
 															<td>{{$loop->iteration}}</td>
 															<td>{{$fee->name}}</td>
-															<td>{{$fee->fee_category_id}}</td>
+															<td>{{$fee->feeCategory->name}}</td>
 															<!-- <td>{{$fee->route_name}}</td>
 															<td>{{$fee->route_url}}</td> -->
 															<td><a href="{{route('fees.create')}}" class="btn btn-icon btn-light btn-hover-primary btn-sm">

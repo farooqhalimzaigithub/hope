@@ -9,4 +9,11 @@ class FeeCategory extends Model
 {
     use HasFactory;
      protected $guarded=[];
+
+
+      public function fees()
+    {
+        return $this->hasMany(Fee::class);
+    }
+     
 }

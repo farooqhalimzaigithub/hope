@@ -36,6 +36,10 @@ class CampusController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request,['name' => 'required','location' => 'required']);
+        if(Campus::where('name',$request->name)->where('location',$request->location)->exists())
+        return back()->withError('Record Already Exits');
+        else
        Campus::create($request->all());
         return redirect()->route('campuses.index')->with('success','Data Added Successfully');
     }

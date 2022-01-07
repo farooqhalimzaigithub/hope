@@ -20,6 +20,11 @@ class BranchController extends Controller
 
  public function getBranch(Request $request)
     {
+        $this->validate($request,['name' => 'required']);
+        if(BloodGroup::where('name',$request->name)->exists())
+        return back()->withError('Record Already Exits');
+        else
+
         $data=Branch::where('id',$request->branch_id)->first();
         return response()->json($data);
 
@@ -42,6 +47,10 @@ class BranchController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request,['branch_name' => 'required']);
+        if(Branch::where('branch_name',$request->branch_name)->exists())
+        return back()->withError('Record Already Exits');
+        else
         Branch::create($request->all());
         return redirect()->route('branches.index')->with('success','Data Added Successfully');
     }

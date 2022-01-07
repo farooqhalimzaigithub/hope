@@ -80,7 +80,7 @@
 										<td><a href="{{route('class_tarrifs.create')}}" class="btn btn-icon btn-light btn-hover-primary btn-sm">
 											<i class="ki ki-plus text-success"></i>
 										</a>
-										<a href="{{url('class_tarrifs-delete',$class_tarrif->id)}}" class="btn btn-icon btn-light btn-hover-danger btn-sm">
+										<a href="{{url('class_tarrif-delete',$class_tarrif->id)}}" class="btn btn-icon btn-light btn-hover-danger btn-sm">
 											<i class="fa fa-trash text-success"></i>
 										</a>
 										<a href="{{route('class_tarrifs.edit',$class_tarrif->id)}}" class="btn btn-icon btn-light btn-hover-primary btn-sm mx-3">

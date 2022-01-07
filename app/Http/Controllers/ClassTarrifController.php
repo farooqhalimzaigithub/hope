@@ -38,10 +38,20 @@ class ClassTarrifController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ClassTarrif $class_tarrif, Request $request)
     {
-        ClassTarrif::create($request->all());
-        return redirect()->route('class_tarrifs.index')->with('success','Data Added Successfully');
+        $this->validate($request,['class_id' => 'required']);
+        if(ClassTarrif::where('class_id', $request->class_id )->exists())
+        return back()->withError('Record Already Exits');
+        
+        if($class_tarrif->create(request()->except('_token')))
+            return redirect()->route('class_tarrifs.index')->withSuccess('Data saved successfully!');
+        else
+            return back()->withError('Data not saved!');
+
+
+        // ClassTarrif::create($request->all());
+        // return redirect()->route('class_tarrifs.index')->with('success','Data Added Successfully');
     }
 
     /**
@@ -94,7 +104,7 @@ class ClassTarrifController extends Controller
      */
     public function destroy($id)
     {
-        dd('ook');
+        // dd('ook');
         ClassTarrif::find($id)->delete();
            return redirect()->route('class_tarrifs.index')->with('error','Data Delete Successfully');
     }

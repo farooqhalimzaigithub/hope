@@ -38,7 +38,16 @@ class FeeController extends Controller
      */
     public function store(Request $request)
     {
-       Fee::create($request->all());
+        $this->validate($request,['name' => 'required']);
+        if(Fee::where('name', $request->name )->exists())
+        return back()->withError('Record Already Exits');
+       // Fee::create($request->all());
+        else
+       $feeCategory=FeeCategory::where('id',$request->fee_category_id)->first();
+        // dd($feeCategory);
+       $fee=new Fee();
+       $fee->name=$request->name;
+       $feeCategory->fees()->save($fee);
         return redirect()->route('fees.index')->with('success','Data Added Successfully');
     }
 

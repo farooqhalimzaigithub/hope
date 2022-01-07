@@ -22,16 +22,16 @@
 						<!-- <h4 class="mb-8 font-weight-bold text-dark">Module Details</h4> -->
 						<div class="row">
 							<div class="form-group col-lg-4">
-								<label for="inputState">Class Name</label>
+								<label for="inputState">Class |Level</label>
 								<select id="inputState" name="class_id" class="form-control ">
-									<option selected>Choose Fee</option>
+									<option selected>Choose Class</option>
 									@foreach($classes as $class)
 									<option value="{{$class->id}}">{{$class->name}}</option>
 									@endforeach
 								</select>
 							</div>
 							<div class="form-group col-lg-4">
-								<label for="inputState">Fee Name</label>
+								<label for="inputState">Fee</label>
 								<select id="inputState" name="fee_id" class="form-control ">
 									<option selected>Choose Fee</option>
 									@foreach($fees as $fee)

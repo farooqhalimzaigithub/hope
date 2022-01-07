@@ -36,6 +36,10 @@ class BloodGroupController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request,['name' => 'required']);
+        if(BloodGroup::where('name',$request->name)->exists())
+        return back()->withError('Record Already Exits');
+        else
         BloodGroup::create($request->all());
         return redirect()->route('bloods.index')->with('success','Data Added Successfully');
     }
