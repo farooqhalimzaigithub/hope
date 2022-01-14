@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Student;
 use App\Models\School;
+use App\Models\EnrollmentRegister;
+use App\Models\Campus;
+use App\Models\Health;
+use App\Models\Occupation;
 use App\Models\Section;
 use App\Models\Country;
 use App\Models\Province;
@@ -38,6 +42,10 @@ class StudentController extends Controller
      */
     public function create()
     {
+           $data['healths']=Health::all();
+           $data['campuses']=Campus::all();
+           $data['enrollments']=EnrollmentRegister::all();
+           $data['occupations']=Occupation::all();
            $data['sections']=Section::all();
            $data['levels']=Level::all();
            $data['schools']=School::all();
@@ -88,7 +96,7 @@ class StudentController extends Controller
        $student->enrollment_registration=$request->enrollment_registration;
        $student->religion_id=$request->religion_id;//i.e islaam
        $student->cast_id=$request->cast_id;//i.e nation
-       $student->school_id=$request->campus_id;
+       $student->campus_id=$request->campus_id;
        $student->province_id=$request->province_id;
        $student->country_id=$request->country_id;
        $student->image=$file_name;

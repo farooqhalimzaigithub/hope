@@ -93,9 +93,13 @@ Route::resource('grades','App\Http\Controllers\GradeController');
 Route::resource('healths','App\Http\Controllers\HealthController');
 Route::resource('occupations','App\Http\Controllers\OccupationController');
 Route::resource('class_tarrifs','App\Http\Controllers\ClassTarrifController');
+Route::resource('staff_categories','App\Http\Controllers\StaffCategoryController');
+Route::resource('staffs','App\Http\Controllers\StaffController');
 
 //@@@@@@@@@@@@@@@@@@@@@@@$End of resource routes $@@@@@@@@@@@@@@@@@@@@@@@@@
 // ================For every model Delete======================
+Route::get('staff-delete/{id}', [App\Http\Controllers\StaffController::class, 'destroy'])->name('staff-delete.destroy');
+Route::get('staff_category-delete/{id}', [App\Http\Controllers\StaffCategoryController::class, 'destroy'])->name('staff_category.destroy');
 Route::get('class_tarrif-delete/{id}', [App\Http\Controllers\ClassTarrifController::class, 'destroy'])->name('class_tarrif.destroy');
 Route::get('fee-delete/{id}', [App\Http\Controllers\FeeController::class, 'destroy'])->name('fee-delete.destroy');
 Route::get('bank-delete/{id}', [App\Http\Controllers\BankController::class, 'destroy'])->name('bank-delete.destroy');

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\School;
 use Illuminate\Http\Request;
+use Auth;
 
 class SchoolController extends Controller
 {
@@ -15,10 +16,11 @@ class SchoolController extends Controller
     public function index()
     {
          $data['schools']=School::all();
+         // dd($data['schools']);
         return view('pre_configuration.school-manage.index',$data);
     }
 
-    /**
+    /** 
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
@@ -36,8 +38,12 @@ class SchoolController extends Controller
      */
     public function store(Request $request)
     {
-        
-        School::create($request->all());
+        $school = new School();
+        $school->name=$request->name;
+        $school->user_id=Auth::user()->id;
+        $school->save();
+        // School::create($request->all());
+
         return redirect()->route('schools.index')->with('success','Data Added Successfully');
     }
 
@@ -61,6 +67,7 @@ class SchoolController extends Controller
     public function edit($id)
     {
         $data['school']=School::find($id);
+
         return view('pre_configuration.school-manage.edit',$data);
     }
 
@@ -75,6 +82,7 @@ class SchoolController extends Controller
     {
         $school =School::find($id);
       $school->name=$request->name;
+      // $school->user_id=$request->user_id;
       $school->save();
        return redirect()->route('schools.index')->with('info','Data Update successfully!');
     }

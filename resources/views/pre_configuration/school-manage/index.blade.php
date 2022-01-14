@@ -61,8 +61,8 @@
 														<tr>
 															<th>#</th>
 															<th>School Title</th>
-															<!-- <th>Route Name</th>
-															<th>Url</th> -->
+															<th>Created By</th>
+															<!-- <th>Url</th> -->
 															<th>Action</th>
 															
 														</tr>
@@ -72,6 +72,7 @@
 														<tr data-id={{$school->id}}>
 															<td>{{$loop->iteration}}</td>
 															<td>{{$school->name}}</td>
+															<td>{{$school->user->name}}</td>
 															<!-- <td>{{$school->route_name}}</td>
 															<td>{{$school->route_url}}</td> -->
 															<td><a href="{{route('schools.create')}}" class="btn btn-icon btn-light btn-hover-primary btn-sm">

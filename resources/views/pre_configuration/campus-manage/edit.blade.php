@@ -5,7 +5,7 @@
 							<!--begin::Container-->
 							<div class="container">
 								<div class="row">
-									<div class="col-lg-12">
+									<div class="col-lg-12 bg-white">
 										<!--begin::Card-->
 										<!-- <div class="card card-custom gutter-b example example-compact" style="border : 1px solid yellow;"> -->
 											<div class="card-header">
@@ -17,7 +17,7 @@
 													</div>
 												</div>
 											</div>
-											<form class="form  mt-12"  method="post" action="{{route('campuses.update',$campus->id)}}" >
+											<form class="form  mt-4"  method="post" action="{{route('campuses.update',$campus->id)}}" >
 			@csrf
 			@method('PUT')
 

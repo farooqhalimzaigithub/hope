@@ -34,6 +34,13 @@ class User extends Authenticatable
         'remember_token',
     ];
 
+    
+    public function schools()
+    {
+        return $this->hasMany(School::class,'user_id','id');
+        // return $this->hasMany(Comment::class, 'foreign_key', 'local_key');
+    }
+
     /**
      * The attributes that should be cast.
      *

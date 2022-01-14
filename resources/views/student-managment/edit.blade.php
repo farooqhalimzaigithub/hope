@@ -4,7 +4,7 @@
 							<!--begin::Container-->
 							<div class="container">
 								<div class="row">
-									<div class="col-lg-12">
+									<div class="col-lg-12 bg-white">
 										<!--begin::Card-->
 										<!-- <div class="card card-custom gutter-b example example-compact" style="border : 1px solid yellow;"> -->
 											<div class="card-header">
@@ -16,7 +16,7 @@
 													</div>
 												</div>
 											</div>
-			<form class="form  mt-12 "  method="post" action="{{route('students.update',$student->id)}}"  enctype="multipart/form-data" >
+			<form class="form  mt-2 "  method="post" action="{{route('students.update',$student->id)}}"  enctype="multipart/form-data" >
 				@csrf
 				@method('PUT')
 					<h4 class="mb-8 font-weight-bold text-dark">Edit Registration Info</h4>

@@ -39,6 +39,8 @@ class CreateStudentsTable extends Migration
              // $table->foreign('country_id')->references('id')->on('countries')->onDelete('cascade')->onUpdate('cascade');
              $table->integer('school_id')->unsigned()->nullable();
              // $table->foreign('school_id')->references('id')->on('schools')->onDelete('cascade')->onUpdate('cascade');
+             $table->integer('campus_id')->unsigned()->nullable();
+             // $table->foreign('campus_id')->references('id')->on('campuses')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
 
         });
