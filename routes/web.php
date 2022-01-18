@@ -93,6 +93,7 @@ Route::resource('grades','App\Http\Controllers\GradeController');
 Route::resource('healths','App\Http\Controllers\HealthController');
 Route::resource('occupations','App\Http\Controllers\OccupationController');
 Route::resource('class_tarrifs','App\Http\Controllers\ClassTarrifController');
+Route::resource('fee_tarrifs','App\Http\Controllers\FeeTarrifController');
 Route::resource('staff_categories','App\Http\Controllers\StaffCategoryController');
 Route::resource('staffs','App\Http\Controllers\StaffController');
 
@@ -129,6 +130,7 @@ Route::get('users-delete/{id}', [App\Http\Controllers\UserController::class, 'de
 Route::get('bank_accounts-delete/{id}', [App\Http\Controllers\BankAccountController::class, 'destroy'])->name('bank_accounts-delete.destroy');
 // get branch code through ajax
 Route::get('getBranch', [App\Http\Controllers\BranchController::class, 'getBranch'])->name('get.Branch');
+Route::get('getFee', [App\Http\Controllers\FeeTarrifController::class, 'getFee'])->name('get.Fee');
 // ================For every model Delete======================
 
 });
