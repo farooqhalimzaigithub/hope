@@ -6,6 +6,9 @@ use App\Models\FeeTarrif;
 use App\Models\Level;
 use App\Models\Fee;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
+
+use DB;
 
 class FeeTarrifController extends Controller
 {
@@ -16,16 +19,16 @@ class FeeTarrifController extends Controller
      */
     public function index()
     {
-         $data['fee_tarrifs']=FeeTarrif::all();
-        return view('fee_tarrif.index',$data);
-    }
+       $data['fee_tarrifs']=FeeTarrif::all();
+       return view('fee_tarrif.index',$data);
+   }
 
-    public function getFee(Request $request)
-    {
-        $data=Fee::all();
-        return response()->json($data);
+   public function getFee(Request $request)
+   {
+    $data=Fee::all();
+    return response()->json($data);
 
-    }
+}
 
     /**
      * Show the form for creating a new resource.
@@ -34,10 +37,10 @@ class FeeTarrifController extends Controller
      */
     public function create()
     {
-       $data['fees']=Fee::all();
-        $data['classes']=Level::all();
-        return view('fee_tarrif.create',$data);
-    }
+     $data['fees']=Fee::all();
+     $data['classes']=Level::all();
+     return view('fee_tarrif.create',$data);
+ }
 
     /**
      * Store a newly created resource in storage.
@@ -47,14 +50,17 @@ class FeeTarrifController extends Controller
      */
     public function store(FeeTarrif $fee_tarrif,Request $request)
     {
-        $this->validate($request,['class_id' => 'required']);
-        if(FeeTarrif::where('class_id', $request->class_id )->exists())
-        return back()->withError('Record Already Exits');
-        
-        if($fee_tarrif->create(request()->except('_token')))
+
+        $checker = FeeTarrif::where('class_id', $request->class_id)->where('fee_id', $request->fee_id)->get();
+        // dd($checker);
+       if ($checker->isEmpty()) {
+            $record=FeeTarrif::create($request->all());
             return redirect()->route('fee_tarrifs.index')->withSuccess('Data Saved Successfully!');
-        else
-            return back()->withError('Data Not Saved!');
+        }else{
+            return back()->withError('Data All ready 2 Exist!');
+            
+        }
+         
     }
 
     /**
@@ -74,9 +80,13 @@ class FeeTarrifController extends Controller
      * @param  \App\Models\FeeTarrif  $feeTarrif
      * @return \Illuminate\Http\Response
      */
-    public function edit(FeeTarrif $feeTarrif)
+    public function edit($id)
     {
-        //
+       // dd($id);
+        $data['fees']=Fee::all();
+     $data['classes']=Level::all();
+       $data['fee_tarrif']=FeeTarrif::find($id);
+       return view('fee_tarrif.edit',$data);
     }
 
     /**
@@ -86,9 +96,21 @@ class FeeTarrifController extends Controller
      * @param  \App\Models\FeeTarrif  $feeTarrif
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, FeeTarrif $feeTarrif)
+    public function update(Request $request, $id)
     {
-        //
+        $record=FeeTarrif::find($id);
+        $record=FeeTarrif::where('id',$id)->delete();
+         $checker = FeeTarrif::where('class_id', $request->class_id)->where('fee_id', $request->fee_id)->get();
+        // dd($checker);
+       if ($checker->isEmpty()) {
+            $record=FeeTarrif::create($request->all());
+            return redirect()->route('fee_tarrifs.index')->withSuccess('Data Saved Successfully!');
+        }else{
+            return back()->withError('Data All ready 2 Exist!');
+            
+        }
+
+
     }
 
     /**

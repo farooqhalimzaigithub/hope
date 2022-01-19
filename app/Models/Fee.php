@@ -16,4 +16,11 @@ class Fee extends Model
     {
         return $this->belongsTo(FeeCategory::class);
     }
+
+
+     public function feeTarrifs()
+    {
+        return $this->hasMany(FeeTarrif::class,'fee_id','id');
+        // note: we can also include comment model like: 'App\Models\Comment'
+    }
 }

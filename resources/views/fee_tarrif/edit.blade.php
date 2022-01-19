@@ -16,8 +16,9 @@
               </div>
             </div>
           </div>
-          <form class="form  mt-12"  method="post" action="{{route('fee_tarrifs.store')}}" >
+          <form class="form  mt-12"  method="post" action="{{route('fee_tarrifs.update',$fee_tarrif->id)}}" >
             @csrf
+            @method('PUT')
 
             <!-- <h4 class="mb-8 font-weight-bold text-dark">Module Details</h4> -->
             <div class="row">
@@ -26,7 +27,12 @@
                 <select id="inputState" name="class_id" class="form-control ">
                   <option selected>Choose Class</option>
                   @foreach($classes as $class)
-                  <option value="{{$class->id}}">{{$class->name}}</option>
+                  @if($class->id==$fee_tarrif->class_id)
+                  <option value="{{$class->id}}" selected="">{{$class->name}}</option>
+                  @else
+                   <option value="{{$class->id}}">{{$class->name}}</option>
+
+                  @endif
                   @endforeach
                 </select>
               </div>
@@ -35,7 +41,12 @@
                 <select id="inputState" name="fee_id" class="form-control ">
                   <option selected>Choose Fee</option>
                   @foreach($fees as $fee)
+                  @if($fee->id==$fee_tarrif->fee_id)
+                  <option value="{{$fee->id}}" selected="">{{$fee->name}}</option>
+                  @else
                   <option value="{{$fee->id}}">{{$fee->name}}</option>
+
+                  @endif
                   @endforeach
                 </select>
               </div>

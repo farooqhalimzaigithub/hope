@@ -74,8 +74,8 @@
 									@foreach($fee_tarrifs as $fee_tarrif)
 									<tr data-id={{$fee_tarrif->id}}>
 										<td>{{$loop->iteration}}</td>
-										<td>{{$fee_tarrif->class_id}}</td>
-										<td>{{$fee_tarrif->fee_id}}</td>
+										<td>{{$fee_tarrif->level->name}}</td>
+										<td>{{$fee_tarrif->fee->name}}</td>
 										<td>{{$fee_tarrif->amount}}</td>
 										<td><a href="{{route('fee_tarrifs.create')}}" class="btn btn-icon btn-light btn-hover-primary btn-sm">
 											<i class="ki ki-plus text-success"></i>
