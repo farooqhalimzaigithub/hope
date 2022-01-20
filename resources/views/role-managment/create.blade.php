@@ -37,7 +37,7 @@
 			<div class="whole" >
 				
 			
-  {{$module->name}}&nbsp;&nbsp;<input class="Input_change" type="checkbox"  id="parent_id" name="parent_id[]" value="{{$module->id}}" checked  onchange="checkAll(this)" />
+  {{$module->name}}&nbsp;&nbsp;<input class="Input_change" type="checkbox"  id="parent_id" name="parent_id[]" value="{{$module->id}}" checked  onchange="toggleCheckBoxes(this)" />
 
   <div class="row" >
   	@foreach($module->children as $child)
@@ -77,28 +77,14 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
 
-  function checkAll(e){
-  	var check=$(e).val();
- //  var g_id=$('#g1').val();
- // alert(check);
-  	
-	 var divid = $(e).parent().attr('class');
-	    var all=$(divid).children(".class_input");
-	 // var child= $(divid).find('.class_input');
-	  console.log(all);
-	 $( all ).each(function( i ) {
-    		
-           });
-	   // console.loge(divid)
-// if(){
+  function toggleCheckBoxes(e){
+	var $checks  = $(e).siblings('.row').find(".Input_change");
+   	var $ckall = $(e);
 
-// 	$(".class_input").prop("checked", false);	
-// }else{
-// $(".class_input").prop("checked", false);
-// }
-
-
-}
+    $.each($checks, function(){
+        $(this).prop("checked", $ckall.prop('checked'));
+    });
+  }
 
 
 </script>
