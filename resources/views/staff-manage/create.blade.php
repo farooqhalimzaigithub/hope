@@ -53,9 +53,11 @@
 								<input type="date" name="dob" class="form-control" id="dob">
 							</div>
 							<div class="form-group col-lg-4">
-								<label for="inputCity">Designation</label>
-								<select id="inputState" name="designation_id" class="form-control ">
-									<option selected>Choose</option>
+								<label >Designation</label>
+								<!-- <select id="inputState" name="designation_id" class="form-control ">
+									<option selected>Choose</option> -->
+									<select class="form-control select2"   name="designation_id">
+														<option label="Label"></option>
 									@foreach($designations as $designation)
 									<option value="{{$designation->id}}">{{$designation->name}}</option>
 									@endforeach
@@ -107,9 +109,10 @@
 
 									</div>
 									<div class="form-group col-lg-3">
-										<label for="inputState">Staff Category</label>
-										<select id="inputState" name="staff_category_id" class="form-control ">
-											<option selected>Staff Category</option>
+										<label >Staff Category</label>
+										
+											<select class="form-control select2"   name="staff_category_id">
+														<option label="Label"></option>
 											@foreach($staff_categories as $staff_category)
 											<option value="{{$staff_category->id}}">{{$staff_category->name}}</option>
 											@endforeach
@@ -120,29 +123,30 @@
 						<div class="row">
 							
 							
-									<div class="form-group col-lg-3">
-										<label for="inputCity">City/Village Name</label>
-										<select id="inputState" name="city_id" class="form-control ">
-											<option selected>Choose</option>
-											@foreach($cities as $city)
-											<option value="{{$city->id}}">{{$city->name}}</option>
-											@endforeach
+								<div class="form-group col-lg-3">
+								<label >City/Village Name</label>
+								<select class="form-control select2" name="city_id">
+								<option label="Label"></option>
+									@foreach($cities as $city)
+									<option value="{{$city->id}}">{{$city->name}}</option>
+									@endforeach
 
-										</select>
-									</div>
+								</select>
+								</div>
 									
 									<div class="form-group col-lg-3">
-								<label for="inputState">Gender</label>
-								<select id="inputState" name="gender" class="form-control ">
-									<option selected>Choose</option>
+								<label >Gender</label>
+								
+									<select class="form-control select2"   name="gender">
+								   <option label="Label"></option>
 									<option value="male">Male</option>
 									<option value="female">Female</option>
 								</select>
 							</div>
 							<div class="form-group col-lg-3">
-								<label for="inputState">Marital Status</label>
-								<select id="inputState" name="gender" class="form-control ">
-									<option selected>Choose</option>
+								<label for="inputSte">Marital Status</label>
+								<select class="form-control select2"   name="marital_status">
+								<option label="Label"></option>
 									<option value="single">Single</option>
 									<option value="marreid">Marreid</option>
 								</select>
@@ -154,9 +158,9 @@
 							</div>
 							<div class="row">
 								<div class="form-group col-lg-3">
-										<label for="inputCity">School</label>
-										<select id="inputState" name="school_id" class="form-control ">
-											<option selected>Choose</option>
+										<label for="inputsc">School</label>
+											<select class="form-control select2" id="inputsc"  name="school_id">
+								           <option label="Label"></option>
 											@foreach($schools as $school)
 											<option value="{{$school->id}}">{{$school->name}}</option>
 											@endforeach
@@ -165,8 +169,8 @@
 									</div>
 									<div class="form-group col-lg-3">
 										<label for="inputCity">Campus</label>
-										<select id="inputState" name="campus_id" class="form-control ">
-											<option selected>Choose</option>
+											<select class="form-control select2" id="inputCity"  name="campus_id">
+								           <option label="Label"></option>
 											@foreach($campuses as $campus)
 											<option value="{{$campus->id}}">{{$campus->name}}</option>
 											@endforeach
@@ -362,10 +366,11 @@
 <!--end::Container-->
 
 
-@stop
+@endsection
+
 
 @push('script')
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
 <script>
 	$(document).ready(function(){
     // alert('okk');

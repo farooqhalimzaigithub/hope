@@ -71,11 +71,11 @@ var KTFormWidgetsValidation = function () {
         });
 
         // Select2
-        $('#kt_select2').select2({
-            placeholder: "Select a state",
+        $('.select2').select2({
+            placeholder: " Choose ",
         });
 
-        $('#kt_select2').on('change', function(){
+        $('.select2').on('change', function(){
             // Revalidate field
             validator.revalidateField('select2');
         });

@@ -24,7 +24,7 @@
       <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
       <!--end::Fonts-->
       <!--begin::Page Vendors Styles(used by this page)-->
-      <link href="{{asset('assets/plugins/custom/datatables/datatables.bundle.css')}}" rel="stylesheet" type="text/css" />
+     <!--  <link href="{{asset('assets/plugins/custom/datatables/datatables.bundle.css')}}" rel="stylesheet" type="text/css" /> -->
       <!--end::Page Vendors Styles-->
       <!--begin::Page Vendors Styles(used by this page)-->
       <!-- <link href="{{asset('assets/plugins/custom/fullcalendar/fullcalendar.bundle.css')}}" rel="stylesheet" type="text/css" /> -->
@@ -39,6 +39,9 @@
       <link href="{{asset('assets/css/themes/layout/header/menu/light.css')}}" rel="stylesheet" type="text/css" />
       <link href="{{asset('assets/css/themes/layout/brand/dark.css')}}" rel="stylesheet" type="text/css" />
       <link href="{{asset('assets/css/themes/layout/aside/dark.css')}}" rel="stylesheet" type="text/css" />
+
+      <!-- for data tables -->
+      <link href="{{asset('assets/data-table-libs/css/jquery.dataTables.min.css')}}" rel="stylesheet" type="text/css" />
       <!--end::Layout Themes-->
       <link rel="shortcut icon" href="{{asset('assets/media/logos/favicon.ico')}}" />
    </head>
@@ -686,13 +689,21 @@
     
 
      <!-- for datatables -->
-      <script src="{{asset('assets/plugins/custom/datatables/datatables.bundle.js')}}"></script>
+      <!-- <script src="{{asset('assets/plugins/custom/datatables/datatables.bundle.js')}}"></script> -->
       <!--end::Page Vendors-->
       <!--begin::Page Scripts(used by this page)-->
-      <script src="{{asset('assets/js/pages/crud/datatables/advanced/column-rendering.js')}}"></script>
+      <!-- <script src="{{asset('assets/js/pages/crud/datatables/advanced/column-rendering.js')}}"></script> -->
        <!-- End for datatables -->
       <!--end::Page Scripts-->
-
+      <!--begin::Page Scripts(used by this select 2)-->
+      <script src="{{asset('assets/js/pages/crud/forms/validation/form-widgets.js')}}"></script>
+      <!--end::Page Scripts select 2-->
+                          <!-- for data tables -->
+     <script src="{{asset('assets/data-table-libs/js/jquery.dataTables.min.js')}}"></script>
+ <script>
+   $(document).ready(function() {
+                                 $('#example').DataTable();
+                              });
          @if(Session::has('error'))
   toastr.options =
   {
@@ -719,7 +730,7 @@
       toastr.success("{{ session('success') }}");
   @endif
    </script>
-      </script>
+     
    </body>
    <!--end::Body-->
 </html>
