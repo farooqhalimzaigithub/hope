@@ -24,6 +24,9 @@
       <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
       <!--end::Fonts-->
       <!--begin::Page Vendors Styles(used by this page)-->
+      <link href="{{asset('assets/plugins/custom/datatables/datatables.bundle.css')}}" rel="stylesheet" type="text/css" />
+      <!--end::Page Vendors Styles-->
+      <!--begin::Page Vendors Styles(used by this page)-->
       <!-- <link href="{{asset('assets/plugins/custom/fullcalendar/fullcalendar.bundle.css')}}" rel="stylesheet" type="text/css" /> -->
       <!--end::Page Vendors Styles-->
       <!--begin::Global Theme Styles(used by all pages)-->
@@ -680,7 +683,15 @@
       <!--begin::Page Scripts(used by this page)-->
       <script src="{{asset('assets/js/pages/features/miscellaneous/toastr.js')}}"></script>
       <!--end::Page Scripts-->
-      <script >
+    
+
+     <!-- for datatables -->
+      <script src="{{asset('assets/plugins/custom/datatables/datatables.bundle.js')}}"></script>
+      <!--end::Page Vendors-->
+      <!--begin::Page Scripts(used by this page)-->
+      <script src="{{asset('assets/js/pages/crud/datatables/advanced/column-rendering.js')}}"></script>
+       <!-- End for datatables -->
+      <!--end::Page Scripts-->
 
          @if(Session::has('error'))
   toastr.options =
