@@ -503,26 +503,10 @@
                      <!--end::Header Menu Wrapper-->
                      <!--begin::Topbar-->
                      <div class="topbar">
-                        <!--begin::Search-->
-                        
-                        <!--end::Search-->
-                        <!--begin::Notifications-->
-                        
-                        <!--end::Notifications-->
-                        <!--begin::Quick Actions-->
-                        
-                        <!--end::Quick Actions-->
-                        <!--begin::Cart-->
-                        <!-- dsfdf -->
-                        <!--end::Cart-->
-                        <!--begin::Quick panel-->
-                      
-                        <!--end::Quick panel-->
-                        <!--begin::Chat-->
-                        
+                        <!--begin::Search-->  
                         <!--end::Chat-->
                         <!--begin::Languages-->
-                        <div class="dropdown">
+                        <div class="dropdown p-0 m-0 dropdown-menu-anim-up  dropdown-menu-sm dropdown-menu-right ">
                            <!--begin::Toggle-->
                            
                            <!--end::Toggle-->
