@@ -40,62 +40,65 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 route::group(['middleware'=> ['auth', 'CheckUrlAccess']], function(){
 
        view()->composer('*',function($view){
-           $modulesAll=Module::where('parent_id',0)->get();
-            foreach ($modulesAll as $module) 
-              {
-             $module->children = Module::where('parent_id',$module->id)->where('visibility', '=', 1)->get();
-              }
-       $view->with('modulesAll',$modulesAll);
+    //        $modulesAll=Module::where('parent_id',0)->get();
+    //         foreach ($modulesAll as $module) 
+    //           {
+    //          $module->children = Module::where('parent_id',$module->id)->where('visibility', '=', 1)->get();
+    //           }
+    //    $view->with('modulesAll',$modulesAll);
        
-        // $role_id = Auth::user()->role_id;
-        // $modulesAll = DB::table('modules')
-        // ->join('permissions', 'modules.id', '=', 'permissions.module_id')//perm instad of module_right
-        // ->where('parent_id',0)
-        // ->where('role_id', '=', $role_id)
-        // ->get();
-        // foreach ($modulesAll as $module) {
-        //     $module->children = Module::where('parent_id',$module->id)->where('visibility', '=', 1)->get();
-        // }
-        // echo "<pre />";
-        // print_r();
-        // $view->with('modulesAll',$modulesAll);
+        $role_id = Auth::user()->role_id;
+        $modulesAll = DB::table('modules')
+        ->join('permissions', 'modules.id', '=', 'permissions.module_id')//perm instad of module_right
+        ->where('parent_id',0)
+        ->where('role_id', '=', $role_id)
+        ->get();
+        foreach ($modulesAll as $module) {
+            $module->children = DB::table('modules')
+            ->join('permissions', 'modules.id', '=', 'permissions.module_id')//perm instad of module_right
+            ->where('parent_id', $module->module_id)
+            ->where('visibility', 1)
+            ->where('role_id', '=', $role_id)
+            ->get();
+        }
+        $view->with('modulesAll',$modulesAll);
 
         });
 //@@@@@@@@@@@@@@@@@@@@@@@$ for resource routes $@@@@@@@@@@@@@@@@@@@@@@@@@
-Route::resource('users','App\Http\Controllers\UserController');
-Route::resource('modules','App\Http\Controllers\ModuleController');
+Route::resource('users','App\Http\Controllers\UserController'); //done
+Route::resource('modules','App\Http\Controllers\ModuleController'); //done
 // Route::resource('permissions','App\Http\Controllers\PermissionController');
-Route::resource('roles','App\Http\Controllers\RoleController');
-Route::resource('students','App\Http\Controllers\StudentController');
-Route::resource('bloods','App\Http\Controllers\BloodGroupController');
-Route::resource('casts','App\Http\Controllers\CastController');
-Route::resource('religions','App\Http\Controllers\ReligionController');
-Route::resource('cities','App\Http\Controllers\CityController');
-Route::resource('provinces','App\Http\Controllers\ProvinceController');
-Route::resource('countries','App\Http\Controllers\CountryController');
-Route::resource('levels','App\Http\Controllers\LevelController');
-Route::resource('sections','App\Http\Controllers\SectionController');
-Route::resource('schools','App\Http\Controllers\SchoolController');
-Route::resource('campuses','App\Http\Controllers\CampusController');
-Route::resource('branches','App\Http\Controllers\BranchController');
-Route::resource('banks','App\Http\Controllers\BankController');
-Route::resource('bank_accounts','App\Http\Controllers\BankAccountController');
-Route::resource('departments','App\Http\Controllers\DepartmentController');
-Route::resource('designations','App\Http\Controllers\DesignationController');
-Route::resource('enrollments','App\Http\Controllers\EnrollmentRegisterController');
-Route::resource('examtypes','App\Http\Controllers\ExamTypeController');
-Route::resource('exams','App\Http\Controllers\ExaminationController');
-Route::resource('expenses','App\Http\Controllers\ExpenseController');
-Route::resource('expense_categories','App\Http\Controllers\ExpenseCategoryController');
-Route::resource('fees','App\Http\Controllers\FeeController');
-Route::resource('fee_categories','App\Http\Controllers\FeeCategoryController');
-Route::resource('grades','App\Http\Controllers\GradeController');
-Route::resource('healths','App\Http\Controllers\HealthController');
-Route::resource('occupations','App\Http\Controllers\OccupationController');
-Route::resource('class_tarrifs','App\Http\Controllers\ClassTarrifController');
-Route::resource('fee_tarrifs','App\Http\Controllers\FeeTarrifController');
-Route::resource('staff_categories','App\Http\Controllers\StaffCategoryController');
-Route::resource('staffs','App\Http\Controllers\StaffController');
+Route::resource('roles','App\Http\Controllers\RoleController'); //roles
+Route::resource('students','App\Http\Controllers\StudentController'); //done
+Route::resource('bloods','App\Http\Controllers\BloodGroupController'); //done
+Route::resource('casts','App\Http\Controllers\CastController'); // done
+Route::resource('religions','App\Http\Controllers\ReligionController'); //done
+Route::resource('cities','App\Http\Controllers\CityController'); //done
+Route::resource('provinces','App\Http\Controllers\ProvinceController'); //done
+Route::resource('countries','App\Http\Controllers\CountryController'); //done
+Route::resource('levels','App\Http\Controllers\LevelController'); //done
+Route::resource('sections','App\Http\Controllers\SectionController'); //done
+Route::resource('schools','App\Http\Controllers\SchoolController'); //done
+Route::resource('campuses','App\Http\Controllers\CampusController'); // done
+Route::resource('branches','App\Http\Controllers\BranchController'); //done
+Route::resource('banks','App\Http\Controllers\BankController'); // done
+Route::resource('bank_accounts','App\Http\Controllers\BankAccountController'); // done
+Route::resource('departments','App\Http\Controllers\DepartmentController'); // done
+Route::resource('designations','App\Http\Controllers\DesignationController'); // done
+Route::resource('enrollments','App\Http\Controllers\EnrollmentRegisterController'); // done
+Route::resource('examtypes','App\Http\Controllers\ExamTypeController'); //done
+Route::resource('exams','App\Http\Controllers\ExaminationController'); //done
+Route::resource('expenses','App\Http\Controllers\ExpenseController'); //done
+Route::resource('expense_categories','App\Http\Controllers\ExpenseCategoryController'); //done 
+Route::resource('fees','App\Http\Controllers\FeeController'); //done
+Route::resource('fee_categories','App\Http\Controllers\FeeCategoryController'); //done
+Route::resource('grades','App\Http\Controllers\GradeController'); //done
+Route::resource('healths','App\Http\Controllers\HealthController'); //done
+Route::resource('occupations','App\Http\Controllers\OccupationController'); //done
+Route::resource('class_tarrifs','App\Http\Controllers\ClassTarrifController'); //done
+Route::resource('fee_tarrifs','App\Http\Controllers\FeeTarrifController'); //done
+Route::resource('staff_categories','App\Http\Controllers\StaffCategoryController'); //done
+Route::resource('staffs','App\Http\Controllers\StaffController'); //done
 
 //@@@@@@@@@@@@@@@@@@@@@@@$End of resource routes $@@@@@@@@@@@@@@@@@@@@@@@@@
 // ================For every model Delete======================

@@ -31,19 +31,19 @@
 						<!--end::Input-->
 					</div>
 				</div>
-				<div class="container-fluid" >
-					<!-- <pre/> -->
+				<div class="container-fluid modules-wrapper">
+				<div>check all <label><input type="checkbox" onchange="checkUncheckAll(this)"></label></div>
+				<hr />
 					@foreach($modules1 as $module)
 			<div class="whole" >
-				
-			
-  {{$module->name}}&nbsp;&nbsp;<input class="Input_change" type="checkbox"  id="parent_id" name="parent_id[]" value="{{$module->id}}" checked  onchange="toggleCheckBoxes(this)" />
+				<h6><label class="pointer">{{$module->name}}&nbsp;<input class="Input_change" type="checkbox" name="module_id[]" value="{{$module->id}}" onchange="toggleCheckBoxes(this)" /></label></h6>
 
   <div class="row" >
   	@foreach($module->children as $child)
-    <div class="col-3 "><input class="Input_change" type="checkbox"  name="module_id[]" value="{{$child->id}}" checked >&nbsp;{{$child->name}}</div>
+    <div class="col-3 "><label class="pointer"><input class="Input_change" type="checkbox"  name="module_id[]" value="{{$child->id}}" >&nbsp;{{$child->name}}</label></div>
     @endforeach
   </div>
+  <hr />
   </div>
    @endforeach
 </div>
@@ -78,13 +78,23 @@
 <script>
 
   function toggleCheckBoxes(e){
-	var $checks  = $(e).siblings('.row').find(".Input_change");
+	var $checks  = $(e).parents('.whole').find(".Input_change");
    	var $ckall = $(e);
 
     $.each($checks, function(){
         $(this).prop("checked", $ckall.prop('checked'));
     });
   }
+
+  function checkUncheckAll(e){
+
+var $checks  = $(e).parents('.modules-wrapper').find(".Input_change");
+   var $ckall = $(e);
+
+$.each($checks, function(){
+	$(this).prop("checked", $ckall.prop('checked'));
+});
+}
 
 
 </script>
