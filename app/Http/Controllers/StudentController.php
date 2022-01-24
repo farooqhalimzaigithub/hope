@@ -72,7 +72,7 @@ class StudentController extends Controller
                     // $fileName = $file->getClientOriginalName() ;
                     $extension = $file->getClientOriginalExtension(); 
                     // $destinationPath = 'images/' ; // for online link will be
-                    $destinationPath = 'public/images/' ; //for local link will be 
+                    $destinationPath = 'images/' ; //for local link will be 
                     $datetime = date('mdYhisa', time());
                     $complete_name=$destinationPath.$datetime.'.'.$extension;
                     $file_name=$datetime.'.'.$extension;
@@ -178,7 +178,7 @@ class StudentController extends Controller
                     // $fileName = $file->getClientOriginalName() ;
                     $extension = $file->getClientOriginalExtension(); 
                     // $destinationPath = 'images/' ; // for online link will be
-                    $destinationPath = 'public/images/' ; //for local link will be 
+                    $destinationPath = 'images/' ; //for local link will be 
                     $datetime = date('mdYhisa', time());
                     $complete_name=$destinationPath.$datetime.'.'.$extension;
                     $file_name=$datetime.'.'.$extension;

@@ -100,12 +100,12 @@
 
 							</tr>
 						</thead>
-						<tbody>
+					 	<tbody>
 							@foreach($staffs as $staff)
 							<tr data-id={{$staff->id}}>
 								<td>{{$loop->iteration}}</td>
 								<td>{{$staff->registration_no}}</td>
-								<td><img src="{{asset('public/images/'.$staff->image)}} " class="rounded-circle avatar-xs" alt="profile" width="20" height="20" /></td>
+								<td><img src="{{asset('images/'.$staff->image)}} " class="rounded-circle avatar-xs" alt="profile" width="20" height="20" /></td>
 								<td>{{$staff->first_name.' '.$staff->last_name.' '.$staff->sur_name}}</td>
 								<td>{{$staff->dob}}</td>
 								<td>{{$staff->cnic_no}}</td>

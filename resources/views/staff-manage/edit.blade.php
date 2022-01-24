@@ -138,7 +138,6 @@
 											<option value="{{$city->id}}" selected="">{{$city->name}}</option>
 											@else
 											<option value="{{$city->id}}">{{$city->name}}</option>
-
 											@endif
 											@endforeach
 
@@ -179,21 +178,29 @@
 								</div>
 								<div class="row">
 									<div class="form-group col-lg-3">
-										<label for="inputCity">School</label>
-										<select id="inputState" name="city_id" class="form-control ">
+										<label for="scc">School</label>
+										<select id="inputState" name="school_id" class="form-control ">
 											<option selected>Choose</option>
 											@foreach($schools as $school)
+											@if($school->id==$staff->school_id)
+											<option value="{{$school->id}}" selected="">{{$school->name}}</option>
+											@else
 											<option value="{{$school->id}}">{{$school->name}}</option>
+											@endif
 											@endforeach
 
 										</select>
 									</div>
 									<div class="form-group col-lg-3">
-										<label for="inputCity">Campus</label>
-										<select id="inputState" name="city_id" class="form-control ">
+										<label for="idss">Campus</label>
+										<select id="inputState" name="campus_id" class="form-control ">
 											<option selected>Choose</option>
 											@foreach($campuses as $campus)
+											@if($campus->id==$staff->campus_id)
+											<option value="{{$campus->id}}" selected="">{{$campus->name}}</option>
+											@else
 											<option value="{{$campus->id}}">{{$campus->name}}</option>
+											@endif
 											@endforeach
 										</select>
 									</div>

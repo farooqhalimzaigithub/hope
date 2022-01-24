@@ -103,7 +103,7 @@
 						<tr data-id={{$student->id}}>
 							<td>{{$loop->iteration}}</td>
 							<td>{{$student->registration_no}}</td>
-							 <td><img src="{{asset('public/images/'.$student->image)}} " class="rounded-circle avatar-xs" alt="profile" width="100" height="100" /></td>
+							 <td><img src="{{asset('images/'.$student->image)}} " class="rounded-circle avatar-xs" alt="profile" width="100" height="100" /></td>
 							<td>{{$student->first_name.' '.$student->last_name.' '.$student->sur_name}}</td>
 							<td>{{$student->dob}}</td>
 							<td>{{$student->cnic_no}}</td>
