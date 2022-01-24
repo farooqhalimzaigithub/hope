@@ -54,7 +54,7 @@ class StaffController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request->all());
+         // dd($request->all());
       //   $this->validate($request,['registration_no' => 'required','cnic_no'=>'required']);
 
       //   if(Staff::where('registration_no',$request->registration_no)->where('cnic_no',$request->cnic_no)->exists()){
@@ -66,7 +66,7 @@ class StaffController extends Controller
                     // $fileName = $file->getClientOriginalName() ;
                     $extension = $file->getClientOriginalExtension(); 
                     // $destinationPath = 'images/' ; // for online link will be
-                    $destinationPath = 'public/images/' ; //for local link will be 
+                    $destinationPath = 'images/' ; //for local link will be 
                     $datetime = date('mdYhisa', time());
                     $complete_name=$destinationPath.$datetime.'.'.$extension;
                     $file_name=$datetime.'.'.$extension;
@@ -119,7 +119,8 @@ class StaffController extends Controller
          ]);
          $e_rows=$request->input('edu_year');
         $p_rows=$request->input('prof_year');
-        foreach($e_rows as $key=>$row) 
+        if(!empty($e_rows)){
+            foreach($e_rows as $key=>$row) 
         {                   
                     $edu_description = $request->edu_description[$key];
                     $edu_roll_no = $request->edu_roll_no[$key];
@@ -141,7 +142,9 @@ class StaffController extends Controller
             
                   ]);
            }
-           foreach($p_rows as $key=>$row) 
+        }
+         if(!empty($p_rows)){
+            foreach($p_rows as $key=>$row) 
         {
 
                    
@@ -165,6 +168,10 @@ class StaffController extends Controller
             
                   ]);
            }
+
+         }
+        
+           
 
       // }
        
@@ -212,7 +219,7 @@ class StaffController extends Controller
      */
     public function update(Request $request,$id)
     {
-       // dd($request->all());
+      // dd($request->all());
         $Reg1=StaffDetail::where('staff_id',$id)->delete();
         $Reg2=ProfessionalInfo::where('staff_id',$id)->delete();
         $Reg3=StaffSaleryInfo::where('staff_id',$id)->delete();
@@ -221,7 +228,7 @@ class StaffController extends Controller
                     // $fileName = $file->getClientOriginalName() ;
                     $extension = $file->getClientOriginalExtension(); 
                     // $destinationPath = 'images/' ; // for online link will be
-                    $destinationPath = 'public/images/' ; //for local link will be 
+                    $destinationPath = 'images/' ; //for local link will be 
                     $datetime = date('mdYhisa', time());
                     $complete_name=$destinationPath.$datetime.'.'.$extension;
                     $file_name=$datetime.'.'.$extension;
@@ -229,9 +236,7 @@ class StaffController extends Controller
             }else{
                 $file_name=null;
             }
-             $staff = Staff::find($id);
-
-        
+             $staff = Staff::find($id);        
             $staff->first_name=$request->first_name;
             $staff->last_name=$request->last_name;
             $staff->sur_name=$request->sur_name;
@@ -251,8 +256,7 @@ class StaffController extends Controller
             $staff->appointment_date=$request->appointment_date;
             $staff->image=$file_name;
          $staff->save();
-         // $staff_id=$staff->id;
-
+         $staff_id=$staff->id;
          StaffSaleryInfo::create([
             'staff_id'=>$id,
             'basic_salery'=>$request->basic_salery,
@@ -275,7 +279,9 @@ class StaffController extends Controller
          ]);
          $e_rows=$request->input('edu_year');
         $p_rows=$request->input('prof_year');
-        foreach($e_rows as $key=>$row) 
+
+         if(!empty($e_rows)){
+            foreach($e_rows as $key=>$row) 
         {                   
                     $edu_description = $request->edu_description[$key];
                     $edu_roll_no = $request->edu_roll_no[$key];
@@ -285,7 +291,7 @@ class StaffController extends Controller
                     $edu_percentage = $request->edu_percentage[$key];
                     $edu_board = $request->edu_board[$key];
                     StaffDetail::create([
-                    'staff_id'=>$id,
+                    'staff_id'=>$staff_id,
                     'edu_description'=>$edu_description,
                     'edu_roll_no'=>$edu_roll_no,
                     'edu_year'=>$edu_year,
@@ -297,7 +303,9 @@ class StaffController extends Controller
             
                   ]);
            }
-           foreach($p_rows as $key=>$row) 
+        }
+         if(!empty($p_rows)){
+            foreach($p_rows as $key=>$row) 
         {
 
                    
@@ -309,7 +317,7 @@ class StaffController extends Controller
                     $prof_percentage = $request->input('prof_percentage')[$key];
                     $prof_board = $request->input('prof_board')[$key];
                     ProfessionalInfo::create([
-                    'staff_id'=>$id,
+                    'staff_id'=>$staff_id,
                     'prof_description'=>$prof_description,
                     'prof_roll_no'=>$prof_roll_no,
                     'prof_year'=>$prof_year,
@@ -321,6 +329,8 @@ class StaffController extends Controller
             
                   ]);
            }
+
+         }
 
       
        
