@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Student;
+use App\Models\ClassSectionSession;
 use App\Models\School;
 use App\Models\EnrollmentRegister;
 use App\Models\Campus;
@@ -16,9 +17,9 @@ use App\Models\Level;
 use App\Models\Religion;
 use App\Models\Cast;
 use App\Models\StudentDetail;
+use App\Models\Session;
 use App\Models\BloodGroup;
 use Illuminate\Http\Request;
-use Session;
 class StudentController extends Controller
 {
     /**
@@ -31,7 +32,7 @@ class StudentController extends Controller
          // $data['students']=Student::with('studentDetail')->get();
          $data['students'] = Student::with('studentDetail')->get();
          // / dd($profiles);
-         Session::flash('message','Data Updateed Successfully');
+         // Session::flash('message','Data Updateed Successfully');
        return view('student-managment.index',$data);
     }
 
@@ -42,12 +43,17 @@ class StudentController extends Controller
      */
     public function create()
     {
+       $ss= Session::where('status',1)->first();
+        // dd($ss);
+        $data['classSectionSession'] = ClassSectionSession::with('class','section','session')->where('session_id',$ss->id)->get();
+             // dd($classSectionSession);
            $data['healths']=Health::all();
            $data['campuses']=Campus::all();
            $data['enrollments']=EnrollmentRegister::all();
            $data['occupations']=Occupation::all();
            $data['sections']=Section::all();
            $data['levels']=Level::all();
+
            $data['schools']=School::all();
            $data['countries']=Country::all();
            $data['provinces']=Province::all();

@@ -14,14 +14,14 @@ class CreateStudentClassesTable extends Migration
     public function up()
     {
         Schema::create('student_classes', function (Blueprint $table) {
-            $table->increments('id');
-               $table->string('name');
-                $table->tinyInteger('last_class')->default('0')->nullable();
-               $table->integer('enrollment_id')->unsigned()->nullable();
-               $table->foreign('enrollment_id')->references('id')->on('enrollment_registers')->onDelete('cascade')->onUpdate('cascade');
-              $table->integer('class_id')->unsigned()->nullable();
-              $table->foreign('class_id')->references('id')->on('levels')->onDelete('cascade')->onUpdate('cascade');
-            $table->timestamps();
+                $table->increments('id');
+               // $table->string('name');
+                $table->tinyInteger('status')->default('0')->nullable();
+                $table->integer('student_id')->unsigned()->nullable();
+                $table->foreign('student_id')->references('id')->on('students')->onDelete('cascade')->onUpdate('cascade');
+                $table->integer('class_section_section_id')->unsigned()->nullable();
+                $table->foreign('class_section_section_id')->references('id')->on('class_section_sessions')->onDelete('cascade')->onUpdate('cascade');
+               $table->timestamps();
         });
     }
 

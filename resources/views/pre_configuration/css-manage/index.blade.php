@@ -40,9 +40,9 @@
 													<!-- <span class="text-muted mt-1 font-weight-bold font-size-sm">Manage over 1600 class</span> -->
 												</h3>
 												<div class="card-toolbar">
-													<div class="dropdown dropdown-inline" data-toggle="tooltip" title="" data-placement="left" data-original-title="Quick actions">
+													<div class="dropdown dropdown-inline" data-toggle="tooltip"  data-placement="left" >
 														<!--begin::Trigger Modal-->
-														<a class="nav-link py-2 px-4 btn btn-primary"  href="{{route('levels.create')}}"><i class="ki ki-plus text-light"></i>Add</a>
+														<a class="nav-link py-2 px-4 btn btn-primary"  href="{{route('class_section_session.create')}}"><i class="ki ki-plus text-light"></i>Add</a>
 														
 														<!--end::Trigger Modal-->
 														<!--begin::Modal Content-->
@@ -61,40 +61,45 @@
 													<thead>
 														<tr>
 															<th>S.NO</th>
-															<th>Class Title</th>
-															<!-- <th>Route Name</th>
-															<th>Url</th> -->
+															<th>Class </th>
+															<th>Section </th>
+															<th>Session</th>
 															<th>Action</th>
 															
 														</tr>
 													</thead>
 													<tbody>
-														@foreach($freeClasses as $class)
-														<tr data-id={{$class->id}}>
+														@foreach($class_section_sessions as $css)
+														<tr data-id="{{$css->id}}">
 															<td>{{$loop->iteration}}</td>
-															<td>{{$class->name}}</td>
+															<td>{{$css->class->name}}</td>
+															<td>@if($css->section)
+                                                              {{ $css->section->name }}
+                                                               @endif
+                                                            </td>
+															<td>{{$css->session->name}}</td>
 															
 															<td><a href="{{route('levels.create')}}" class="btn btn-icon btn-light btn-hover-primary btn-sm">
 																				<i class="ki ki-plus text-success"></i>
 																			</a>
-																			<a href="{{url('class-delete',$class->id)}}" class="btn btn-icon btn-light btn-hover-danger btn-sm">
+																			<!-- <a href="{{url('class-delete',$css->id)}}" class="btn btn-icon btn-light btn-hover-danger btn-sm">
 																				<i class="fa fa-trash text-success"></i>
-																			</a>
-																			<a href="{{route('levels.edit',$class->id)}}" class="btn btn-icon btn-light btn-hover-primary btn-sm mx-3">
-																				<span class="svg-icon svg-icon-md svg-icon-primary">
+																			</a> -->
+																			<!-- <a href="{{route('levels.edit',$css->id)}}" class="btn btn-icon btn-light btn-hover-primary btn-sm mx-3">
+																				<span class="svg-icon svg-icon-md svg-icon-primary"> -->
 																					<!--begin::Svg Icon | path:assets/media/svg/icons/Communication/Write.svg-->
-																					<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="16px" height="16px" viewBox="0 0 24 24" version="1.1">
+																					<!-- <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="16px" height="16px" viewBox="0 0 24 24" version="1.1">
 																						<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
 																							<rect x="0" y="0" width="24" height="24" />
 																							<path d="M12.2674799,18.2323597 L12.0084872,5.45852451 C12.0004303,5.06114792 12.1504154,4.6768183 12.4255037,4.38993949 L15.0030167,1.70195304 L17.5910752,4.40093695 C17.8599071,4.6812911 18.0095067,5.05499603 18.0083938,5.44341307 L17.9718262,18.2062508 C17.9694575,19.0329966 17.2985816,19.701953 16.4718324,19.701953 L13.7671717,19.701953 C12.9505952,19.701953 12.2840328,19.0487684 12.2674799,18.2323597 Z" fill="#000000" fill-rule="nonzero" transform="translate(14.701953, 10.701953) rotate(-135.000000) translate(-14.701953, -10.701953)" />
 																							<path d="M12.9,2 C13.4522847,2 13.9,2.44771525 13.9,3 C13.9,3.55228475 13.4522847,4 12.9,4 L6,4 C4.8954305,4 4,4.8954305 4,6 L4,18 C4,19.1045695 4.8954305,20 6,20 L18,20 C19.1045695,20 20,19.1045695 20,18 L20,13 C20,12.4477153 20.4477153,12 21,12 C21.5522847,12 22,12.4477153 22,13 L22,18 C22,20.209139 20.209139,22 18,22 L6,22 C3.790861,22 2,20.209139 2,18 L2,6 C2,3.790861 3.790861,2 6,2 L12.9,2 Z" fill="#000000" fill-rule="nonzero" opaclass="0.3" />
 																						</g>
-																					</svg>
+																					</svg> -->
 																					<!--end::Svg Icon-->
-																				</span>
-																			</a>
+																				<!-- </span> -->
+																			<!-- </a> -->
 																			
-																			<!-- <form method="post" action='{{route("levels.destroy",$class->id) }}'>
+																			<!-- <form method="post" action='{{route("levels.destroy",$css->id) }}'>
 																				{{csrf_field()}}
 																				{{method_field('DELETE')}}
 																				<button type="submit" class=" btn-primary"><i class="fa fa-trash text-danger mr-5"></i></button>

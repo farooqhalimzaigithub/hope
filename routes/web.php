@@ -37,14 +37,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 route::group(['middleware'=> ['auth', 'CheckUrlAccess']], function(){
 
        view()->composer('*',function($view){
-    //        $modulesAll=Module::where('parent_id',0)->get();
-    //         foreach ($modulesAll as $module) 
-    //           {
-    //          $module->children = Module::where('parent_id',$module->id)->where('visibility', '=', 1)->get();
-    //           }
-    //    $view->with('modulesAll',$modulesAll);
-       
-        $role_id = 1;// Auth::user()->role_id;
+        $role_id = 1;//Auth::user()->role_id;
         $modulesAll = DB::table('modules')
         ->join('permissions', 'modules.id', '=', 'permissions.module_id')//perm instad of module_right
         ->where('parent_id',0)

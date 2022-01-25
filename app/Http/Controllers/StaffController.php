@@ -106,7 +106,7 @@ class StaffController extends Controller
             'debate_incharge'=>$request->debate_incharge,
             'sport_incharge'=>$request->sport_incharge,
             'account_allowance'=>$request->account_allowance,
-            'lab_incharge'=>$request->lab_incharge,
+             'lab_incharge'=>$request->lab_incharge,
             'house_incharge'=>$request->house_incharge,
             'others'=>$request->others,
             'others2'=>$request->others2,

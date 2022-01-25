@@ -138,10 +138,6 @@
                               <span class="menu-text">School Managment System</span>
                            </a>
                         </li> -->
-                        <!-- <li class="menu-section">
-                           <h4 class="menu-text">Layout</h4>
-                           <i class="menu-icon ki ki-bold-more-hor icon-md"></i>
-                        </li> -->
                         @foreach($modulesAll as $module)
                         <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
                            <a href="javascript:;" class="menu-link menu-toggle">
