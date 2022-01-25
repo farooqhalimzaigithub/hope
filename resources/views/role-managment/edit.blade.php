@@ -32,38 +32,24 @@
 						<!--end::Input-->
 					</div>
 				</div>
-				<div class="container-fluid">
-					<!-- <pre/> -->
-					
-					
- 
-  <p> Asign Permission</p>
 
-  <div class="row">
+<div class="container-fluid modules-wrapper">
+	<div>check all <label><input type="checkbox" onchange="checkUncheckAll(this)"></label></div>
+	<hr />
+		@foreach($modules1 as $module)
+<div class="whole" >
+	<h6><label class="pointer">{{$module->name}}&nbsp;<input class="Input_change" type="checkbox"  name="module_id[]" value="{{$module->id}}" onchange="toggleCheckBoxes(this)" {{ in_array($module->id, $permissions) ? 'checked' : '' }}/></label></h6>
 
-  	@foreach($modules as $module)
-
-    <div class="col-3 "><input class="Input_change" type="checkbox"  name="module_id[]" value="{{$module->id}}" id="name_id" {{ in_array($module->id, $permissions) ? 'checked' : '' }}>&nbsp;{{$module->name}}</div>
-    @endforeach
-  </div>
- 
+<div class="row" >
+	@foreach($module->children as $child)
+	<div class="col-3 "><label class="pointer"><input class="Input_change" type="checkbox"  name="module_id[]" value="{{$child->id}}" {{ in_array($child->id, $permissions) ? 'checked' : '' }}>&nbsp;{{$child->name}}</label></div>
+	@endforeach
 </div>
-
-
-					
-					<!-- <div class="col-xl-3">
-						<div class="form-group">
-							 <label class="" for="name_id">Modules :</label>
-						<ul class="inline">
-      @foreach($modules as $module)
-    
-    <li class="inline" id="name_id" style="text-decoration: none; list-style: none;"><i class="lni-check-mark-circle"></i>{{$module->name}}  <input type="checkbox"  data-serv_id="{{$module->id}}" class="custom_module module_checked"  data-id="{{$module->id}}" name="module_id[]"  value="{{$module->id}}"  id="name_id" {{ in_array($module->id, $permissions) ? 'checked' : '' }} /></li>
-    @endforeach
-    </ul>
-                  
-						</div>
-					</div> -->
-					
+<hr />
+</div>
+@endforeach
+</div>
+				
 				
 					<div class="d-flex justify-content-between border-top mt-0 pt-10 pb-10">
 						<!-- <div class="mr-2">
@@ -91,3 +77,28 @@
 							<!--end::Container-->
 						
 @endsection
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+
+  function toggleCheckBoxes(e){
+	var $checks  = $(e).parents('.whole').find(".Input_change");
+   	var $ckall = $(e);
+
+    $.each($checks, function(){
+        $(this).prop("checked", $ckall.prop('checked'));
+    });
+  }
+
+  function checkUncheckAll(e){
+
+	var $checks  = $(e).parents('.modules-wrapper').find(".Input_change");
+   	var $ckall = $(e);
+
+    $.each($checks, function(){
+        $(this).prop("checked", $ckall.prop('checked'));
+    });
+  }
+
+</script>

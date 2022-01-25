@@ -86,7 +86,15 @@ class RoleController extends Controller
     public function edit($id)
     {   
         $data['role']=Role::find($id);
-        $data['modules']=Module::all();
+
+        $modules1=Module::where('parent_id',0)->get();
+        // dd($modules);         
+        foreach ($modules1 as $module) {
+
+            $module->children = Module::where('parent_id',$module->id)->get();
+        }
+
+        $data['modules1'] = $modules1;
         $data['permissions']=Permission::where('role_id',$id)->pluck('module_id')->toArray();
 
         return view('role-managment.edit',$data);
