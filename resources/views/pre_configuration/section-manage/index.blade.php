@@ -35,13 +35,13 @@
 											<!--begin::Header-->
 											<div class="card-header flex-wrap border-0 pt-6 pb-0">
 												<h3 class="card-title align-items-start flex-column">
-													<span class="card-label font-weight-bolder text-dark">Details</span>
+													<span class="card-label font-weight-bolder text-dark">List</span>
 													<!-- <span class="text-muted mt-1 font-weight-bold font-size-sm">Manage over 1600 section</span> -->
 												</h3>
 												<div class="card-toolbar">
 													<div class="dropdown dropdown-inline" data-toggle="tooltip" title="" data-placement="left" data-original-title="Quick actions">
 														<!--begin::Trigger Modal-->
-														<a class="nav-link py-2 px-4 btn btn-primary"  href="{{route('sections.create')}}"><i class="ki ki-plus text-light"></i>  Add New</a>
+														<a class="nav-link py-2 px-4 btn btn-primary"  href="{{route('sections.create')}}"><i class="ki ki-plus text-light"></i>  Add</a>
 														
 														<!--end::Trigger Modal-->
 														<!--begin::Modal Content-->
@@ -59,7 +59,7 @@
 												<table id="example" class="table table-striped table-bordered" style="width:100%">
 													<thead>
 														<tr>
-															<th>#</th>
+															<th>S.NO</th>
 															<th>Section</th>
 															<!-- <th>Route Name</th>
 															<th>Url</th> -->

@@ -18,11 +18,7 @@ use App\Models\Module;
 // Route::get('/', function () {
 //     return view('base.main');
 // });
-Route::get('/', function () {
 
-	
-    return view('layouts.main');
-});
  
 Route::get('/clear-all', function() {
     $exitCode = Artisan::call('config:clear');
@@ -38,6 +34,11 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 // route::group(['middleware'=> ['auth', 'CheckUrlAccess'],'prefix'=> 'admin'], function(){
 // 	});
 route::group(['middleware'=> ['auth', 'CheckUrlAccess']], function(){
+    Route::get('/', function () {
+
+    
+    return view('layouts.main');
+});
 
        view()->composer('*',function($view){
     //        $modulesAll=Module::where('parent_id',0)->get();
@@ -46,13 +47,15 @@ route::group(['middleware'=> ['auth', 'CheckUrlAccess']], function(){
     //          $module->children = Module::where('parent_id',$module->id)->where('visibility', '=', 1)->get();
     //           }
     //    $view->with('modulesAll',$modulesAll);
-       
-        $role_id = Auth::user()->role_id;
+       if (Auth::check())
+{
+   $role_id = Auth::user()->role_id;
         $modulesAll = DB::table('modules')
         ->join('permissions', 'modules.id', '=', 'permissions.module_id')//perm instad of module_right
         ->where('parent_id',0)
         ->where('role_id', '=', $role_id)
         ->get();
+
         foreach ($modulesAll as $module) {
             $module->children = DB::table('modules')
             ->join('permissions', 'modules.id', '=', 'permissions.module_id')//perm instad of module_right
@@ -62,7 +65,12 @@ route::group(['middleware'=> ['auth', 'CheckUrlAccess']], function(){
             ->get();
         }
         $view->with('modulesAll',$modulesAll);
+}else{
+    return redirect()->route('login');
+}
+        
 
+       
         });
 //@@@@@@@@@@@@@@@@@@@@@@@$ for resource routes $@@@@@@@@@@@@@@@@@@@@@@@@@
 Route::resource('users','App\Http\Controllers\UserController'); //done
@@ -78,6 +86,9 @@ Route::resource('provinces','App\Http\Controllers\ProvinceController'); //done
 Route::resource('countries','App\Http\Controllers\CountryController'); //done
 Route::resource('levels','App\Http\Controllers\LevelController'); //done
 Route::resource('sections','App\Http\Controllers\SectionController'); //done
+Route::resource('sessions','App\Http\Controllers\SessionController'); //done
+Route::resource('free_classes','App\Http\Controllers\FreeClassController'); //done
+Route::resource('class_section_session','App\Http\Controllers\ClassSectionSessionController'); //done
 Route::resource('schools','App\Http\Controllers\SchoolController'); //done
 Route::resource('campuses','App\Http\Controllers\CampusController'); // done
 Route::resource('branches','App\Http\Controllers\BranchController'); //done

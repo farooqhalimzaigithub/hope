@@ -8,7 +8,7 @@
 										<!--begin::Card-->
 										<!-- <div class="card card-custom gutter-b example example-compact" style="border : 1px solid yellow;"> -->
 											<div class="card-header">
-												<h3 class="card-title">Section</h3>
+												<h3 class="card-title">Session</h3>
 												<div class="card-toolbar">
 													<div class="example-tools justify-content-center">
 														<span class="example-toggle" data-toggle="tooltip" title="View code"></span>
@@ -16,17 +16,28 @@
 													</div>
 												</div>
 											</div>
-											<form class="form  mt-4"  method="post" action="{{route('sections.store')}}" >
+											<form class="form  mt-4"  method="post" action="{{route('sessions.store')}}" >
 			@csrf
 
 				<!-- <h4 class="mb-8 font-weight-bold text-dark">Module Details</h4> -->
-				<div class="row">
+				<div class="row" >
 					<div class="col-xl-6">
 						<!--begin::Input-->
 						<div class="form-group">
-							<label>Section Name <span class="text-danger">*</span></label>
+							<label>Session Name<span class="text-danger">*</span></label>
 							<input type="text" class="form-control " name="name"  required="" />
 							<!-- <span class="form-text text-muted">Please enter Name</span> -->
+						</div>
+						<!--end::Input-->
+					</div>
+					<div class="col-xl-6">
+						<!--begin::Input-->
+						<div class="form-group">
+							<label>Session Status<span class="text-danger">*</span></label>
+							<select  name="status" class="form-control select2" required="true">
+								<option value="1">Start</option>
+								<option value="0">End</option>
+							</select>
 						</div>
 						<!--end::Input-->
 					</div>

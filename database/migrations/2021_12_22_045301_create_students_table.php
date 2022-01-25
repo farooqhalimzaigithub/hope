@@ -41,6 +41,13 @@ class CreateStudentsTable extends Migration
              // $table->foreign('school_id')->references('id')->on('schools')->onDelete('cascade')->onUpdate('cascade');
              $table->integer('campus_id')->unsigned()->nullable();
              // $table->foreign('campus_id')->references('id')->on('campuses')->onDelete('cascade')->onUpdate('cascade');
+
+             $table->integer('user_id')->unsigned()->nullable();
+            // $table->integer('css_id')->unsigned()->nullable();
+             // $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
+
+             $table->integer('branch_id')->unsigned()->nullable();
+             // $table->foreign('branch_id')->references('id')->on('branches')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
 
         });

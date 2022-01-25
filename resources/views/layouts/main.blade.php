@@ -137,15 +137,58 @@
                               </span>
                               <span class="menu-text">School Managment System</span>
                            </a>
-<<<<<<< HEAD
+
                         </li> -->
                         <!-- <li class="menu-section">
-=======
                         </li>
-                        <!-- <li class="menu-section">
+                        <li class="menu-section">
                            <h4 class="menu-text">Custom</h4>
                            <i class="menu-icon ki ki-bold-more-hor icon-md"></i>
                         </li> -->
+                        <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
+                           <a href="javascript:;" class="menu-link menu-toggle">
+                              <span class="svg-icon menu-icon">
+                                 <!--begin::Svg Icon | path:assets/media/svg/icons/Shopping/Box2.svg-->
+                                 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                       <rect x="0" y="0" width="24" height="24" />
+                                       <path d="M4,9.67471899 L10.880262,13.6470401 C10.9543486,13.689814 11.0320333,13.7207107 11.1111111,13.740321 L11.1111111,21.4444444 L4.49070127,17.526473 C4.18655139,17.3464765 4,17.0193034 4,16.6658832 L4,9.67471899 Z M20,9.56911707 L20,16.6658832 C20,17.0193034 19.8134486,17.3464765 19.5092987,17.526473 L12.8888889,21.4444444 L12.8888889,13.6728275 C12.9050191,13.6647696 12.9210067,13.6561758 12.9368301,13.6470401 L20,9.56911707 Z" fill="#000000" />
+                                       <path d="M4.21611835,7.74669402 C4.30015839,7.64056877 4.40623188,7.55087574 4.5299008,7.48500698 L11.5299008,3.75665466 C11.8237589,3.60013944 12.1762411,3.60013944 12.4700992,3.75665466 L19.4700992,7.48500698 C19.5654307,7.53578262 19.6503066,7.60071528 19.7226939,7.67641889 L12.0479413,12.1074394 C11.9974761,12.1365754 11.9509488,12.1699127 11.9085461,12.2067543 C11.8661433,12.1699127 11.819616,12.1365754 11.7691509,12.1074394 L4.21611835,7.74669402 Z" fill="#000000" opacity="0.3" />
+                                    </g>
+                                 </svg>
+                                 <!--end::Svg Icon-->
+                              </span>
+                              <span class="menu-text">Class</span>
+                              <i class="menu-arrow"></i>
+                           </a>
+                           <div class="menu-submenu">
+                              <i class="menu-arrow"></i>
+                              <ul class="menu-subnav">
+                                 <li class="menu-item menu-item-parent" aria-haspopup="true">
+                                    <!-- <span class="menu-link">
+                                    <span class="menu-text">Bootstrap</span>
+                                    </span> -->
+                                 </li>
+                                 <li class="menu-item" aria-haspopup="true">
+                                    <a href="{{route('class_section_session.index')}}" class="menu-link">
+                                    <i class="menu-bullet menu-bullet-dot">
+                                    <span></span>
+                                    </i>
+                                    <span class="menu-text">Add</span>
+                                    </a>
+                                 </li>
+                                  <li class="menu-item" aria-haspopup="true">
+                                    <a href="{{route('class_section_session.create')}}" class="menu-link">
+                                    <i class="menu-bullet menu-bullet-dot">
+                                    <span></span>
+                                    </i>
+                                    <span class="menu-text">List</span>
+                                    </a>
+                                 </li>
+                                 
+                              </ul>
+                           </div>
+                        </li>
                         <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
                            <a href="javascript:;" class="menu-link menu-toggle">
                               <span class="svg-icon menu-icon">
@@ -234,13 +277,165 @@
                               </ul>
                            </div>
                         </li>
+                       <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
+                           <a href="javascript:;" class="menu-link menu-toggle">
+                              <span class="svg-icon menu-icon">
+                                 <!--begin::Svg Icon | path:assets/media/svg/icons/Shopping/Barcode-read.svg-->
+                                 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                       <rect x="0" y="0" width="24" height="24" />
+                                       <rect fill="#000000" opacity="0.3" x="4" y="4" width="8" height="16" />
+                                       <path d="M6,18 L9,18 C9.66666667,18.1143819 10,18.4477153 10,19 C10,19.5522847 9.66666667,19.8856181 9,20 L4,20 L4,15 C4,14.3333333 4.33333333,14 5,14 C5.66666667,14 6,14.3333333 6,15 L6,18 Z M18,18 L18,15 C18.1143819,14.3333333 18.4477153,14 19,14 C19.5522847,14 19.8856181,14.3333333 20,15 L20,20 L15,20 C14.3333333,20 14,19.6666667 14,19 C14,18.3333333 14.3333333,18 15,18 L18,18 Z M18,6 L15,6 C14.3333333,5.88561808 14,5.55228475 14,5 C14,4.44771525 14.3333333,4.11438192 15,4 L20,4 L20,9 C20,9.66666667 19.6666667,10 19,10 C18.3333333,10 18,9.66666667 18,9 L18,6 Z M6,6 L6,9 C5.88561808,9.66666667 5.55228475,10 5,10 C4.44771525,10 4.11438192,9.66666667 4,9 L4,4 L9,4 C9.66666667,4 10,4.33333333 10,5 C10,5.66666667 9.66666667,6 9,6 L6,6 Z" fill="#000000" fill-rule="nonzero" />
+                                    </g>
+                                 </svg>
+                                 <!--end::Svg Icon-->
+                              </span>
+                              <span class="menu-text">Free Configuration</span>
+                              <i class="menu-arrow"></i>
+                           </a>
+                           <div class="menu-submenu">
+                              <i class="menu-arrow"></i>
+                              <ul class="menu-subnav">
+                                 <li class="menu-item menu-item-parent" aria-haspopup="true">
+                                    <span class="menu-link">
+                                       <span class="menu-text">Free Configuration</span>
+                                    </span>
+                                 </li>
+                                 <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
+                                    <a href="javascript:;" class="menu-link menu-toggle">
+                                       <i class="menu-bullet menu-bullet-dot">
+                                          <span></span>
+                                       </i>
+                                       <span class="menu-text">Session</span>
+                                       <i class="menu-arrow"></i>
+                                    </a>
+                                    <div class="menu-submenu">
+                                       <i class="menu-arrow"></i>
+                                       <ul class="menu-subnav">
+                                          <li class="menu-item" aria-haspopup="true">
+                                             <a href="{{route('sessions.create')}}" class="menu-link">
+                                                <i class="menu-bullet menu-bullet-dot">
+                                                   <span></span>
+                                                </i>
+                                                <span class="menu-text">Add</span>
+                                             </a>
+                                          </li>
+                                          <li class="menu-item" aria-haspopup="true">
+                                             <a href="{{route('sessions.index')}}" class="menu-link">
+                                                <i class="menu-bullet menu-bullet-dot">
+                                                   <span></span>
+                                                </i>
+                                                <span class="menu-text">List</span>
+                                             </a>
+                                          </li>
+                                         
+                                       </ul>
+                                    </div>
+                                 </li>
+                                 <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
+                                    <a href="javascript:;" class="menu-link menu-toggle">
+                                       <i class="menu-bullet menu-bullet-dot">
+                                          <span></span>
+                                       </i>
+                                       <span class="menu-text">Section</span>
+                                       <i class="menu-arrow"></i>
+                                    </a>
+                                    <div class="menu-submenu">
+                                       <i class="menu-arrow"></i>
+                                       <ul class="menu-subnav">
+                                          <li class="menu-item" aria-haspopup="true">
+                                             <a href="{{route('sections.create')}}" class="menu-link">
+                                                <i class="menu-bullet menu-bullet-dot">
+                                                   <span></span>
+                                                </i>
+                                                <span class="menu-text">Add</span>
+                                             </a>
+                                          </li>
+                                          <li class="menu-item" aria-haspopup="true">
+                                             <a href="{{route('sections.index')}}" class="menu-link">
+                                                <i class="menu-bullet menu-bullet-dot">
+                                                   <span></span>
+                                                </i>
+                                                <span class="menu-text">List</span>
+                                             </a>
+                                          </li>
+                                         
+                                       </ul>
+                                    </div>
+                                 </li>
+                                 <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
+                                    <a href="javascript:;" class="menu-link menu-toggle">
+                                       <i class="menu-bullet menu-bullet-dot">
+                                          <span></span>
+                                       </i>
+                                       <span class="menu-text">Class</span>
+                                       <i class="menu-arrow"></i>
+                                    </a>
+                                    <div class="menu-submenu">
+                                       <i class="menu-arrow"></i>
+                                       <ul class="menu-subnav">
+                                          <li class="menu-item" aria-haspopup="true">
+                                             <a href="{{route('free_classes.create')}}" class="menu-link">
+                                                <i class="menu-bullet menu-bullet-dot">
+                                                   <span></span>
+                                                </i>
+                                                <span class="menu-text">Add</span>
+                                             </a>
+                                          </li>
+                                          <li class="menu-item" aria-haspopup="true">
+                                             <a href="{{route('free_classes.index')}}" class="menu-link">
+                                                <i class="menu-bullet menu-bullet-dot">
+                                                   <span></span>
+                                                </i>
+                                                <span class="menu-text">List</span>
+                                             </a>
+                                          </li>
+                                         
+                                       </ul>
+                                    </div>
+                                 </li>
+                                 <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
+                                    <a href="javascript:;" class="menu-link menu-toggle">
+                                       <i class="menu-bullet menu-bullet-dot">
+                                          <span></span>
+                                       </i>
+                                       <span class="menu-text">Fee</span>
+                                       <i class="menu-arrow"></i>
+                                    </a>
+                                    <div class="menu-submenu">
+                                       <i class="menu-arrow"></i>
+                                       <ul class="menu-subnav">
+                                          <li class="menu-item" aria-haspopup="true">
+                                             <a href="custom/pages/login/login-1.html" class="menu-link">
+                                                <i class="menu-bullet menu-bullet-dot">
+                                                   <span></span>
+                                                </i>
+                                                <span class="menu-text">Add</span>
+                                             </a>
+                                          </li>
+                                          <li class="menu-item" aria-haspopup="true">
+                                             <a href="custom/pages/login/login-2.html" class="menu-link">
+                                                <i class="menu-bullet menu-bullet-dot">
+                                                   <span></span>
+                                                </i>
+                                                <span class="menu-text">List</span>
+                                             </a>
+                                          </li>
+                                         
+                                       </ul>
+                                    </div>
+                                 </li>
+                                
+                              </ul>
+                           </div>
+                        </li>
                         
                         
                         <li class="menu-section">
->>>>>>> f3ca509a59a5723c965ed4a75b84a31ac2056c22
+
                            <h4 class="menu-text">Layout</h4>
                            <i class="menu-icon ki ki-bold-more-hor icon-md"></i>
-                        </li> -->
+                        </li> 
                         @foreach($modulesAll as $module)
                         <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
                            <a href="javascript:;" class="menu-link menu-toggle">
