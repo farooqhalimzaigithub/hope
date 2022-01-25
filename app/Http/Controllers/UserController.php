@@ -15,9 +15,8 @@ class UserController extends Controller
      */
     public function index()
     {
-       $data['users']=User::all();
-       // dd($data);
-       return view('user-managment.index',$data);
+       $data['users']= User::all();
+        return view('user-managment.index',$data);
     }
 
     /**
@@ -27,7 +26,7 @@ class UserController extends Controller
      */
     public function create()
     {
-         $data['roles']=Role::all();
+         $data['roles']= Role::all();
         return view('user-managment.create',$data);
     }
 
@@ -61,8 +60,8 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-         // dd('okk');
        $data['user']=User::find($id);
+       $data['roles']=Role::all();
        return view('user-managment.edit',$data);
     }
 
@@ -76,8 +75,10 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         $updateUser= User::where('id',$id)->update([
-      'name'=>$request->name,'email'=>$request->email
-       ]);
+                    'name' => $request->name,
+                    'email'=>$request->email,
+                    'role_id'=> $request->role_id
+                ]);
         if($updateUser)
          {
 
@@ -97,10 +98,7 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        // dd('okk');
-         User::find($id)->delete();
-    // return redirect()->route('branches.index')
-    //                 ->with('success','Brand deleted successfully');
-            return back()->with('error','User deleted successfully');
-}
+        User::find($id)->delete();
+        return back()->with('error','User deleted successfully');
+    }
 }

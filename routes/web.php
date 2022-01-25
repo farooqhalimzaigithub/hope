@@ -34,9 +34,6 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-
-// route::group(['middleware'=> ['auth', 'CheckUrlAccess'],'prefix'=> 'admin'], function(){
-// 	});
 route::group(['middleware'=> ['auth', 'CheckUrlAccess']], function(){
 
        view()->composer('*',function($view){
@@ -47,7 +44,7 @@ route::group(['middleware'=> ['auth', 'CheckUrlAccess']], function(){
     //           }
     //    $view->with('modulesAll',$modulesAll);
        
-        $role_id = Auth::user()->role_id;
+        $role_id = 1;// Auth::user()->role_id;
         $modulesAll = DB::table('modules')
         ->join('permissions', 'modules.id', '=', 'permissions.module_id')//perm instad of module_right
         ->where('parent_id',0)

@@ -64,7 +64,7 @@
 															<th>#</th>
 															<th>Name</th>
 															<th>Email</th>
-															
+															<th>Role</th>
 															<th>Action</th>
 															
 														</tr>
@@ -75,6 +75,7 @@
 															<td>{{$loop->iteration}}</td>
 															<td>{{$user->name}}</td>
 															<td>{{$user->email}}</td>
+															<td>{{$user->role_id}}</td>
 															
 															<td><a href="{{route('users.create')}}" class="btn btn-icon btn-light btn-hover-primary btn-sm">
 																				<i class="ki ki-plus text-success"></i>

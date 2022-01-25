@@ -20,29 +20,34 @@
 			                               @csrf
 			                               @method('PUT')
 			                               <div class="row" > 
-									<div class="col-lg-6">
+									<div class="col-lg-4">
 										<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Name</label>
 
 										
 											<input type="text" id="form-field-1" placeholder="Username" name="name" value="{{$user->name}}" class="form-control"/>
 										
 									</div>
-									<div class="col-lg-6">
+									<div class="col-lg-4">
 										<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Email</label>
 
 										
 											<input type="text" id="form-field-1" placeholder="Username"  value="{{$user->email}}" name="email" class="form-control" />
 										
 									</div>
+									<div class="col-lg-4">
+										<div class="form-group">
+											<label>Parent</label>
+											<select name="role_id" class="form-control">
+												@foreach($roles as $role)
+												<option value="{{$role->id}}" {{ $user->role_id == $role->id ? 'selected' : '' }}>{{$role->name}}</option>
+												@endforeach
+											</select>
+										</div>
 									</div>
-									<div class="d-flex justify-content-between border-top mt-0 pt-10 pb-10">
-						<!-- <div class="mr-2">
-							<button type="button" class="btn btn-light-primary font-weight-bolder text-uppercase px-9 py-4" data-wizard-type="action-prev">Back</button>
-						</div> -->
-						<div>
-							<button type="submit" class="btn btn-primary font-weight-bolder text-uppercase px-9 py-4">Update</button>
-							
-						</div>
+									</div>
+									<div class="d-flex justify-content-between border-top mt-5 pt-5 pb-10">
+										<button type="submit" class="btn btn-primary font-weight-bolder text-uppercase px-9 py-4">Update</button>
+
 					</div>
 								</form>
 								</div>

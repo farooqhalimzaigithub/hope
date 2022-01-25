@@ -18,8 +18,7 @@ class CheckUrlAccessMiddleware
     public function handle(Request $request, Closure $next)
     {
         $role_id = Auth::user()->role_id;
-        $permited_functions =
-        DB::table('modules')
+        $permited_functions = DB::table('modules')
         ->join('permissions', 'modules.id', '=', 'permissions.module_id')//perm instad of module_right
         ->where('role_id', '=', $role_id)
         ->pluck('route_name')->toArray();
