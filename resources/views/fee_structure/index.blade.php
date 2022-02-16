@@ -38,13 +38,13 @@
 						<!--begin::Header-->
 						<div class="card-header flex-wrap border-0 pt-6 pb-0">
 							<h3 class="card-title align-items-start flex-column">
-								<span class="card-label font-weight-bolder text-dark">Fee Tarrif</span>
-								<span class="text-muted mt-1 font-weight-bold font-size-sm">Manage over 1600 Fee Tarrif</span>
+								<span class="card-label font-weight-bolder text-dark">Fee Structure</span>
+								<!-- <span class="text-muted mt-1 font-weight-bold font-size-sm">Manage over 1600 Fee Tarrif</span> -->
 							</h3>
 							<div class="card-toolbar">
-								<div class="dropdown dropdown-inline" data-toggle="tooltip" title="" data-placement="left" data-original-title="Quick actions">
+								<div class="dropdown dropdown-inline" data-toggle="tooltip" title="">
 									<!--begin::Trigger Modal-->
-									<a class="nav-link py-2 px-4 btn btn-primary"  href="{{route('fee_tarrifs.create')}}"><i class="ki ki-plus text-light"></i>  Add New</a>
+									<a class="nav-link py-2 px-4 btn btn-primary"  href="{{route('fee_structures.create')}}"><i class="ki ki-plus text-light"></i>  Add New</a>
 
 									<!--end::Trigger Modal-->
 									<!--begin::Modal Content-->
@@ -63,27 +63,29 @@
 								<thead>
 									<tr>
 										<th>#</th>
+										<th> Session</th>
 										<th>Class Name</th>
-										<th>Fee Name</th>
+										<th>Fee Type</th>
 										<th>Amount</th>
 										<th>Action</th>
 
 									</tr>
 								</thead>
 								<tbody>
-									@foreach($fee_tarrifs as $fee_tarrif)
-									<tr data-id={{$fee_tarrif->id}}>
+									@foreach($fee_structures as $fee_structure)
+									<tr data-id="{{$fee_structure->id}}">
 										<td>{{$loop->iteration}}</td>
-										<td>{{$fee_tarrif->level->name}}</td>
-										<td>{{$fee_tarrif->fee->name}}</td>
-										<td>{{$fee_tarrif->amount}}</td>
-										<td><a href="{{route('fee_tarrifs.create')}}" class="btn btn-icon btn-light btn-hover-primary btn-sm">
+										<td>{{$fee_structure->session->name}}</td>
+										<td>{{$fee_structure->css->class->name}}</td>
+										<td>{{$fee_structure->feeType->name}}</td>
+										<td>{{$fee_structure->amount}}</td>
+										<td><a href="{{route('fee_structures.create')}}" class="btn btn-icon btn-light btn-hover-primary btn-sm">
 											<i class="ki ki-plus text-success"></i>
 										</a>
-										<a href="{{url('fee_tarrif-delete',$fee_tarrif->id)}}" class="btn btn-icon btn-light btn-hover-danger btn-sm">
+										<a href="{{url('fee_structure-delete',$fee_structure->id)}}" class="btn btn-icon btn-light btn-hover-danger btn-sm">
 											<i class="fa fa-trash text-success"></i>
 										</a>
-										<a href="{{route('fee_tarrifs.edit',$fee_tarrif->id)}}" class="btn btn-icon btn-light btn-hover-primary btn-sm mx-3">
+										<a href="{{route('fee_structures.edit',$fee_structure->id)}}" class="btn btn-icon btn-light btn-hover-primary btn-sm mx-3">
 											<span class="svg-icon svg-icon-md svg-icon-primary">
 												<!--begin::Svg Icon | path:assets/media/svg/icons/Communication/Write.svg-->
 												<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="16px" height="16px" viewBox="0 0 24 24" version="1.1">
@@ -97,7 +99,7 @@
 											</span>
 										</a>
 
-																			<!-- <form method="post" action='{{route("fee_tarrifs.destroy",$fee_tarrif->id) }}'>
+																			<!-- <form method="post" action='{{route("fee_structures.destroy",$fee_structure->id) }}'>
 																				{{csrf_field()}}
 																				{{method_field('DELETE')}}
 																				<button type="submit" class=" btn-primary"><i class="fa fa-trash text-danger mr-5"></i></button>

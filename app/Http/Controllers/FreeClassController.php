@@ -62,9 +62,11 @@ class FreeClassController extends Controller
      * @param  \App\Models\FreeClass  $freeClass
      * @return \Illuminate\Http\Response
      */
-    public function edit(FreeClass $freeClass)
+    public function edit($id)
     {
-        //
+        $data['level']=FreeClass::find($id);
+        // dd($data['level']);
+        return view('pre_configuration.class-manage.edit',$data);
     }
 
     /**
@@ -74,9 +76,12 @@ class FreeClassController extends Controller
      * @param  \App\Models\FreeClass  $freeClass
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, FreeClass $freeClass)
+    public function update(Request $request, $id)
     {
-        //
+        $level =FreeClass::find($id);
+      $level->name=$request->name;
+      $level->save();
+       return redirect()->route('free_classes.index')->with('info','Data Update successfully!');
     }
 
     /**

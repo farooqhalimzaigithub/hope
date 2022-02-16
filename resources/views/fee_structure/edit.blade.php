@@ -16,32 +16,40 @@
               </div>
             </div>
           </div>
-          <form class="form  mt-12"  method="post" action="{{route('fee_tarrifs.update',$fee_tarrif->id)}}" >
+          <form class="form  mt-12"  method="post" action="{{route('fee_structures.update',$fee_structure->id)}}" >
             @csrf
             @method('PUT')
 
             <!-- <h4 class="mb-8 font-weight-bold text-dark">Module Details</h4> -->
             <div class="row">
               <div class="form-group col-lg-4">
+                <label for="inputState">Session</label>
+                <select id="inputState" name="session_id" class="form-control ">
+                  <option selected>Choose Session</option>
+                  @foreach($sessions as $session)
+                  <option value="{{$session->id}}">{{$session->name}}</option>
+                  @endforeach
+                </select>
+              </div>
+              <div class="form-group col-lg-4">
                 <label for="inputState">Class |Level</label>
-                <select id="inputState" name="class_id" class="form-control ">
+                <select id="inputState" name="class_section_session_id" class="form-control ">
                   <option selected>Choose Class</option>
                   @foreach($classes as $class)
-                  @if($class->id==$fee_tarrif->class_id)
+                  @if($class->id==$fee_structure->class_id)
                   <option value="{{$class->id}}" selected="">{{$class->name}}</option>
                   @else
                    <option value="{{$class->id}}">{{$class->name}}</option>
-
                   @endif
                   @endforeach
                 </select>
               </div>
               <div class="form-group col-lg-4">
-                <label for="inputState">Fee</label>
-                <select id="inputState" name="fee_id" class="form-control ">
-                  <option selected>Choose Fee</option>
-                  @foreach($fees as $fee)
-                  @if($fee->id==$fee_tarrif->fee_id)
+                <label for="inputState">Fee Type</label>
+                <select id="inputState" name="fee_type_id" class="form-control ">
+                  <option selected>Choose Fee Type</option>
+                  @foreach($fee_category as $fee)
+                  @if($fee->id==$fee_structure->fee_type_id)
                   <option value="{{$fee->id}}" selected="">{{$fee->name}}</option>
                   @else
                   <option value="{{$fee->id}}">{{$fee->name}}</option>
@@ -54,7 +62,7 @@
                 <!--begin::Input-->
                 <div class="form-group">
                   <label> Amount</label>
-                  <input type="number" class="form-control  "  value="0" name="amount"  required="" />
+                  <input type="number" class="form-control  "  value="{{$fee_structure->amount}}" name="amount"  required="" />
                   <!-- <span class="form-text text-muted">Please enter Number</span> -->
                 </div>
                 <!--end::Input-->

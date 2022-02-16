@@ -39,7 +39,7 @@ class CreateStudentDetailsTable extends Migration
                $table->integer('city_id')->unsigned()->nullable();
              // $table->foreign('city_id')->references('id')->on('cities')->onDelete('cascade')->onUpdate('cascade');
                 $table->integer('student_id')->unsigned()->nullable();
-             $table->foreign('student_id')->references('id')->on('students')->onDelete('cascade')->onUpdate('cascade');
+             // $table->foreign('student_id')->references('id')->on('students')->onDelete('cascade')->onUpdate('cascade');
                
                $table->string('guardian_mobile_number')->nullable();
                $table->string('clc_no')->nullable();

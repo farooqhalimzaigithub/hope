@@ -108,6 +108,7 @@ Route::resource('healths','App\Http\Controllers\HealthController'); //done
 Route::resource('occupations','App\Http\Controllers\OccupationController'); //done
 Route::resource('class_tarrifs','App\Http\Controllers\ClassTarrifController'); //done
 Route::resource('fee_tarrifs','App\Http\Controllers\FeeTarrifController'); //done
+Route::resource('fee_structures','App\Http\Controllers\FeeStructureController'); //done
 Route::resource('staff_categories','App\Http\Controllers\StaffCategoryController'); //done
 Route::resource('staffs','App\Http\Controllers\StaffController'); //done
 
@@ -145,7 +146,27 @@ Route::get('bank_accounts-delete/{id}', [App\Http\Controllers\BankAccountControl
 // get branch code through ajax
 Route::get('getBranch', [App\Http\Controllers\BranchController::class, 'getBranch'])->name('get.Branch');
 Route::get('getFee', [App\Http\Controllers\FeeTarrifController::class, 'getFee'])->name('get.Fee');
+
+Route::get('feeDetail', [App\Http\Controllers\FeeTarrifController::class, 'feeDetail'])->name('feeDetail');
+Route::get('getCSS', [App\Http\Controllers\FeeTarrifController::class, 'getCSS'])->name('getCSS');
+Route::post('dataSubmit', [App\Http\Controllers\FeeTarrifController::class, 'dataSubmit'])->name('dataSubmit');
+Route::get('dataGet', [App\Http\Controllers\FeeTarrifController::class, 'dataGet'])->name('dataGet');
+Route::get('classWiseRecord', [App\Http\Controllers\FeeTarrifController::class, 'classWiseRecord'])->name('classWiseRecord');
+// ===========================payment fee=======================
+Route::get('paymentFee', [App\Http\Controllers\FeeStructureController::class, 'paymentFee'])->name('paymentFee');
+Route::get('feeDetailGet', [App\Http\Controllers\FeeStructureController::class, 'feeDetailGet'])->name('feeDetailGet');
+Route::get('getStudentRecord', [App\Http\Controllers\FeeStructureController::class, 'getStudentRecord'])->name('getStudentRecord');
+Route::get('getfeePayment/{id}', [App\Http\Controllers\FeeStructureController::class, 'getfeePayment'])->name('getfeePayment');
+Route::post('paidPayment', [App\Http\Controllers\FeeStructureController::class, 'paidPayment'])->name('paidPayment');
 // ================For every model Delete======================
+// ================For Attendance======================
+Route::resource('student_attendances','App\Http\Controllers\StudentAttendanceController'); //
+
+Route::get('att_list', [App\Http\Controllers\StudentAttendanceController::class, 'attendanceList'])->name('att_list');
+
+Route::get('sessionList', [App\Http\Controllers\StudentAttendanceController::class, 'sessionList'])->name('sessionList');
+Route::get('sectionList', [App\Http\Controllers\StudentAttendanceController::class, 'sectionList'])->name('sectionList');
+// ================For Attendance======================
 
 });
 

@@ -23,30 +23,15 @@
 							<div class="col-lg-9" style="float: left; " >
 
 								<div class="form-row">
-									<div class="form-group col-lg-4">
+									<div class="form-group col-lg-6">
 										<label for="inputCity">Registration No</label>
 										<input type="text" name="registration_no" class="form-control" id="inputCity">
 									</div>
-									<div class="form-group col-lg-4">
+									<div class="form-group col-lg-6">
 										<label for="inputCity">Admission No</label>
 										<input type="text" name="admission_no" class="form-control" id="inputCity">
 									</div>
-									<div class="form-group col-lg-4">
-										<label for="inputState">School Name</label>
-										<select class="form-control select2"  name="school_id">
-											<option label="Label"></option>
-											<!-- <option selected>Choose School</option> -->
-											@foreach($schools as $school)
-											<option value="{{$school->id}}">{{$school->name}}</option>
-										@endforeach
-										</select>
-		<!-- <select id="inputState" name="school_id" class="form-control ">
-			<option selected>Choose School</option>
-			@foreach($schools as $school)
-			<option value="{{$school->id}}">{{$school->name}}</option>
-			@endforeach
-		</select> -->
-	</div>
+									
 
 </div>
 <div class="row">
@@ -233,9 +218,7 @@
                                             <option value="{{$record->id }}" 
                                                 >
                                                 {{ $record->class->name }}
-                                                @if($record->section)
-                                                {{ ' | '.$record->section->name }}
-                                                @endif
+                                                
                                             </option>
                                         @endforeach
 		</select>
@@ -248,9 +231,7 @@
                                             <option value="{{$record->id }}" 
                                                 >
                                                 {{ $record->class->name }}
-                                                @if($record->section)
-                                                {{ ' | '.$record->section->name }}
-                                                @endif
+                                                
                                             </option>
                                         @endforeach
 		</select>
@@ -313,13 +294,7 @@
 	<div class="form-group col-lg-3">
 		<label for="inputCity">School Name</label>
 		
-		<select class="form-control select2"  name="school_id">
-			<option label="Label"></option>
-			@foreach($schools as $school)
-			<option value="{{$school->id}}">{{$school->name}}</option>
-			@endforeach
-			
-		</select>
+		<input type="text" class="form-control" name="school_id">
 	</div>
 	<div class="form-group col-lg-3">
 		<label for="inputCity">WithDrawl No</label>

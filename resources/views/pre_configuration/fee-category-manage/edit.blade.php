@@ -8,7 +8,7 @@
 										<!--begin::Card-->
 										<!-- <div class="card card-custom gutter-b example example-compact" style="border : 1px solid yellow;"> -->
 											<div class="card-header">
-												<h3 class="card-title">Fee Category  Form</h3>
+												<h3 class="card-title">Fee Type  Form</h3>
 												<div class="card-toolbar">
 													<div class="example-tools justify-content-center">
 														<span class="example-toggle" data-toggle="tooltip" title="View code"></span>
@@ -25,9 +25,9 @@
 					<div class="col-xl-12">
 						<!--begin::Input-->
 						<div class="form-group">
-							<label>Name</label>
+							<label>Fee Type</label>
 							<input type="text" class="form-control form-control-solid form-control-lg" name="name" value="{{$fee_category->name}}"  required="" />
-							<span class="form-text text-muted">Please enter Name</span>
+							<!-- <span class="form-text text-muted">Please enter Name</span> -->
 						</div>
 						<!--end::Input-->
 					</div>

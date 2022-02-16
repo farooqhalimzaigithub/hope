@@ -33,7 +33,7 @@
 							<div class="form-group col-lg-4">
 								<label for="inputState">Section</label>
 								<select id="inputState" name="section_id" class="form-control ">
-									<option selected>Choose Section</option>
+									<option selected value="">Choose Section</option>
 									@foreach($sections as $section)
 									<option value="{{$section->id}}">{{$section->name}}</option>
 									@endforeach

@@ -11,13 +11,22 @@ class FeeTarrif extends Model
      protected $guarded=[];
 
 
-
+ 
  public function fee()
     {
         return $this->belongsTo(Fee::class,'fee_id','id');
     }
-    public function level()
+    public function css()
     {
-        return $this->belongsTo(Level::class,'class_id','id');
+        return $this->belongsTo(ClassSectionSession::class,'class_section_session_id','id');
     }
+     public function cssClass()
+    {
+        return $this->hasManyThrough(FreeClass::class,ClassSectionSession::class,'id','id');
+    }
+
+
+
+    
+     
 }

@@ -17,7 +17,7 @@ class CreateFeesTable extends Migration
            $table->increments('id');
                $table->string('name');
                $table->integer('fee_category_id')->unsigned()->nullable();
-              $table->foreign('fee_category_id')->references('id')->on('fee_categories')->onDelete('cascade')->onUpdate('cascade');
+              // $table->foreign('fee_category_id')->references('id')->on('fee_categories')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }

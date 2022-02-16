@@ -14,6 +14,29 @@ class ClassSectionSession extends Model
 
 
 
+     // relation of Many TO Many
+public function students()
+    {
+         return $this->belongsToMany(Student::class,'student_classes','class_section_session_id','student_id');//
+    }
+
+public function feeCollections()
+    {
+           return $this->hasMany(FeeCollect::class,'class_section_session_id','id');//1st foriegn key and second st_class table primary  key
+    }
+    
+    // =========================
+
+ public function feeTarrifs()
+    {
+        return $this->hasMany(FeeTarrif::class);
+    }
+
+public function studentClasses()
+    {
+        return $this->hasMany(StudentClass::class,'class_section_session_id','id');
+    }
+
       // //inverse relation one to many
     public function section()
     {

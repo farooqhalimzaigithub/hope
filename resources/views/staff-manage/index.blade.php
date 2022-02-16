@@ -1,5 +1,5 @@
-					@extends('layouts.main')
-					@section('content')
+@extends('layouts.main')
+@section('content')
 
 
 					<!-- for datatables -->
@@ -93,9 +93,9 @@
 																<th> Name</th>
 																<th> Date Of Birth</th>
 																<th>CNIC</th>
-																<th>Staff Category</th>
-																<th>Designation</th>
-																<th>Appointment Date</th>
+																<!-- <th>Staff Category</th> -->
+																<!-- <th>Designation</th>
+																<th>Appointment Date</th> -->
 								<th>Action</th>
 
 							</tr>
@@ -109,10 +109,7 @@
 								<td>{{$staff->first_name.' '.$staff->last_name.' '.$staff->sur_name}}</td>
 								<td>{{$staff->dob}}</td>
 								<td>{{$staff->cnic_no}}</td>
-								<td>{{$staff->staffCategory->name}}</td>
-								<td>{{$staff->designation->name}}</td>
-								<td>{{$staff->appointment_date}}</td>
-								<!-- staff->staffDetail->edu_description --> <!-- you can get all detail through relation -->
+								 <!-- you can get all detail through relation -->
 								<td>
 									<a type="button" class="btn btn-icon btn-light btn-hover-primary btn-sm" data-toggle="modal" data-target="#myModal">
 										<i class="fa fa-eye text-success"></i>

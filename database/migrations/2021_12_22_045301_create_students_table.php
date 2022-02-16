@@ -22,13 +22,12 @@ class CreateStudentsTable extends Migration
              $table->string('cnic_no')->nullable();
              $table->string('father_name')->nullable();
              $table->string('father_cnic_no')->nullable();
-
              $table->string('registration_no')->nullable();
              $table->string('enrollment_registration')->nullable();
              $table->string('admission_no')->nullable();
-             
              $table->string('image')->nullable();
              $table->string('father_occupation')->nullable();
+             $table->bigInteger('balance')->nullable()->default('0');
              $table->integer('religion_id')->unsigned()->nullable();
              // $table->foreign('religion_id')->references('id')->on('religions')->onDelete('cascade')->onUpdate('cascade');
              $table->integer('cast_id')->unsigned()->nullable();

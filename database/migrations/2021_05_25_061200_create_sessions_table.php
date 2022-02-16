@@ -17,6 +17,8 @@ class CreateSessionsTable extends Migration
             $table->increments('id');
              $table->string('name');
                $table->tinyInteger('status')->default('1')->nullable();
+                $table->date('start_date')->nullable();
+                $table->date('end_date')->nullable();
             $table->timestamps();
         });
     }

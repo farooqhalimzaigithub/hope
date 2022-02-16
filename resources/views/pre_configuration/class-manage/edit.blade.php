@@ -16,7 +16,7 @@
 													</div>
 												</div>
 											</div>
-											<form class="form  mt-4"  method="post" action="{{route('levels.update',$level->id)}}" >
+											<form class="form  mt-4"  method="post" action="{{route('free_classes.update',$level->id)}}" >
 			@csrf
 			@method('PUT')
 

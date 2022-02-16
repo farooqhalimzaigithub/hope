@@ -17,11 +17,13 @@ class CreateFeeTarrifsTable extends Migration
             $table->increments('id');
                // $table->string('fee_name');
               $table->decimal('amount', 10, 2);
-            $table->integer('class_id')->unsigned()->nullable();
-            $table->foreign('class_id')->references('id')->on('levels')->onDelete('cascade')->onUpdate('cascade');
+            // $table->integer('class_id')->unsigned()->nullable();
+            // $table->foreign('class_id')->ref`erences('id')->on('levels')->onDelete('cascade')->onUpdate('cascade');
+             $table->integer('class_section_session_id')->unsigned()->index();
+             // $table->foreign('class_section_session_id')->references('id')->on('class_section_sessions')->onDelete('cascade')->onUpdate('cascade');
              $table->integer('fee_id')->unsigned()->nullable();
-            $table->foreign('fee_id')->references('id')->on('fees')->onDelete('cascade')->onUpdate('cascade');
-            $table->timestamps();
+             // $table->foreign('fee_id')->references('id')->on('fees')->onDelete('cascade')->onUpdate('cascade');
+             $table->timestamps();
         });
     }
 

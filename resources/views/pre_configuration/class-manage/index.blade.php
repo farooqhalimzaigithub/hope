@@ -80,7 +80,7 @@
 																			<a href="{{url('class-delete',$class->id)}}" class="btn btn-icon btn-light btn-hover-danger btn-sm">
 																				<i class="fa fa-trash text-success"></i>
 																			</a>
-																			<a href="{{route('levels.edit',$class->id)}}" class="btn btn-icon btn-light btn-hover-primary btn-sm mx-3">
+																			<a href="{{route('free_classes.edit',$class->id)}}" class="btn btn-icon btn-light btn-hover-primary btn-sm mx-3">
 																				<span class="svg-icon svg-icon-md svg-icon-primary">
 																					<!--begin::Svg Icon | path:assets/media/svg/icons/Communication/Write.svg-->
 																					<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="16px" height="16px" viewBox="0 0 24 24" version="1.1">

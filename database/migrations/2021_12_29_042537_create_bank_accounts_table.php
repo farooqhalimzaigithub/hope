@@ -18,9 +18,9 @@ class CreateBankAccountsTable extends Migration
                $table->string('account_name');
                $table->string('account_no')->nullable();
                $table->integer('bank_id')->unsigned()->nullable();
-               $table->foreign('bank_id')->references('id')->on('banks')->onDelete('cascade')->onUpdate('cascade');
+               // $table->foreign('bank_id')->references('id')->on('banks')->onDelete('cascade')->onUpdate('cascade');
                $table->integer('branch_id')->unsigned()->nullable();
-               $table->foreign('branch_id')->references('id')->on('branches')->onDelete('cascade')->onUpdate('cascade');
+               // $table->foreign('branch_id')->references('id')->on('branches')->onDelete('cascade')->onUpdate('cascade');
                $table->string('branch_code')->nullable();
                $table->decimal('opening_balance', 10, 2)->nullable();
                $table->tinyInteger('status')->default('0')->nullable();//this is use for Dr Or Cr which is define in checkbox   

@@ -19,7 +19,7 @@ class ClassSectionSessionController extends Controller
     {
          // $data['class_section_sessions'] = ClassSectionSession::all();
           $data['class_section_sessions'] = ClassSectionSession::with('class','section','session')->get();
-          // dd($class_section_sessions);
+           // dd($data['class_section_sessions']);
         return view('pre_configuration.css-manage.index',$data);
     }
 

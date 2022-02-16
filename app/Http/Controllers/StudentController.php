@@ -19,7 +19,13 @@ use App\Models\Cast;
 use App\Models\StudentDetail;
 use App\Models\Session;
 use App\Models\BloodGroup;
+use App\Models\FeeStructure;
+use App\Models\StudentFee;
 use Illuminate\Http\Request;
+use DB;
+use DateTime;
+use DatePeriod;
+use DateInterval;
 class StudentController extends Controller
 {
     /**
@@ -54,7 +60,7 @@ class StudentController extends Controller
            $data['sections']=Section::all();
            $data['levels']=Level::all();
 
-           $data['schools']=School::all();
+           // $data['schools']=School::all();
            $data['countries']=Country::all();
            $data['provinces']=Province::all();
            $data['cities']=City::all();
@@ -108,6 +114,9 @@ class StudentController extends Controller
        $student->image=$file_name;
        $student->save();
        $student_id=$student->id;
+
+       DB::table('student_classes')->insert(['student_id'=>$student_id,'class_section_session_id'=>$request->current_class_id,'status'=>1]);
+                 DB::commit();
        // dd($student_id);
        $studentDetail=StudentDetail::create([
         'student_id'            =>$student_id,
@@ -130,8 +139,81 @@ class StudentController extends Controller
         'guardian_name'         =>$request->guardian_name,
         'clc_no'                =>$request->clc_no,
         'remark'                =>$request->remark,
-        'school_id'             =>$request->school_id
+        'school_id'             =>auth()->user()->school_id,
        ]);
+
+
+     $fee_structure=FeeStructure::where('class_section_session_id',$request->current_class_id)->first();
+     $fee_amount=$fee_structure->amount;
+
+       // $fee_amount = DB::table('fee_structures')->where('class_section_session_id',$request->current_class_id)->pluck('amount');
+       // dd($fee_amount);
+ $css_id=$request->current_class_id;
+//  // after this add fee info for the futur
+   $css= Session::where('status',1)->first();
+   // $session_id = DB::table('sessions')->where('status',1)->pluck('id');
+    $session_id=$css->id;
+//   // Get year and month of initial date (From)
+ $yearIni = date("Y", strtotime($css->start_date));
+// $monthIni = date("m", strtotime($css->end_date));
+// // Get year an month of finish date (To)
+// $yearFin = date("Y", strtotime($dateFin));
+// $monthFin = date("m", strtotime($dateFin));
+// // Checking if both dates are some year
+//    $numberOfMonths = ((($yearFin - $yearIni) * 12) - $monthIni) + 1 + $monthFin;
+//   dd($numberOfMonths);
+ // OR
+
+// $current_week = Session::whereBetween('start_date', [$css->end_date, $css->end_date])->get();
+$begin1 = $css->start_date;
+$end1   = $css->end_date;
+$begin = new DateTime($begin1);
+ $interval = new DateInterval('P1M');
+$end = new DateTime($end1);
+$period = new DatePeriod($begin, $interval, $end);
+ foreach($period as $d){
+  $start_date = $d->format("Y-m-d");
+
+StudentFee::create([
+    'session_id'=>$session_id,
+    'class_section_session_id'=>$request->current_class_id,
+    'month'=>$start_date,
+    'student_id'=>$student_id,
+    'amount'=>$fee_amount,
+    'received_amount'=>0
+]);
+
+// echo "<pre>";
+//  print_r($start_date);
+// echo "<pre>";
+}
+
+// die();
+
+// $employees = Session::whereMonth('start_date', '>', $end)->get();
+// $end = $end->modify( '+1 day' );
+// $daterange = new DatePeriod($begin, $interval ,$end);
+// $interval = new DateInterval('P1M');
+// $daterange = new DatePeriod($begin, $interval, $end);
+
+// $interval = new DateInterval('P1D');
+// $daterange = new DatePeriod($begin, $interval ,$end);
+
+// foreach($daterange as $date){
+//     echo '<pre/>';
+//   print_r($date->format("Ymd"));
+//     echo '<pre/>';
+// }
+
+
+// for($i = $begin; $i <= $end; $i->modify('+1 day')){
+//     echo $i;
+    
+// }
+ // dd($employees);
+
+
+
  return redirect()->route('students.index')->with('success','Data Added Successfully');
 
     }
