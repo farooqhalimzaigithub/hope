@@ -64,6 +64,7 @@
 															<th>#</th>
 															<th>Name</th>
 															<th>Email</th>
+															<th>Phone</th>
 															<th>Role</th>
 															<th>Action</th>
 															
@@ -75,15 +76,16 @@
 															<td>{{$loop->iteration}}</td>
 															<td>{{$user->name}}</td>
 															<td>{{$user->email}}</td>
+															<td>{{$user->contact_number}}</td>
 															<td>{{$user->role_id}}</td>
 															
-															<td><a href="{{route('users.create')}}" class="btn btn-icon btn-light btn-hover-primary btn-sm">
+						<td><a href="{{route('users.create')}}" class="btn btn-icon btn-light btn-hover-primary btn-sm">
 																				<i class="ki ki-plus text-success"></i>
 																			</a>
 																			<a href="{{url('users-delete',$user->id)}}" class="btn btn-icon btn-light btn-hover-danger btn-sm">
 																				<i class="fa fa-trash text-success"></i>
 																			</a>
-																			<a href="{{route('users.edit',$user->id)}}" class="btn btn-icon btn-light btn-hover-primary btn-sm mx-3">
+																			<a href="{{route('dmos.edit',$user->id)}}" class="btn btn-icon btn-light btn-hover-primary btn-sm mx-3">
 																				<span class="svg-icon svg-icon-md svg-icon-primary">
 																					<!--begin::Svg Icon | path:assets/media/svg/icons/Communication/Write.svg-->
 																					<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="16px" height="16px" viewBox="0 0 24 24" version="1.1">
@@ -105,7 +107,7 @@
 														</tr>
 														@endforeach
 													</tbody>
-													<tfoot>
+											<!-- 		<tfoot>
 														<tr>
 															<th>#</th>
 															<th>Name</th>
@@ -113,7 +115,7 @@
 															
 															<th>Action</th>
 														</tr>
-													</tfoot>
+													</tfoot> -->
 												</table>
 												<!--begin: Datatable-->
 												<div class="datatable datatable-bordered " id="">

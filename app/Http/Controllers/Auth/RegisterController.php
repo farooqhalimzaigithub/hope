@@ -76,6 +76,9 @@ class RegisterController extends Controller
         $role_id=1;
         $data_rec= array('name' => $data['name'],
             'email' => $data['email'],
+            'district_id'=> $data['district_id'],
+            'contact_number'=> $data['contact_number'],
+            
             'role_id' =>$role_id,
             'password' => Hash::make($data['password']), 
         );
