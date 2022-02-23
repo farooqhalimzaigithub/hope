@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\studentDetail;
+use App\Models\StudentAttendance;
 class Student extends Model
 {
     use HasFactory;
@@ -15,6 +16,10 @@ class Student extends Model
 public function studentFees()
     {
         return $this->hasMany(StudentFee::class,'student_id','id');
+    }
+    public function studentAttendances()
+    {
+        return $this->hasMany(StudentAttendance::class,'student_id','id');
     }
 
  public function classSectionSession()

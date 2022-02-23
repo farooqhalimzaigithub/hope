@@ -64,15 +64,7 @@
 								<div class="form-group mb-5">
 									<input class="form-control h-auto form-control-solid py-4 px-8" type="password" placeholder="Confirm Password" name="password_confirmation" />
 								</div>
-								<div class="form-group mb-5">
-								<!-- <label for="exampleSelectd">Choose  School</label> -->
-														<select class="form-control h-auto form-control-solid py-4 px-8" id="exampleSelectd" name="school_id">
-															<option selected="">Choose  School</option>
-															@foreach($schools as $school)
-															<option value="{{$school->id}}">{{$school->name}}</option>
-															@endforeach
-														</select>
-													</div>
+								
 
 
 								<div class="form-group mb-5 text-left">

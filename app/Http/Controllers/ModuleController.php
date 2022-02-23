@@ -15,9 +15,8 @@ class ModuleController extends Controller
      */
     public function index()
     {
-         $data['modules']=Module::all();
-         Session::flash('message','Data Updateed Successfully');
-       return view('module-managment.index',$data);
+        $data['modules'] = Module::all();
+        return view('module-managment.index',$data);
     }
 
     /**
@@ -27,9 +26,9 @@ class ModuleController extends Controller
      */
     public function create()
     {
-        $data['modules']=Module::all();
+        // $data['modules']= Module::all();
         // dd($data['modules']);
-         return view('module-managment.create',$data);
+         return view('module-managment.create');
     }
 
     /**
@@ -68,7 +67,7 @@ class ModuleController extends Controller
      */
     public function edit($id)
     {   $data['module']=Module::find($id);
-        $data['modules']=Module::all();
+        // $data['modules']=Module::all();
     // dd($data);
         return view('module-managment.edit',$data);
     }

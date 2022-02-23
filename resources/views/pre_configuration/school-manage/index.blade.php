@@ -35,13 +35,13 @@
 											<!--begin::Header-->
 											<div class="card-header flex-wrap border-0 pt-6 pb-0">
 												<h3 class="card-title align-items-start flex-column">
-													<span class="card-label font-weight-bolder text-dark">Details</span>
+													<span class="card-label font-weight-bolder text-dark">School List</span>
 													<!-- <span class="text-muted mt-1 font-weight-bold font-size-sm">Manage over 1600 school</span> -->
 												</h3>
 												<div class="card-toolbar">
-													<div class="dropdown dropdown-inline" data-toggle="tooltip" title="" data-placement="left" data-original-title="Quick actions">
+													<div class="dropdown dropdown-inline"  title="" data-placement="left">
 														<!--begin::Trigger Modal-->
-														<a class="nav-link py-2 px-4 btn btn-primary"  href="{{route('schools.create')}}"><i class="ki ki-plus text-light"></i>  Add New</a>
+														<a class="nav-link py-2 px-4 btn btn-primary"  href="{{route('schools.create')}}"><i class="ki ki-plus text-light"></i>  Add School</a>
 														
 														<!--end::Trigger Modal-->
 														<!--begin::Modal Content-->
@@ -75,8 +75,8 @@
 															<td>{{$school->user->name}}</td>
 															<!-- <td>{{$school->route_name}}</td>
 															<td>{{$school->route_url}}</td> -->
-															<td><a href="{{route('schools.create')}}" class="btn btn-icon btn-light btn-hover-primary btn-sm">
-																				<i class="ki ki-plus text-success"></i>
+															<td><a href="{{route('schools.show',$school->id)}}" class="btn btn-icon btn-light btn-hover-primary btn-sm">
+																				<i class="ki ki-eye text-success"></i>
 																			</a>
 																			<a href="{{url('school-delete',$school->id)}}" class="btn btn-icon btn-light btn-hover-danger btn-sm">
 																				<i class="fa fa-trash text-success"></i>

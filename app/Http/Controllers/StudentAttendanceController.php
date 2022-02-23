@@ -38,6 +38,45 @@ class StudentAttendanceController extends Controller
         $data=ClassSectionSession::with('section','students')->where('section_id',$request->section_id)->get();
         return response()->json($data);
     }
+// =======================After that attt show exist record=====================/
+
+public function attendanceListShow(Request $request)
+    {
+        $ssn=Session::where('status',1)->first();
+        $data['classSectionSession'] = ClassSectionSession::with('class','section','session')->where('session_id',$ssn->id)->get();
+       return view('attendance-managment.show_list',$data);
+    }
+     public function sectionListShow(Request $request)
+    {
+        $data=StudentAttendance::with('student','css.class')->where('section_id',$request->section_id)->where('css_id',$request->class_section_session_id)->where('att_date',$request->att_date)->get();
+
+        return response()->json($data);
+    }
+
+    
+     public function submitAttendance(Request $request)
+    {
+        // echo "<pre/>";
+        // print_r($request->all());
+        // echo "<pre/>";
+        // $data=StudentAttendance::where(['id', '=',$request->att_id,'att_date', '=',$request->att_date])->update(['attendance' =>$request->attendance]);
+
+
+       $data= StudentAttendance::where('id', $request->att_id)->where('att_date', $request->att_date)
+      ->update(['attendance' => $request->attendance]);
+
+        // session()->flash('message',"Successfully edited");
+      $message = "Successfully edited!";
+return response()->json([ 'message' => $message], 200);
+
+      // return response()->json(array('success' => true), 200);
+        // return response()->json($data)->withSuccess('Attendance Added Successfully!');
+        // return redirect()->back()->withSuccess('IT WORKS!');
+         // oR
+         // return redirect()->route('att_list')->withSuccess(['Attendance Added Successfully!']);
+
+    }
+
 
 
     /**

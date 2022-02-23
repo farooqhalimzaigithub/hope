@@ -32,7 +32,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 
 // route::group(['middleware'=> ['auth', 'CheckUrlAccess'],'prefix'=> 'admin'], function(){
-// 	});
+//  });
 route::group(['middleware'=> ['auth', 'CheckUrlAccess']], function(){
     Route::get('/', function () {
 
@@ -111,6 +111,7 @@ Route::resource('fee_tarrifs','App\Http\Controllers\FeeTarrifController'); //don
 Route::resource('fee_structures','App\Http\Controllers\FeeStructureController'); //done
 Route::resource('staff_categories','App\Http\Controllers\StaffCategoryController'); //done
 Route::resource('staffs','App\Http\Controllers\StaffController'); //done
+Route::resource('dmos','App\Http\Controllers\DmoModelController'); //done
 
 //@@@@@@@@@@@@@@@@@@@@@@@$End of resource routes $@@@@@@@@@@@@@@@@@@@@@@@@@
 // ================For every model Delete======================
@@ -163,10 +164,23 @@ Route::post('paidPayment', [App\Http\Controllers\FeeStructureController::class, 
 Route::resource('student_attendances','App\Http\Controllers\StudentAttendanceController'); //
 
 Route::get('att_list', [App\Http\Controllers\StudentAttendanceController::class, 'attendanceList'])->name('att_list');
+Route::get('att_list_show', [App\Http\Controllers\StudentAttendanceController::class, 'attendanceListShow'])->name('att_list_show');
 
 Route::get('sessionList', [App\Http\Controllers\StudentAttendanceController::class, 'sessionList'])->name('sessionList');
 Route::get('sectionList', [App\Http\Controllers\StudentAttendanceController::class, 'sectionList'])->name('sectionList');
+Route::get('sectionListShow', [App\Http\Controllers\StudentAttendanceController::class, 'sectionListShow'])->name('sectionListShow');
+Route::post('submitAttendance', [App\Http\Controllers\StudentAttendanceController::class, 'submitAttendance'])->name('submitAttendance');
 // ================For Attendance======================
+// ================For Staff Attendance======================
+Route::resource('staff_attendances','App\Http\Controllers\StaffAttendanceController'); //
+Route::get('staff_attendance_list', [App\Http\Controllers\StaffAttendanceController::class, 'staffAttendanceList'])->name('staff_attendance_list');
+Route::get('add_attendance', [App\Http\Controllers\StaffAttendanceController::class, 'addStaffAttendance'])->name('add_attendance');
+
+// get staff
+Route::get('staffCommonList', [App\Http\Controllers\StaffAttendanceController::class, 'staffCommonList'])->name('staffCommonList');
+Route::get('staffListShow', [App\Http\Controllers\StaffAttendanceController::class, 'staffListShow'])->name('staffListShow');
+Route::post('submitStaffAttendance', [App\Http\Controllers\StaffAttendanceController::class, 'submitStaffAttendance'])->name('submitStaffAttendance');
+// ================For Staff Attendance======================
 
 });
 

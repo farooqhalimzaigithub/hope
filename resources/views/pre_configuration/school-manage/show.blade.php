@@ -1,5 +1,11 @@
 @extends('layouts.main')
 @section('content')
+
+<style type="text/css">
+	.form-control{
+		border:none;
+	}
+</style>
 <div class="d-flex flex-column-fluid">
 
 							<div class="container">
@@ -262,7 +268,7 @@
 					<div class="d-flex justify-content-between border-top mt-0 pt-10 pb-10">
 
 						<div>
-							<button type="submit" class="btn btn-primary font-weight-bolder text-uppercase px-9 py-4">Update</button>
+							<a href="{{route('schools.index')}}" class="btn btn-primary font-weight-bolder text-uppercase px-9 py-4">Back To List</a>
 							
 						</div>
 					</div>

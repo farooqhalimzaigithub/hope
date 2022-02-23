@@ -1,0 +1,19 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+class StaffAttendance extends Model
+{
+    use HasFactory;
+     protected $guarded=[];
+
+
+
+     public function staff()
+    {
+        return $this->BelongsTo(Staff::class,'staff_id','id');
+    }
+}

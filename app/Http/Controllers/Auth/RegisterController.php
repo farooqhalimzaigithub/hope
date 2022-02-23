@@ -59,7 +59,6 @@ class RegisterController extends Controller
         // dd($data);
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
-            'school_id' => ['required', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:3', 'confirmed'],
             // 'role_id' => ['required'],
@@ -78,7 +77,6 @@ class RegisterController extends Controller
         $data_rec= array('name' => $data['name'],
             'email' => $data['email'],
             'role_id' =>$role_id,
-            'school_id' =>$data['school_id'],
             'password' => Hash::make($data['password']), 
         );
         
