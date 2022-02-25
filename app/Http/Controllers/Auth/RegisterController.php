@@ -41,7 +41,8 @@ class RegisterController extends Controller
     public function showRegistrationForm()
 {
     $schools = School::all();
-    return view("auth.register", compact("schools"));
+    // return view("auth.register", compact("schools"));
+    return back();
 }
     // public function __construct()
     // {
@@ -78,7 +79,6 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'district_id'=> $data['district_id'],
             'contact_number'=> $data['contact_number'],
-            
             'role_id' =>$role_id,
             'password' => Hash::make($data['password']), 
         );

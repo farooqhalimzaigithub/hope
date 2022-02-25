@@ -17,11 +17,11 @@
 												</div>
 											</div>
 											<form class="form  mt-4"  method="POST" action="{{  route('register') }}" >
-			@csrf
+			                            @csrf
 
 				<!-- <h4 class="mb-8 font-weight-bold text-dark">Module Details</h4> -->
 				<div class="row" >
-					<div class="col-lg-3">
+					<div class="col-lg-4">
 						<!--begin::Input-->
 						
 							<label> Name</label>
@@ -30,7 +30,7 @@
 						
 						<!--end::Input-->
 					</div>
-					<div class="col-lg-3">
+					<div class="col-lg-4">
 						<!--begin::Input-->
 						<!-- <div class="form-group"> -->
 							<label> Email</label>
@@ -39,7 +39,7 @@
 						<!-- </div> -->
 						<!--end::Input-->
 					</div>
-					<div class="col-lg-3">
+					<div class="col-lg-4">
 						<!--begin::Input-->
 						<!-- <div class="form-group"> -->
 							<label>Password</label>
@@ -48,27 +48,30 @@
 						<!-- </div> -->
 						<!--end::Input-->
 					</div>
-					<div class="col-lg-3">
+					
+				</div>
+				<div class="row" >
+					<div class="col-lg-4">
 						<!--begin::Input-->
 						<!-- <div class="form-group"> -->
 							<label>Password</label>
-							<input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+							<input id="password-confirm" type="password" class="form-control form-control-solid" name="password_confirmation" required autocomplete="new-password">
 							<span class="form-text text-muted">Please enter Confirm Password</span>
 						<!-- </div> -->
 						<!--end::Input-->
 					</div>
-						<div class="col-lg-3">
+						<div class="col-lg-4">
 						<!--begin::Input-->
 						<!-- <div class="form-group"> -->
 							<label>Contact Number</label>
-							<input id="password-confirm" type="number" class="form-control"
+							<input id="password-confirm" type="number" class="form-control form-control-solid"
 							 name="contact_number" required>
 							<span class="form-text text-muted">Contact Number</span>
 						<!-- </div> -->
 						<!--end::Input-->
 					</div>
 
-					<div class="col-lg-3">
+					<div class="col-lg-4">
 						<!-- <div class="form-group"> -->
 							<label>District</label>
 							<select name="district_id" required="true" class="form-control form-control-solid form-control-lg">

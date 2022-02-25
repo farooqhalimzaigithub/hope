@@ -2013,7 +2013,7 @@ pre {
   background-color: #ffffff;
   background-clip: padding-box;
   border: 1px solid #E4E6EF;
-  border-radius: 0.42rem;
+  border-radius: 0px;
   -webkit-box-shadow: none;
   box-shadow: none;
   -webkit-transition: border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
@@ -2110,14 +2110,14 @@ select.form-control:focus::-ms-value {
   padding: 0.55rem 0.75rem;
   font-size: 0.925rem;
   line-height: 1.35;
-  border-radius: 0.28rem; }
+  border-radius: 0px; }
 
 .form-control-lg {
   height: calc(1.5em + 1.65rem + 2px);
   padding: 0.825rem 1.42rem;
   font-size: 1.08rem;
   line-height: 1.5;
-  border-radius: 0.42rem; }
+  border-radius: 0px; }
 
 select.form-control[size], select.form-control[multiple] {
   height: auto; }
@@ -2439,7 +2439,7 @@ textarea.form-control {
   padding: 0.65rem 1rem;
   font-size: 1rem;
   line-height: 1.5;
-  border-radius: 0.42rem;
+  border-radius: 0px;
   -webkit-transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out, border-color 0.3s ease-in-out, -webkit-box-shadow 0.3s ease-in-out;
   transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out, border-color 0.3s ease-in-out, -webkit-box-shadow 0.3s ease-in-out;
   transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out, border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
@@ -2963,13 +2963,13 @@ fieldset:disabled a.btn {
   padding: 0.825rem 1.42rem;
   font-size: 1.08rem;
   line-height: 1.5;
-  border-radius: 0.42rem; }
+  border-radius: 0px; }
 
 .btn-sm, .btn-group-sm > .btn {
   padding: 0.55rem 0.75rem;
   font-size: 0.925rem;
   line-height: 1.35;
-  border-radius: 0.42rem; }
+  border-radius: 0px; }
 
 .btn-block {
   display: block;
@@ -3437,7 +3437,7 @@ input[type="button"].btn-block {
   white-space: nowrap;
   background-color: #F3F6F9;
   border: 1px solid #E4E6EF;
-  border-radius: 0.42rem; }
+  border-radius: 0px; }
   .input-group-text input[type="radio"],
   .input-group-text input[type="checkbox"] {
     margin-top: 0; }
@@ -3455,7 +3455,7 @@ input[type="button"].btn-block {
   padding: 0.825rem 1.42rem;
   font-size: 1.08rem;
   line-height: 1.5;
-  border-radius: 0.42rem; }
+  border-radius: 0px; }
 
 .input-group-sm > .form-control:not(textarea),
 .input-group-sm > .custom-select {
@@ -3470,7 +3470,7 @@ input[type="button"].btn-block {
   padding: 0.55rem 0.75rem;
   font-size: 0.925rem;
   line-height: 1.35;
-  border-radius: 0.28rem; }
+  border-radius: 0px; }
 
 .input-group-lg > .custom-select,
 .input-group-sm > .custom-select {
@@ -44782,7 +44782,7 @@ code {
   -ms-flex-align: center;
   align-items: center;
   background-color: #F3F6F9;
-  border-radius: 0.42rem; }
+  border-radius: 0px; }
   .input-group.input-group-solid.active, .input-group.input-group-solid.focus {
     background-color: #EBEDF3;
     border-color: #EBEDF3;

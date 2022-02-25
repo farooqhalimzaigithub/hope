@@ -10,6 +10,7 @@
 				<!-- <div class="card card-custom gutter-b example example-compact" style="border : 1px solid yellow;"> -->
 					<div class="card-header">
 						<h3 class="card-title">Staff Form</h3>
+						<small class="text-danger">The * fields must be required</small>
 						<div class="card-toolbar">
 							<div class="example-tools justify-content-center">
 								<span class="example-toggle" data-toggle="tooltip" title="View code"></span>
@@ -28,12 +29,12 @@
 
 								<div class="form-row">
 									<div class="form-group col-lg-4">
-								<label for="inputCity">First Name</label>
-								<input type="text" name="first_name" class="form-control" id="inputCity">
+								<label for="inputCity">First Name <span class="text-danger">*</span></label>
+								<input type="text" name="first_name" class="form-control" id="inputCity" required="">
 							</div>
 							<div class="form-group col-lg-4">
-								<label for="inputCity">Last Name</label>
-								<input type="text" name="last_name" class="form-control" id="inputCity">
+								<label for="inputCity">Last Name <span class="text-danger">*</span></label>
+								<input type="text" name="last_name" class="form-control" id="inputCity" required="">
 							</div>
 							<div class="form-group col-lg-4">
 								<label for="inputCity">Surname</label>
@@ -45,12 +46,12 @@
 								</div>
 								<div class="row">
 									<div class="form-group col-lg-4">
-								<label for="father_cnic"> CNIC</label>
-								<input type="text" name="cnic_no" class="form-control" id="cnic">
+								<label for="father_cnic"> CNIC <span class="text-danger">*</span></label>
+								<input type="text" name="cnic_no" class="form-control" id="cnic" required="" >
 							</div>
 							<div class="form-group col-lg-4">
-								<label for="dob">Date Of Birth</label>
-								<input type="date" name="dob" class="form-control" id="dob">
+								<label for="dob">Date Of Birth <span class="text-danger">*</span></label>
+								<input type="date" name="dob" class="form-control" value="<?php echo date('Y-m-d');?>" id="dob" required="">
 							</div>
 							<div class="form-group col-lg-4">
 								<label >Designation</label>
@@ -153,7 +154,7 @@
 							</div>
 							<div class="form-group col-lg-3">
 										<label for="inputCity">Appointment Date</label>
-										<input type="date" name="appointment_date" class="form-control"  />
+										<input type="date" name="appointment_date" value="<?php echo date('Y-m-d');?>" class="form-control"  />
 									</div>	
 							</div>
 							<div class="row">
@@ -189,7 +190,6 @@
 		<table class="table table-bordered " id="item_table">
 			<tr class="bg-default" style="text-align: center;">
 				<th >#</th>
-				<th width="15%">Description</th>
 				<th width="15%">Year</th>
 				<th width="15%">Roll No</th>
 
@@ -197,6 +197,7 @@
 				<th width="15%">Obtain Mark</th>
 				<th width="10%">Percentage %</th>
 				<th width="15%">Board </th>
+				<th width="15%">Description</th>
 				<th><button type="button" name="add" id="add" class="btn btn-success btn-sm add">+</button></th>
 			</tr>
 			<tbody>
@@ -211,7 +212,6 @@
 		<table class="table table-bordered " id="item2_table">
 			<tr class="bg-default" style="text-align: center;">
 				<th >#</th>
-				<th width="15%">Description</th>
 				<th width="15%">Year</th>
 				<th width="15%">Roll No</th>
 
@@ -219,6 +219,7 @@
 				<th width="15%">Obtain Mark</th>
 				<th width="10%">Percentage %</th>
 				<th width="15%">Board </th>
+				<th width="15%">Description</th>
 				<th><button type="button" name="add2" id="add2" class="btn btn-success btn-sm add2">+</button></th>
 			</tr>
 			<tbody>
@@ -235,13 +236,13 @@
 	
 	<table class="table table-responsive">
 		<tr>
-			<td><label for="dd">Basic Salery *</label></td>
+			<td><label for="dd">Basic Salery <span class="text-danger">*</span></label></td>
 			<td> <input type="text" step="any" value="@if(isset($product->name)){{$product->name}} @endif" class="common" name="basic_salery"  required>
 			</td>
 		</tr>
 		<tr>
 			<td>
-				<label for="ff">Class Incharge  *</label>
+				<label for="ff">Class Incharge <span class="text-danger">*</span></label>
 			</td>
 			<td>
 				<input type="text" class="common" name="class_incharge" required>
@@ -382,13 +383,14 @@
     	var html = '<tr>';
     	html += '<tr  id="row'+count+'">';
     	html += '<td>'+count+'</td>';
-    	html += '<td ><textarea type="text"  id="description" placeholder="description"  name="edu_description[]" class="form-control description"/></textarea></td>';
+    	
     	html += '<td><input type="text"  id="year" placeholder="Year"  name="edu_year[]" class="form-control year"/></td>';
     	html += '<td><input type="number"  placeholder="Roll No" id="roll_no"  name="edu_roll_no[]" class="form-control roll_no"/></td>';
     	html += '<td><input type="number"  placeholder="Total Marks" id="total_mark" name="edu_total_mark[]" class="form-control percentage"/></td>';
     	html += '<td><input type="number"   placeholder="Obtain Marks" id="edu_obtain_mark" name="edu_obtain_mark[]" class="form-control percentage"/></td>';
     	html += '<td><input type="text"  placeholder="Percentage " id="percentage"  name="edu_percentage[]" class="form-control percentage"/></td>';
     	html += '<td><input type="text"  placeholder="Board " id="board"  name="edu_board[]" class="form-control board"/></td>';
+    	html += '<td ><textarea type="text"  id="description" placeholder="description"  name="edu_description[]" class="form-control description"/></textarea></td>';
     	html += '<td style="text-align:center"><button type="button" data-id="'+count+' " name="remove" class="btn my btn-danger btn-sm "> - </button></td>';
     	html += '</tr>';
 
@@ -411,13 +413,14 @@
 		var html = '<tr>';
 		html += '<tr  id="row'+count+'">';
 		html += '<td>'+count+'</td>';
-		html += '<td ><textarea type="text"  id="description" placeholder="description"  name="prof_description[]" class="form-control description"/></textarea></td>';
+		
 		html += '<td><input type="text"  id="year" placeholder="Year"  name="prof_year[]" class="form-control year"/></td>';
 		html += '<td><input type="number"  placeholder="Roll No" id="roll_no"  name="prof_roll_no[]" class="form-control roll_no"/></td>';
 		html += '<td><input type="number"  placeholder="Total Marks" id="total_mark" name="prof_total_mark[]" class="form-control percentage"/></td>';
 		html += '<td><input type="number"   placeholder="Obtain Marks" id="obtain_mark" name="prof_obtain_mark[]" class="form-control percentage"/></td>';
 		html += '<td><input type="text"  placeholder="Percentage " id="percentage"  name="prof_percentage[]" class="form-control percentage"/></td>';
 		html += '<td><input type="text"  placeholder="Board " id="board"  name="prof_board[]" class="form-control board"/></td>';
+		html += '<td ><textarea type="text"  id="description" placeholder="description"  name="prof_description[]" class="form-control description"/></textarea></td>';
 		html += '<td style="text-align:center"><button type="button" data-id="'+count+' " name="remove" class="btn my2 btn-danger btn-sm "> - </button></td>';
 		html += '</tr>';
 

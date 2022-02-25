@@ -195,10 +195,10 @@ label.radio1 input:checked+span {
       <th scope="col">Month</th>
       <th scope="col">Amount</th>
       <th scope="col">Received Amount</th>
-      <!-- <th scope="col">Received Amount</th> -->
       <th scope="col">Balance</th>
       <!-- <th scope="col">Discount</th>
       <th scope="col">Total</th> -->
+      <th scope="col">Status</th>
       <th scope="col">Action</th>
     </tr>
   </thead>
@@ -209,7 +209,12 @@ label.radio1 input:checked+span {
   		 <td>{{$record->month}}</td>
   		 <td>{{$record->amount}}</td>
   		 <td>{{$record->received_amount}}</td>
-  		 <td>{{$record->amount-$record->received_amount}}</td>
+       <td>{{$record->amount-$record->received_amount}}</td>
+       @if($record->clear==1)
+       <td><span span class="badge bg-success font-size-12"> Cleared </span></td>
+       @else
+  		 <td><span span class="badge bg-danger font-size-12"> Not Cleared </span></td>
+       @endif
   		 <td><a href="javascript:void(0)" class="btn btn-success paymentDetailShow" id="paymentDetailShow" data-id="{{$record->id}}" data-amount="{{$record->amount}}" data-received_amount="{{$record->received_amount}}"   data-month="{{$record->month}}"  data-student_class="{{$record->css->class->name}}" data-student_name="{{$record->student->first_name}}" data-student_id="{{$record->student->id}}" data-session_id="{{$record->session->id}}"  data-class_section_session_id="{{$record->css->id}}"  > <i class="fa fa-info">Pay Fee Now</i></a>
 
   		</td>
@@ -238,9 +243,9 @@ label.radio1 input:checked+span {
         <div class="modal-content">
             <div class="modal-body ">
                 <form method="post" action="javascript:void(0)" id="add_form">
-                    <input type="text" name="student_id" class="m_student_id">
-                    <input type="text" name="class_section_session_id" class="m_class_section_session_id">
-                    <input type="text" name="session_id" class="m_session_id">
+                    <input type="hidden" name="student_id" class="m_student_id">
+                    <input type="hidden" name="class_section_session_id" class="m_class_section_session_id">
+                    <input type="hidden" name="session_id" class="m_session_id">
              
                 <div class="d-flex justify-content-between align-items-center"> <span class="text-uppercase">Pay Now</span> <i class="fa fa-close close" data-dismiss="modal"></i> </div>
                 <div class="row mt-3">
@@ -273,7 +278,7 @@ label.radio1 input:checked+span {
                 <div class="mt-3 mr-2">
                     <div class="row g-2">
                         <div class="col-md-6">
-                             <input type="text" class="m_id" name="id" id="id">
+                             <input type="hidden" class="m_id" name="id" id="id">
                             <div class="inputbox"> <small>Month of Fee</small> <input type="text" class="form-control m_month" name="month" id="model_month"  readonly="" > </div>
                         </div>
                         <div class="col-md-6">
@@ -289,12 +294,13 @@ label.radio1 input:checked+span {
                         <div class="col-md-6">
                             <div class="inputbox"> <small>Paid</small> <input type="text" id="model_payment" class="form-control model_payment" name="paid" > </div>
                         </div>
+                        </div>
                         <div class="row g-2">
                         <div class="col-md-6">
                             <div class="inputbox"> <small>Balance</small> <input type="text" class="form-control m_balance" name="balance" id="model_balance" readonly=""> </div>
                         </div>
                        </div>
-                    </div>
+                    
                 </div>
                 <!-- <div class="mt-3 mr-2">
                     <div class="row g-2">
@@ -329,7 +335,14 @@ label.radio1 input:checked+span {
            
             $(document).on('click','.paymentDetailShow',function(e){
             	e.preventDefault();
-               $('.m_student_name').text($(this).data('student_name'));
+                var amount=$(this).data('amount');
+                // alert(amount);
+               var rec_amount= $(this).data('received_amount');
+               if(rec_amount==amount){
+              
+              alert('Payment Already done This Month!');
+               }else{
+                 $('.m_student_name').text($(this).data('student_name'));
                $('.m_id').val($(this).data('id'));
                $('.m_month').val($(this).data('month'));
                $('.total').text($(this).data('amount'));
@@ -341,7 +354,13 @@ label.radio1 input:checked+span {
                  $('.m_student_id').val($(this).data('student_id'));
                  $('.m_session_id').val($(this).data('session_id'));
                  $('.m_class_section_session_id').val($(this).data('class_section_session_id'));
+
                $("#staticBackdrop").modal('show');
+
+               }
+
+
+              
             });
         });
 

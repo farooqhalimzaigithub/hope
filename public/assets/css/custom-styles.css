@@ -7,3 +7,9 @@
 .btn{
 	border-radius: 0px;
 }
+.form-control.form-control-solid {
+	border:1px solid #748393;
+}
+input{
+	border-radius: 0px;
+}

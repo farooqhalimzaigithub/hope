@@ -15,6 +15,9 @@ use App\Models\Module;
 |
 */
 
+
+
+
 // Route::get('/', function () {
 //     return view('base.main');
 // });
@@ -112,9 +115,11 @@ Route::resource('fee_structures','App\Http\Controllers\FeeStructureController');
 Route::resource('staff_categories','App\Http\Controllers\StaffCategoryController'); //done
 Route::resource('staffs','App\Http\Controllers\StaffController'); //done
 Route::resource('dmos','App\Http\Controllers\DmoModelController'); //done
+ Route::resource('vecs','App\Http\Controllers\VecModelController'); //done
 
 //@@@@@@@@@@@@@@@@@@@@@@@$End of resource routes $@@@@@@@@@@@@@@@@@@@@@@@@@
 // ================For every model Delete======================
+Route::get('vec-delete/{id}', [App\Http\Controllers\VecModelController::class, 'destroy'])->name('vec-delete.destroy');
 Route::get('staff-delete/{id}', [App\Http\Controllers\StaffController::class, 'destroy'])->name('staff-delete.destroy');
 Route::get('staff_category-delete/{id}', [App\Http\Controllers\StaffCategoryController::class, 'destroy'])->name('staff_category.destroy');
 Route::get('class_tarrif-delete/{id}', [App\Http\Controllers\ClassTarrifController::class, 'destroy'])->name('class_tarrif.destroy');

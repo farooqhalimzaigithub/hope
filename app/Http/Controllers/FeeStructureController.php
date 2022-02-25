@@ -164,8 +164,11 @@ public function paymentFee(Request $request)
     public function paidPayment(Request $request)
    {
      $student_fee=StudentFee::where('id',$request->id)->first();
-     $student_fee->received_amount = $request->paid;
-     if($student_fee->amount==$request->paid)
+     $old_received=$student_fee->received_amount;
+     // $old_received=StudentFee::where('id',$request->id)->first(['received_amount']);
+     $new_received=$old_received + $request->paid;
+     $student_fee->received_amount = $new_received;
+     if($student_fee->amount==$new_received)
         {
           $student_fee->clear=1;
         }

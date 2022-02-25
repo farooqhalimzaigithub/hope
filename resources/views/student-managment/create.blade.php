@@ -9,6 +9,7 @@
 				<!-- <div class="card card-custom gutter-b example example-compact" style="border : 1px solid yellow;"> -->
 					<div class="card-header">
 						<h3 class="card-title">Student </h3>
+						<small class="text-danger">The * fields must be required</small>
 						<div class="card-toolbar">
 							<div class="example-tools  justify-content-center">
 								<span class="example-toggle" data-toggle="tooltip" title="View code"></span>
@@ -24,12 +25,12 @@
 
 								<div class="form-row">
 									<div class="form-group col-lg-6">
-										<label for="inputCity">Registration No</label>
-										<input type="text" name="registration_no" class="form-control" id="inputCity">
+										<label for="inputCity">Registration No <span class="text-danger">*</span></label>
+										<input type="text" name="registration_no" class="form-control" id="inputCity" required="">
 									</div>
 									<div class="form-group col-lg-6">
-										<label for="inputCity">Admission No</label>
-										<input type="text" name="admission_no" class="form-control" id="inputCity">
+										<label for="inputCity">Admission No <span class="text-danger">*</span></label>
+										<input type="text" name="admission_no" class="form-control" id="inputCity" required="">
 									</div>
 									
 
@@ -76,20 +77,20 @@
 <h4 class="mb-8 font-weight-bold text-dark">Personal Details</h4>
 <div class="row">
 	<div class="form-group col-lg-3">
-		<label for="inputCity">First Name</label>
-		<input type="text" name="first_name" class="form-control" id="inputCity">
+		<label for="inputCity">First Name <span class="text-danger">*</span></label>
+		<input type="text" name="first_name" class="form-control" id="inputCity" required="">
 	</div>
 	<div class="form-group col-lg-3">
-		<label for="inputCity">Last Name</label>
-		<input type="text" name="last_name" class="form-control" id="inputCity">
+		<label for="inputCity">Last Name <span class="text-danger">*</span></label>
+		<input type="text" name="last_name" class="form-control" id="inputCity" required="">
 	</div>
 	<div class="form-group col-lg-3">
 		<label for="inputCity">Surname</label>
 		<input type="text" name="surname" class="form-control" id="inputCity">
 	</div>
 	<div class="form-group col-lg-3">
-		<label for="dob">Date Of Birth</label>
-		<input type="date" name="dob" class="form-control" id="dob">
+		<label for="dob">Date Of Birth <span class="text-danger">*</span></label>
+		<input type="date" name="dob" value="<?php echo date('Y-m-d');?>" class="form-control" id="dob" required="">
 	</div>
 </div>
 <div class="row">
@@ -159,6 +160,49 @@
 	</div>
 </div>
 <hr>
+<h4 class="mb-8 font-weight-bold text-dark">Academic Details</h4>
+<div class="row">
+	<div class="form-group col-lg-3">
+		<label for="inputCity">Date Of Admission <span class="text-danger">*</span></label>
+		<input type="date" name="date_of_admission" value="<?php echo date('Y-m-d');?>" class="form-control" id="inputCity" required="">
+	</div>
+	<div class="form-group col-lg-3">
+		<label for="inputCity">Class Of Admission <span class="text-danger">*</span></label>
+		<select class="form-control select2" required="true"  name="admission_class_id">
+			<option label="Label"></option>
+			 @foreach($classSectionSession as $record)
+                                            <option value="{{$record->id }}" 
+                                                >
+                                                {{ $record->class->name }}
+                                                
+                                            </option>
+                                        @endforeach
+		</select>
+	</div>
+	<div class="form-group col-lg-3">
+		<label for="inputCity">Current Class <span class="text-danger">*</span></label>
+		<select class="form-control select2" required="true"  name="current_class_id">
+			<option label="Label"></option>
+			 @foreach($classSectionSession as $record)
+                                            <option value="{{$record->id }}" 
+                                                >
+                                                {{ $record->class->name }}
+                                                
+                                            </option>
+                                        @endforeach
+		</select>
+	</div>
+	<div class="form-group col-lg-3">
+		<label for="dob">Section <span class="text-danger">*</span></label>
+		<select class="form-control select2" required="true"  name="section_id">
+			<option label="Label"></option>
+			@foreach($sections as $section)
+			<option value="{{$section->id}}">{{$section->name}}</option>
+			@endforeach
+		</select>
+	</div>
+</div>
+<hr>
 <h4 class="mb-8 font-weight-bold text-dark">Health Details</h4>
 <div class="row">
 	<div class="form-group col-lg-3">
@@ -204,49 +248,7 @@
 	</div>
 </div>
 <hr>
-<h4 class="mb-8 font-weight-bold text-dark">Academic Details</h4>
-<div class="row">
-	<div class="form-group col-lg-3">
-		<label for="inputCity">Date Of Admission</label>
-		<input type="date" name="date_of_admission" class="form-control" id="inputCity">
-	</div>
-	<div class="form-group col-lg-3">
-		<label for="inputCity">Class Of Admission</label>
-		<select class="form-control select2"  name="admission_class_id">
-			<option label="Label"></option>
-			 @foreach($classSectionSession as $record)
-                                            <option value="{{$record->id }}" 
-                                                >
-                                                {{ $record->class->name }}
-                                                
-                                            </option>
-                                        @endforeach
-		</select>
-	</div>
-	<div class="form-group col-lg-3">
-		<label for="inputCity">Current Class</label>
-		<select class="form-control select2"  name="current_class_id">
-			<option label="Label"></option>
-			 @foreach($classSectionSession as $record)
-                                            <option value="{{$record->id }}" 
-                                                >
-                                                {{ $record->class->name }}
-                                                
-                                            </option>
-                                        @endforeach
-		</select>
-	</div>
-	<div class="form-group col-lg-3">
-		<label for="dob">Section</label>
-		<select class="form-control select2"  name="section_id">
-			<option label="Label"></option>
-			@foreach($sections as $section)
-			<option value="{{$section->id}}">{{$section->name}}</option>
-			@endforeach
-		</select>
-	</div>
-</div>
-<hr>
+
 <h4 class="mb-8 font-weight-bold text-dark">Contact Details</h4>
 <div class="row">
 	<div class="form-group col-lg-3">
